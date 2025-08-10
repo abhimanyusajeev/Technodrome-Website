@@ -1,7 +1,6 @@
 // src/components/Footer.tsx
 import React from "react";
 import {
-  FaMapMarkerAlt,
   FaPhoneAlt,
   FaEnvelope,
   FaLinkedin,

@@ -20,7 +20,7 @@ const cards: Card[] = [
 
 export default function SliderSection() {
   const [index, setIndex] = useState(0);
-  const autoSlideRef = useRef<NodeJS.Timeout | null>(null);
+  const autoSlideRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
   const next = () => setIndex((prev) => (prev < cards.length - 2 ? prev + 1 : 0));
   const prev = () => setIndex((prev) => (prev > 0 ? prev - 1 : cards.length - 2));
