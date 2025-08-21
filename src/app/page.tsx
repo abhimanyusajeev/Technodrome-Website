@@ -37,9 +37,9 @@ export default function HomePage() {
         <Portfolio />
       </section>
 
-      <section id="partners">
+      {/* <section id="partners">
         <Partners />
-      </section>
+      </section> */}
 
       <section id="about">
         <About />
