@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import GetInTouch from "@/components/GetInTouch";
 import Home from "@/components/Home";
 import Navbar from "@/components/Navbar";
-import Partners from "@/components/Partners";
+// import Partners from "@/components/Partners";
 import Portfolio from "@/components/Portfolio";
 import Services from "@/components/Services";
 import WhoSection from "@/components/Who";
