@@ -17,7 +17,7 @@ export default function GetInTouch() {
 
   // Replace this with your Google Apps Script Web App URL
   const SCRIPT_URL: string =
-    "https://script.google.com/macros/s/AKfycbw_FBoWEpGATIMN6TtLcCuQ_206sA0BG1jI9oY1HW6MIa69Aa2ScLcd6OsqkgAFIADF/exec";
+    "https://script.google.com/macros/s/AKfycbyWkLxUxX65cqh79_nSbV0By_COfPEZ7xX-SeenpXhdrP4xPYe02_uQ00AhL_9zvm82Cg/exec";
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
