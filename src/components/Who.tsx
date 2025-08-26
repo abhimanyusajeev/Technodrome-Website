@@ -39,14 +39,14 @@ export default function SliderSection() {
   };
 
   return (
-    <section className="bg-white py-20">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="bg-white py-16 sm:py-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-5xl font-extrabold text-gray-900 mb-4"
+          className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 text-center md:text-left"
         >
           Who We <span className="text-[#5AD6FF]">Are.</span>
         </motion.h2>
@@ -56,7 +56,7 @@ export default function SliderSection() {
           initial={{ width: 0 }}
           whileInView={{ width: "120px" }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="h-1 bg-[#5AD6FF] rounded-full mb-12"
+          className="h-1 bg-[#5AD6FF] rounded-full mb-10 sm:mb-12 mx-auto md:mx-0"
         ></motion.div>
 
         <div className="flex flex-col md:flex-row gap-10 items-center">
@@ -65,15 +65,15 @@ export default function SliderSection() {
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="w-full md:w-1/2 flex flex-col justify-center"
+            className="w-full md:w-1/2 flex flex-col justify-center text-center md:text-left"
           >
-            <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+            <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-6 leading-relaxed">
               Technodrome Solutions Private Limited is a leading IT technical service provider
               that helps businesses leverage cutting-edge technologies to improve their
               operations. Our team of experts has years of experience in cloud-based integrations
               and computing, and we are passionate about helping businesses innovate.
             </p>
-            <div className="flex gap-4">
+            <div className="flex justify-center md:justify-start gap-4">
               <button
                 onClick={() => handleManualControl("prev")}
                 className="p-3 rounded-full bg-slate-950 shadow hover:scale-105 transition"
@@ -97,30 +97,30 @@ export default function SliderSection() {
             className="w-full md:w-1/2 overflow-hidden relative"
           >
             <div
-              className="bg-no-repeat bg-center p-8 rounded-2xl"
+              className="bg-no-repeat bg-center p-4 sm:p-6 md:p-8 rounded-2xl"
               style={{
                 backgroundImage: "url('/lines.png')",
                 backgroundSize: "cover",
               }}
             >
               <motion.div
-                className="flex gap-6"
-                animate={{ x: -index * 320 }}
+                className="flex gap-4 sm:gap-6"
+                animate={{ x: -index * 260 }} // smaller shift for mobile
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
               >
                 {cards.map((card, i) => (
                   <motion.div
                     key={i}
                     whileHover={{ scale: 1.05 }}
-                    className="min-w-[300px] bg-white shadow-lg rounded-2xl p-6 border border-gray-100"
+                    className="min-w-[240px] sm:min-w-[280px] md:min-w-[300px] bg-white shadow-lg rounded-2xl p-4 sm:p-6 border border-gray-100"
                   >
-                    <div className="w-12 h-12 rounded-full bg-[#5AD6FF] text-white flex items-center justify-center mb-4 text-lg font-bold">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#5AD6FF] text-white flex items-center justify-center mb-4 text-base sm:text-lg font-bold">
                       ✦
                     </div>
-                    <h3 className="font-bold text-lg text-gray-800 mb-2">
+                    <h3 className="font-bold text-base sm:text-lg text-gray-800 mb-2">
                       {card.title}
                     </h3>
-                    <p className="text-gray-600">{card.desc}</p>
+                    <p className="text-sm sm:text-base text-gray-600">{card.desc}</p>
                   </motion.div>
                 ))}
               </motion.div>

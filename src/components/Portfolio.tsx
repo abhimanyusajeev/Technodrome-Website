@@ -45,14 +45,14 @@ const portfolioItems: PortfolioItem[] = [
 
 const Portfolio: FC = () => {
   return (
-    <section className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 py-20 px-6">
+    <section className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto text-center">
         {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: -40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="text-5xl font-extrabold text-gray-900 mb-4"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-4"
         >
           Our <span className="text-[#5AD6FF]">Portfolio</span>
         </motion.h2>
@@ -62,11 +62,11 @@ const Portfolio: FC = () => {
           initial={{ width: 0 }}
           animate={{ width: "100px" }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="h-1 bg-[#5AD6FF] rounded-full mx-auto mb-12"
+          className="h-1 bg-[#5AD6FF] rounded-full mx-auto mb-8 sm:mb-12"
         ></motion.div>
 
         {/* Portfolio Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 lg:gap-10">
           {portfolioItems.map((item, index) => (
             <motion.div
               key={item.title}
@@ -91,9 +91,10 @@ const Portfolio: FC = () => {
               }}
               className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all border border-gray-100"
             >
+              {/* Image */}
               <div className="overflow-hidden">
                 <motion.div
-                  className="relative w-full h-56"
+                  className="relative w-full h-40 sm:h-48 md:h-56"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.5 }}
                 >
@@ -105,11 +106,13 @@ const Portfolio: FC = () => {
                   />
                 </motion.div>
               </div>
-              <div className="p-6 text-left">
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+
+              {/* Text */}
+              <div className="p-4 sm:p-6 text-left">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-2 sm:mb-3">
                   {item.title}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
                   {item.description}
                 </p>
               </div>

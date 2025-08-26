@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
-import { useState, FormEvent } from "react";
+import { useState } from "react";
 
 export default function GetInTouch() {
   const [formData, setFormData] = useState({
@@ -15,7 +15,7 @@ export default function GetInTouch() {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState<string | null>(null);
 
-  // Replace this with your Google Apps Script Web App URL
+  // Replace with your Google Apps Script Web App URL
   const SCRIPT_URL: string =
     "https://script.google.com/macros/s/AKfycbyWkLxUxX65cqh79_nSbV0By_COfPEZ7xX-SeenpXhdrP4xPYe02_uQ00AhL_9zvm82Cg/exec";
 
@@ -29,43 +29,39 @@ export default function GetInTouch() {
     }));
   };
 
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setLoading(true);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
 
-  try {
-    const response = await fetch(SCRIPT_URL, {
-      redirect: "follow",
-      method: "POST",
-      body: JSON.stringify(formData), // send JSON instead of FormData
-      headers: {
-        "Content-Type": "text/plain;charset=utf-8",
-      },
-    });
+    try {
+      const response = await fetch(SCRIPT_URL, {
+        redirect: "follow",
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+          "Content-Type": "text/plain;charset=utf-8",
+        },
+      });
 
-    const resultText = await response.text(); // GAS often responds as text
-    const result = JSON.parse(resultText);
+      const resultText = await response.text();
+      const result = JSON.parse(resultText);
 
-    if (response.ok && result.status === "success") {
-      console.log("Form submitted successfully");
-      setSuccess("Message sent successfully ✅");
-      setFormData({ name: "", email: "", mobile: "", message: "" }); // reset
-    } else {
-      console.error("Error submitting form:", result.message || response.statusText);
+      if (response.ok && result.status === "success") {
+        setSuccess("Message sent successfully ✅");
+        setFormData({ name: "", email: "", mobile: "", message: "" });
+      } else {
+        console.error("Error submitting form:", result.message || response.statusText);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    } finally {
+      setLoading(false);
     }
-  } catch (error) {
-    console.error("Error submitting form:", error);
-  } finally {
-    setLoading(false);
-  }
-};
-
-
-
+  };
 
   return (
-    <section className="py-16 px-6 bg-white overflow-hidden">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 items-start">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-start">
         {/* LEFT SIDE */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -74,7 +70,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           viewport={{ once: true }}
         >
           <motion.h2
-            className="text-5xl font-extrabold text-gray-900 mb-4"
+            className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 sm:mb-6"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
@@ -84,13 +80,14 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
           <motion.div
             initial={{ width: 0 }}
-            animate={{ width: "100px" }}
+            whileInView={{ width: "100px" }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="h-1 bg-[#5AD6FF] rounded-full mb-12"
+            viewport={{ once: true }}
+            className="h-1 bg-[#5AD6FF] rounded-full mb-8 sm:mb-12"
           ></motion.div>
 
           <motion.p
-            className="text-gray-600 mb-8"
+            className="text-gray-600 text-base sm:text-lg mb-6 sm:mb-8"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -149,8 +146,9 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
+          className="w-full"
         >
-          <form className="space-y-4" onSubmit={handleSubmit}>
+          <form className="space-y-4 w-full" onSubmit={handleSubmit}>
             <input
               type="text"
               name="name"
@@ -189,7 +187,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
             ></textarea>
             <motion.button
               type="submit"
-              className="bg-slate-950 text-white px-6 py-3 rounded-full hover:bg-[#0a0a5a] transition"
+              className="bg-slate-950 text-white px-6 py-3 rounded-full hover:bg-[#0a0a5a] transition w-full sm:w-auto"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               disabled={loading}
