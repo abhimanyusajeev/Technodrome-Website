@@ -3,10 +3,11 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { Menu, X } from "lucide-react"; // hamburger + close icons
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [isAtTop, setIsAtTop] = useState(true);
+  const [isOpen, setIsOpen] = useState(false); // 🔥 moved here
 
   useEffect(() => {
     const onScroll = () => {
@@ -21,16 +22,16 @@ export default function Navbar() {
   return (
     <AnimatePresence initial={false} mode="wait">
       {isAtTop ? (
-        <TopNavbar key="top-navbar" />
+        <TopNavbar key="top-navbar" isOpen={isOpen} setIsOpen={setIsOpen} />
       ) : (
-        <ScrollNavbar key="scroll-navbar" />
+        <ScrollNavbar key="scroll-navbar" isOpen={isOpen} setIsOpen={setIsOpen} />
       )}
     </AnimatePresence>
   );
 }
 
-/** NAV when page is at the very top (permanent) */
-function TopNavbar() {
+/** NAV when page is at the very top */
+function TopNavbar({ isOpen, setIsOpen }: any) {
   return (
     <motion.nav
       initial={{ y: -80, opacity: 0 }}
@@ -39,13 +40,13 @@ function TopNavbar() {
       transition={{ duration: 0.35 }}
       className="fixed top-0 w-full z-50 bg-slate-950 text-white"
     >
-      <NavContent logo="/technodromelogoorg.png" variant="dark" />
+      <NavContent logo="/technodromelogoorg.png" variant="dark" isOpen={isOpen} setIsOpen={setIsOpen} />
     </motion.nav>
   );
 }
 
 /** NAV when user has scrolled down */
-function ScrollNavbar() {
+function ScrollNavbar({ isOpen, setIsOpen }: any) {
   return (
     <motion.nav
       initial={{ y: -80, opacity: 0 }}
@@ -54,15 +55,24 @@ function ScrollNavbar() {
       transition={{ duration: 0.35 }}
       className="fixed top-0 w-full z-50 bg-white text-black shadow-md"
     >
-      <NavContent logo="/technodromelogo3.png" variant="light" />
+      <NavContent logo="/technodromelogo3.png" variant="light" isOpen={isOpen} setIsOpen={setIsOpen} />
     </motion.nav>
   );
 }
 
 /** Shared Navbar Layout */
-function NavContent({ logo, variant }: { logo: string; variant: "light" | "dark" }) {
-  const [isOpen, setIsOpen] = useState(false);
-
+function NavContent({
+  logo,
+  
+  variant,
+  isOpen,
+  setIsOpen,
+}: {
+  logo: string;
+  variant: "light" | "dark";
+  isOpen: boolean;
+  setIsOpen: (open: boolean) => void;
+}) {
   return (
     <div className="container mx-auto flex justify-between items-center p-4">
       {/* Logo */}
@@ -95,7 +105,9 @@ function NavContent({ logo, variant }: { logo: string; variant: "light" | "dark"
             exit={{ y: -200, opacity: 0 }}
             transition={{ duration: 0.3 }}
             className={`absolute top-16 left-0 w-full p-6 flex flex-col space-y-6 shadow-lg md:hidden ${
-              variant === "light" ? "bg-white text-black" : "bg-slate-950 text-white"
+              variant === "light"
+                ? "bg-white text-black"
+                : "bg-slate-950 text-white"
             }`}
           >
             <NavLinks variant={variant} className="flex flex-col space-y-6" />
@@ -107,7 +119,13 @@ function NavContent({ logo, variant }: { logo: string; variant: "light" | "dark"
 }
 
 /** Links Component (shared for desktop + mobile) */
-function NavLinks({ variant, className }: { variant: "light" | "dark"; className?: string }) {
+function NavLinks({
+  variant,
+  className,
+}: {
+  variant: "light" | "dark";
+  className?: string;
+}) {
   return (
     <ul className={className}>
       <li>
