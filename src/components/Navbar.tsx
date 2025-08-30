@@ -6,162 +6,135 @@ import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
-  const [isAtTop, setIsAtTop] = useState(true);
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      setIsAtTop(window.scrollY < 10);
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
+
+      if (currentScroll < lastScrollY) {
+        // scrolling UP → show navbar
+        setShowNavbar(true);
+      } else {
+        // scrolling DOWN → hide navbar
+        setShowNavbar(false);
+      }
+
+      setLastScrollY(currentScroll);
     };
 
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   return (
     <AnimatePresence initial={false} mode="wait">
-      {isAtTop ? (
-        <TopNavbar key="top-navbar" isOpen={isOpen} setIsOpen={setIsOpen} />
-      ) : (
-        <ScrollNavbar key="scroll-navbar" isOpen={isOpen} setIsOpen={setIsOpen} />
+      {showNavbar && (
+        <motion.nav
+          key="navbar"
+          initial={{ y: -80, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -80, opacity: 0 }}
+          transition={{ duration: 0.35 }}
+          className="fixed top-5 w-full z-50 bg-slate-950 shadow-md"
+        >
+          <NavContent
+            logo="/technodromelogo3.png"
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+          />
+        </motion.nav>
       )}
     </AnimatePresence>
-  );
-}
-
-/** NAV when page is at the very top */
-function TopNavbar({ isOpen, setIsOpen }: any) {
-  return (
-    <motion.nav
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      exit={{ y: -80, opacity: 0 }}
-      transition={{ duration: 0.35 }}
-      className="fixed top-0 w-full z-50 bg-slate-950 text-white font-raleway"
-    >
-      <NavContent
-        logo="/technodromelogoorg.png"
-        variant="dark"
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-      />
-    </motion.nav>
-  );
-}
-
-/** NAV when user has scrolled down */
-function ScrollNavbar({ isOpen, setIsOpen }: any) {
-  return (
-    <motion.nav
-      initial={{ y: -80, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      exit={{ y: -80, opacity: 0 }}
-      transition={{ duration: 0.35 }}
-      className="fixed top-0 w-full z-50 bg-white text-black shadow-md font-raleway"
-    >
-      <NavContent
-        logo="/technodromelogo3.png"
-        variant="light"
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-      />
-    </motion.nav>
   );
 }
 
 /** Shared Navbar Layout */
 function NavContent({
   logo,
-  variant,
   isOpen,
   setIsOpen,
 }: {
   logo: string;
-  variant: "light" | "dark";
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
 }) {
   return (
-    <div className="container mx-auto flex justify-between items-center p-4">
-      {/* Logo */}
-      <Image
-        src={logo}
-        alt="Technodrome Logo"
-        width={160}
-        height={40}
-        priority
-        className="transition-all duration-300"
-      />
+    <div className="container mx-auto flex justify-between items-center px-4">
+      <div className="w-full flex items-center justify-between px-6 py-2 bg-white rounded-full shadow-md">
+        {/* Logo */}
+        <Image
+          src={logo}
+          alt="Technodrome Logo"
+          width={140}
+          height={40}
+          priority
+          className="transition-all duration-300"
+        />
 
-      {/* Desktop Menu */}
-      <NavLinks variant={variant} className="hidden md:flex space-x-10" />
+        {/* Desktop Menu */}
+        <NavLinks className="hidden md:flex items-center space-x-10 text-black" />
 
-      {/* Mobile Hamburger */}
-      <button
-        className="md:hidden focus:outline-none"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {isOpen ? <X size={28} /> : <Menu size={28} />}
-      </button>
+        
+     {/* Mobile Hamburger */}
+<button
+  className="md:hidden focus:outline-none text-black" // <-- changed to black so it's visible on white bg
+  onClick={() => setIsOpen(!isOpen)}
+>
+  {isOpen ? <X size={28} /> : <Menu size={28} />}
+</button>
+      </div>
 
-      {/* Mobile Drawer */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ y: -200, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -200, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className={`absolute top-16 left-0 w-full p-6 flex flex-col space-y-6 shadow-lg md:hidden ${
-              variant === "light"
-                ? "bg-white text-black"
-                : "bg-slate-950 text-white"
-            }`}
-          >
-            <NavLinks variant={variant} className="flex flex-col space-y-6" />
-          </motion.div>
-        )}
-      </AnimatePresence>
+{/* Mobile Drawer */}
+<AnimatePresence>
+  {isOpen && (
+    <motion.div
+      initial={{ y: -200, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      exit={{ y: -200, opacity: 0 }}
+      transition={{ duration: 0.3 }}
+      className="absolute top-20 left-0 w-full p-6 flex flex-col space-y-6 shadow-lg md:hidden bg-slate-950 text-white z-40"
+    >
+      <NavLinks className="flex flex-col space-y-6" />
+    </motion.div>
+  )}
+</AnimatePresence>
     </div>
   );
 }
 
-/** Links Component (shared for desktop + mobile) */
-function NavLinks({
-  variant,
-  className,
-}: {
-  variant: "light" | "dark";
-  className?: string;
-}) {
+/** Links Component */
+function NavLinks({ className }: { className?: string }) {
   return (
     <ul className={`${className} font-raleway text-base md:text-md`}>
       <li>
-        <a href="#home" className="hover:font-semibold transition-all">
-          Home
+        <a href="#who" className="hover:font-semibold transition-all">
+          Who We Are
         </a>
       </li>
       <li>
         <a href="#services" className="hover:font-semibold transition-all">
-          Services
+          What We Do
         </a>
       </li>
-      <li>
-        <a href="#about" className="hover:font-semibold transition-all">
-          About
+      {/* <li>
+        <a href="#future" className="hover:font-semibold transition-all">
+          Future of Retail
         </a>
-      </li>
+      </li> */}
+      {/* <li>
+        <a href="#news" className="hover:font-semibold transition-all">
+          News
+        </a>
+      </li> */}
       <li>
         <a
           href="#contact"
-          className={`px-4 py-2 rounded-md shadow-md hover:shadow-lg transition-all duration-300 font-raleway text-base md:text-lg ${
-            variant === "light"
-              ? "bg-[#5AD6FF] text-white hover:bg-[#3ABBE3]"
-              : "bg-[#5AD6FF] text-white hover:bg-[#3ABBE3]"
-          }`}
+          className="px-6 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 font-raleway font-medium flex items-center gap-2 bg-neutral-800 text-white hover:bg-neutral-900"
         >
-          Get in touch
+          <span>↗</span> Get in touch
         </a>
       </li>
     </ul>

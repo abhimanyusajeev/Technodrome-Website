@@ -216,15 +216,20 @@ export default function Services() {
     >
       <div className="max-w-7xl mx-auto px-6">
         {/* Heading (unchanged) */}
-        <motion.h2
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-12 text-center md:text-left"
-        >
-          Our <span className="text-[#5AD6FF]">Services</span>
-        </motion.h2>
+<motion.h2
+  initial={{ opacity: 0, y: -20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6 }}
+  className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 text-center md:text-left"
+>
+  Our <span className="text-[#5AD6FF]">Services</span>
+</motion.h2>
 
+{/* Divider under heading */}
+<div className="h-1 bg-[#5AD6FF] rounded-full mb-10 sm:mb-12 mx-auto md:mx-0 w-[120px]"></div>
+
+              {/* Divider */}
+       
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           {/* Left (Title) */}
           <motion.div

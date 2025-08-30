@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import Slider from "react-slick"; 
+import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -111,35 +111,34 @@ export default function TechnologyStack() {
     arrows: false,
     pauseOnHover: true,
     responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 3 } },
-      { breakpoint: 640, settings: { slidesToShow: 2 } },
+      { breakpoint: 1280, settings: { slidesToShow: 3 } }, // large screens
+      { breakpoint: 1024, settings: { slidesToShow: 3 } }, // tablets landscape
+      { breakpoint: 768, settings: { slidesToShow: 2 } }, // tablets portrait
+      { breakpoint: 480, settings: { slidesToShow: 1 } }, // mobile
     ],
   };
 
   return (
-    <section className="relative py-20 bg-white backdrop-blur-xl border-t border-white/20">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="relative py-16 sm:py-20 bg-white backdrop-blur-xl border-t border-white/20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 text-center md:text-left"
+          className="text-2xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 text-center md:text-left"
         >
           Technology <span className="text-[#5AD6FF]">Stack</span>
         </motion.h2>
-
-        <p className="text-lg text-gray-600 mb-12 text-center md:text-left">
-          Empowering Scalable, Secure, and Intelligent Digital Transformation
-        </p>
+         <div className="h-1 bg-[#5AD6FF] rounded-full mb-10 sm:mb-12 mx-auto md:mx-0 w-[120px]"></div>
 
         {/* Tabs */}
-        <div className="flex flex-wrap gap-3 justify-center md:justify-start mb-12">
+        <div className="flex flex-wrap gap-2 sm:gap-3 justify-center md:justify-start mb-10">
           {techStack.map((item, index) => (
             <button
               key={index}
               onClick={() => setActiveLayer(index)}
-              className={`px-5 py-2 rounded-full border transition text-sm font-medium ${
+              className={`px-3 sm:px-5 py-2 rounded-full border transition text-xs sm:text-sm font-medium ${
                 activeLayer === index
                   ? "bg-gray-800 text-white"
                   : "bg-white text-gray-700 border-gray-300 hover:bg-gray-100"
@@ -159,14 +158,16 @@ export default function TechnologyStack() {
         >
           <Slider {...sliderSettings}>
             {techStack[activeLayer].images.map((tech, idx) => (
-              <div key={idx} className="px-4">
-                <div className="flex flex-col items-center justify-center h-40 rounded-xl bg-white/50 backdrop-blur-md shadow-md p-4">
+              <div key={idx} className="px-2 sm:px-4">
+                <div className="flex flex-col items-center justify-center h-32 sm:h-40 rounded-xl bg-white/50 backdrop-blur-md shadow-md p-3 sm:p-4">
                   <img
                     src={tech.src}
                     alt={tech.name}
-                    className="h-16 object-contain mb-2"
+                    className="h-12 sm:h-16 object-contain mb-2"
                   />
-                  <p className="text-sm font-medium text-gray-700">{tech.name}</p>
+                  <p className="text-xs sm:text-sm font-medium text-gray-700 text-center">
+                    {tech.name}
+                  </p>
                 </div>
               </div>
             ))}
