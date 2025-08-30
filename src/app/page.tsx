@@ -5,12 +5,13 @@ import Approach from "@/components/Approach";
 import Footer from "@/components/Footer";
 import GetInTouch from "@/components/GetInTouch";
 import Home from "@/components/Home";
+import HomeNextPage from "@/components/HomeNextPage";
 import Navbar from "@/components/Navbar";
 // import Partners from "@/components/Partners";
 import Portfolio from "@/components/Portfolio";
 import Services from "@/components/Services";
+import TechnologyStack from "@/components/TechnologyStack";
 import WhoSection from "@/components/Who";
-
 export default function HomePage() {
   return (
     <main>
@@ -19,6 +20,9 @@ export default function HomePage() {
       {/* Sections with IDs for scrolling */}
       <section id="home">
         <Home />
+      </section>
+      <section id="homenextpage">
+        <HomeNextPage />
       </section>
 
       <section id="who">
@@ -31,6 +35,9 @@ export default function HomePage() {
 
       <section id="approach">
         <Approach />
+      </section>
+      <section id="technologystack">
+        <TechnologyStack />
       </section>
 
       <section id="portfolio">
