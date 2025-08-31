@@ -38,7 +38,7 @@ export default function Navbar() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -80, opacity: 0 }}
           transition={{ duration: 0.35 }}
-          className="fixed top-5 w-full z-50 bg-slate-950 shadow-md"
+          className="fixed top-5 w-full z-50 "
         >
           <NavContent
             logo="/technodromelogo3.png"
