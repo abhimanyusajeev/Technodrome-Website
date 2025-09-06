@@ -3,11 +3,10 @@
 import { motion } from "framer-motion";
 
 const industries = [
-  "Banking & Financial Services (Active/Selected)",
-  "Hi-Tech & Professional Services",
+  "Banking & Financial Services",
+  "Professional Services",
   "Healthcare",
   "Insurance",
-  "Life Sciences",
   "Manufacturing",
   "Retail & Consumer Packaged Goods",
   "Shipping & Logistics",

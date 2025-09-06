@@ -1,47 +1,64 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Raleway } from "next/font/google";
+import ExpandCircleDownIcon from "@mui/icons-material/ExpandCircleDown";
+import { useRef } from "react";
+import { useInView } from "framer-motion";
+
+// Import Raleway with desired weights
+const raleway = Raleway({
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "900"],
+});
 
 export default function Home() {
+  const heroRef = useRef(null);
+  const isInView = useInView(heroRef, { amount: 0.4 }); // detect when 40% is visible
+
   return (
-    <section className="min-h-screen flex items-center justify-center bg-slate-950 text-white px-4 sm:px-6 lg:px-8">
-      <div className="w-full max-w-5xl text-center space-y-6 sm:space-y-8">
+    <section
+      ref={heroRef}
+      className={`relative min-h-screen flex flex-col items-center justify-center bg-slate-950 text-white px-4 sm:px-6 lg:px-8 ${raleway.className}`}
+    >
+      <div className="w-full max-w-5xl text-center space-y-6 sm:space-y-10">
         {/* Heading */}
-     <motion.h1
-  className="text-4xl sm:text-5xl md:text-7xl font-raleway font-black leading-tight px-2"
-  style={{ fontWeight: 900 }}
-  initial={{ opacity: 0, y: 50 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
->
-  Innovate. Integrate.{" "}
-  <span className="text-[#5AD6FF]">Compute.</span>
-</motion.h1>
-
-
-        {/* Description */}
-  
-
-
-        {/* Button */}
-        {/* <motion.div
-          initial={{ opacity: 0, y: 30 }}
+        <motion.h1
+          className="text-4xl sm:text-5xl md:text-7xl font-black leading-tight px-2"
+          style={{ fontWeight: 900 }}
+          initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7, duration: 0.7, ease: "easeOut" }}
+          transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
         >
-          <motion.a
-            href="#services"
-            whileHover={{
-              scale: 1.05,
-              boxShadow: "0px 4px 20px rgba(90,214,255,0.6)",
-            }}
-            whileTap={{ scale: 0.97 }}
-            className="inline-block bg-[#5AD6FF] text-[#0A0A23] px-6 sm:px-8 py-3 sm:py-4 mt-4 rounded-lg font-semibold shadow-lg hover:bg-white transition-colors text-sm sm:text-base md:text-lg"
-          >
-            Explore Services
-          </motion.a>
-        </motion.div> */}
+          Innovate. Integrate.{" "}
+          <span className="text-[#5AD6FF]">Compute.</span>
+        </motion.h1>
       </div>
+
+      {/* Fixed Animated Icon (only visible in hero) */}
+      <motion.a
+        href="#services"
+        className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isInView ? 1 : 0 }}
+        transition={{ duration: 0.6, ease: "easeInOut" }}
+      >
+        <motion.div
+          animate={{
+            opacity: [1, 0.4, 1], // blinking
+            y: [0, -8, 0], // bounce
+          }}
+          transition={{
+            duration: 1.5,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
+          <ExpandCircleDownIcon
+            style={{ fontSize: "3.5rem", color: "#5AD6FF" }}
+          />
+        </motion.div>
+      </motion.a>
     </section>
   );
 }
