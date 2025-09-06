@@ -41,7 +41,7 @@ export default function Navbar() {
           className="fixed top-5 w-full z-50 "
         >
           <NavContent
-            logo="/technodromelogo3.png"
+            logo="/technodrometxtlogo.png"
             isOpen={isOpen}
             setIsOpen={setIsOpen}
           />

@@ -37,7 +37,7 @@ export default function Home() {
 
       {/* Fixed Animated Icon (only visible in hero) */}
       <motion.a
-        href="#services"
+        href="#homenextpage"
         className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50"
         initial={{ opacity: 0 }}
         animate={{ opacity: isInView ? 1 : 0 }}

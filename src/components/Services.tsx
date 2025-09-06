@@ -20,7 +20,7 @@ export default function Services() {
 
   const services: Service[] = [
     { boldTitle: "Infrastructure", italicTitle: "as a Service (IaaS)", description: "Our team has immense experience in setting up and maintenance of Cloud Infrastructure for Banks and Financial Institutions...", image: "/iaas2.png" },
-    { boldTitle: "Lightweight", italicTitle: "Business Application", description: "At Technodrome Solutions Pvt. Ltd., with our Oracle certified team, we can harness the power of Oracle APEX...", image: "/bussiness.png" },
+    { boldTitle: "Lightweight", italicTitle: "Business Application", description: "At Technodrome Solutions Pvt. Ltd., with our Oracle certified team, we can harness the power of Oracle APEX...", image: "/business.png" },
     { boldTitle: "PaaS", italicTitle: "and SaaS Integration", description: "Our comprehensive experience in setting up and maintenance of Cloud Infrastructure...", image: "/saas2.png" },
     { boldTitle: "Event", italicTitle: "Streaming", description: "We specialize in event streaming technologies like Apache Kafka, Oracle Streaming...", image: "/stream1.png" },
     { boldTitle: "Cache", italicTitle: "Databases", description: "We implement cache databases like Redis to enhance application performance...", image: "/database.png" },
@@ -34,11 +34,24 @@ export default function Services() {
     <section className={`${raleway.className} relative min-h-screen flex flex-col justify-center bg-white`}>
       <div className="max-w-7xl mx-auto px-6 w-full">
         {/* ✅ Fixed heading — isolated and sticky to avoid any movement */}
-        <div className="sticky top-0 z-10 bg-white/90 backdrop-blur py-4">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 text-center md:text-left">
-            Our <span className="text-[#5AD6FF]">Services</span>
-          </h2>
-        </div>
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 text-center md:text-left">
+          Our <span className="text-[#5AD6FF]">Services</span>
+        </h2>
+
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: "120px" }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="h-1 bg-[#5AD6FF] rounded-full mb-10 sm:mb-12 mx-auto md:mx-0"
+        ></motion.div>
+      </motion.div>
 
         <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {/* Left: title + description + arrows */}

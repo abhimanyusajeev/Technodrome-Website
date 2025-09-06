@@ -1,36 +1,60 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Raleway } from "next/font/google";
+import {
+  FaUniversity,
+  FaBriefcase,
+  FaHospital,
+  FaShieldAlt,
+  FaIndustry,
+  FaShoppingCart,
+  FaShip,
+  FaPlane,
+  FaBolt,
+} from "react-icons/fa";
+
+// ✅ Import Google Font
+const raleway = Raleway({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
 
 const industries = [
-  "Banking & Financial Services",
-  "Professional Services",
-  "Healthcare",
-  "Insurance",
-  "Manufacturing",
-  "Retail & Consumer Packaged Goods",
-  "Shipping & Logistics",
-  "Travel & Leisure",
-  "Utilities & Energy",
+  { name: "Banking & Financial Services", icon: <FaUniversity size={32} className="text-[#5AD6FF]" /> },
+  { name: "Professional Services", icon: <FaBriefcase size={32} className="text-[#5AD6FF]" /> },
+  { name: "Healthcare", icon: <FaHospital size={32} className="text-[#5AD6FF]" /> },
+  { name: "Insurance", icon: <FaShieldAlt size={32} className="text-[#5AD6FF]" /> },
+  { name: "Retail & Consumer Packaged Goods", icon: <FaShoppingCart size={32} className="text-[#5AD6FF]" /> },
+  { name: "Shipping & Logistics", icon: <FaShip size={32} className="text-[#5AD6FF]" /> },
+  { name: "Travel & Leisure", icon: <FaPlane size={32} className="text-[#5AD6FF]" /> },
+  { name: "Utilities & Energy", icon: <FaBolt size={32} className="text-[#5AD6FF]" /> },
 ];
 
 export default function IndustriesWeServe() {
   return (
-    <section className="min-h-screen bg-white px-6 sm:px-10 lg:px-16 py-16 flex flex-col items-center">
+    <section
+      className={`min-h-screen bg-white px-6 sm:px-10 lg:px-16 py-16 flex flex-col items-center ${raleway.className}`}
+    >
       {/* Heading */}
- <motion.h2
-  initial={{ opacity: 0, y: -20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.6 }}
-  className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 text-center"
->
-  Industries <span className="text-[#5AD6FF]">We Serve</span>
-</motion.h2>
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 text-center md:text-left">
+          Industries <span className="text-[#5AD6FF]">we serve</span>
+        </h2>
 
-{/* Divider */}
-<div className="h-1 bg-[#5AD6FF] rounded-full mb-10 sm:mb-12 mx-auto w-[120px]"></div>
-
-      
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: "120px" }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="h-1 bg-[#5AD6FF] rounded-full mb-10 sm:mb-12 mx-auto md:mx-0"
+        ></motion.div>
+      </motion.div>
 
       {/* Wrapper with top dashed line */}
       <div className="relative w-full max-w-7xl">
@@ -45,9 +69,10 @@ export default function IndustriesWeServe() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 text-center flex flex-col justify-center"
+              className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 text-center flex flex-col items-center justify-center"
             >
-              <h3 className="text-lg font-semibold text-gray-900">{industry}</h3>
+              <div className="mb-3">{industry.icon}</div>
+              <h3 className="text-lg font-semibold text-gray-900">{industry.name}</h3>
             </motion.div>
           ))}
 
@@ -68,9 +93,10 @@ export default function IndustriesWeServe() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 text-center flex flex-col justify-center"
+              className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 text-center flex flex-col items-center justify-center"
             >
-              <h3 className="text-lg font-semibold text-gray-900">{industry}</h3>
+              <div className="mb-3">{industry.icon}</div>
+              <h3 className="text-lg font-semibold text-gray-900">{industry.name}</h3>
             </motion.div>
           ))}
         </div>

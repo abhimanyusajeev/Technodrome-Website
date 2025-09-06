@@ -1,53 +1,74 @@
 "use client";
 
-import { FC } from "react";
+import { FC, ReactElement } from "react";
 import { motion } from "framer-motion";
+import { Raleway } from "next/font/google";
+
+// MUI Icons
+import SearchIcon from "@mui/icons-material/Search";
+import EventNoteIcon from "@mui/icons-material/EventNote";
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import RocketLaunchIcon from "@mui/icons-material/RocketLaunch";
+
+const raleway = Raleway({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800"],
+});
 
 interface Step {
-  step: string;
   title: string;
   text: string;
+  icon: ReactElement;
 }
 
 const steps: Step[] = [
   {
-    step: "01",
-    title: "Understanding",
-    text: "We start by listening to our clients and analyzing their unique business needs.",
+    title: "Discover",
+    text: "Collaborate with technology and business leaders to identify needs that align with strategic goals.",
+    icon: <SearchIcon fontSize="large" className="text-[#5AD6FF]" />,
   },
   {
-    step: "02",
     title: "Planning",
     text: "Our team designs a tailored plan that aligns with your objectives and timelines.",
+    icon: <EventNoteIcon fontSize="large" className="text-[#5AD6FF]" />,
   },
   {
-    step: "03",
+    title: "Support",
+    text: "We ensure seamless operations with comprehensive application management, proactive monitoring, and dedicated support.",
+    icon: <SupportAgentIcon fontSize="large" className="text-[#5AD6FF]" />,
+  },
+  {
     title: "Execution",
-    text: "We deliver high-quality solutions with a focus on efficiency, security, and innovation.",
+    text: "We bring strategies to life with precision and agility. Our team follows industry best practices to deliver secure, scalable, and high-performing solutions.",
+    icon: <RocketLaunchIcon fontSize="large" className="text-[#5AD6FF]" />,
   },
 ];
 
 const Approach: FC = () => {
   return (
-    <section className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 py-16 sm:py-20 px-4 sm:px-6">
+    <section
+      className={`min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 py-16 sm:py-20 px-4 sm:px-6 ${raleway.className}`}
+    >
       <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
         {/* Title */}
-        <motion.h1
-          initial={{ opacity: 0, y: -40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 sm:mb-6"
-        >
-          Our <span className="text-[#5AD6FF]">Approach</span>
-        </motion.h1>
-
-        {/* Divider */}
         <motion.div
-          initial={{ width: 0 }}
-          animate={{ width: "80px" }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="h-1 bg-[#5AD6FF] rounded-full mb-6 sm:mb-8"
-        ></motion.div>
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+            Our <span className="text-[#5AD6FF]">Approach</span>
+          </h2>
+
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: "120px" }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="h-1 bg-[#5AD6FF] rounded-full mb-10 sm:mb-12 mx-auto"
+          ></motion.div>
+        </motion.div>
 
         {/* Description */}
         <motion.p
@@ -61,25 +82,38 @@ const Approach: FC = () => {
             Technodrome Solutions Private Limited
           </span>
           , we take a customer-centric approach to providing IT services. We
-          work closely with our clients to understand their needs and tailor
-          our services to meet their specific requirements.
+          work closely with our clients to understand their needs and tailor our
+          services to meet their specific requirements.
         </motion.p>
 
-        {/* Steps */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8 mt-6 w-full">
+        {/* Steps in Single Row */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 sm:gap-8 mt-6 w-full">
           {steps.map((item, index) => (
             <motion.div
-              key={item.step}
+              key={item.title}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 hover:shadow-xl transition-shadow border border-gray-100"
+              className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 hover:shadow-xl transition-shadow border border-gray-100 flex flex-col items-center text-center"
             >
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#5AD6FF] mb-3 sm:mb-4">
-                {item.step}
-              </div>
-              <h3 className="text-xl sm:text-2xl font-semibold text-gray-800 mb-2 sm:mb-3">
+              {/* Icon with hover animation */}
+              <motion.div
+                whileHover={{
+                  scale: 1.2,
+                  rotate: [0, -5, 5, -5, 0], // little bounce rotation
+                }}
+                transition={{
+                  duration: 0.4,
+                  type: "spring",
+                  stiffness: 300,
+                }}
+                className="mb-4"
+              >
+                {item.icon}
+              </motion.div>
+
+              <h3 className="text-lg sm:text-xl md:text-2xl font-semibold text-gray-800 mb-3">
                 {item.title}
               </h3>
               <p className="text-sm sm:text-base text-gray-600">{item.text}</p>

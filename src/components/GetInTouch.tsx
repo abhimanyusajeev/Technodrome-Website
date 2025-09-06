@@ -1,8 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import { FaPhoneAlt, FaEnvelope, FaUser, FaMobileAlt, FaRegCommentDots } from "react-icons/fa";
 import { useState } from "react";
+import { Raleway, Roboto } from "next/font/google";
+
+const raleway = Raleway({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+const roboto = Roboto({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"], // you can adjust weights
+});
 
 export default function GetInTouch() {
   const [formData, setFormData] = useState({
@@ -29,38 +40,42 @@ export default function GetInTouch() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setLoading(true);
 
-    try {
-      const response = await fetch(SCRIPT_URL, {
-        redirect: "follow",
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8",
-        },
-      });
+  try {
+    const response = await fetch(SCRIPT_URL, {
+      redirect: "follow",
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+    });
 
-      const resultText = await response.text();
-      const result = JSON.parse(resultText);
+    const resultText = await response.text();
+    const result = JSON.parse(resultText);
 
-      if (response.ok && result.status === "success") {
-        setSuccess("Message sent successfully ✅");
-        setFormData({ name: "", email: "", mobile: "", message: "" });
-      } else {
-        console.error("Error submitting form:", result.message || response.statusText);
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-    } finally {
-      setLoading(false);
+    if (response.ok && result.status === "success") {
+      setSuccess("Message sent successfully ✅");
+    } else {
+      console.error("Error submitting form:", result.message || response.statusText);
     }
-  };
+  } catch (error) {
+    console.error("Error submitting form:", error);
+  } finally {
+    // ✅ Always clear form after submission
+    setFormData({ name: "", email: "", mobile: "", message: "" });
+    setLoading(false);
+  }
+};
+
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden">
+    <section
+      className={`py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden ${raleway.className}`}
+    >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-start">
         {/* LEFT SIDE */}
         <motion.div
@@ -149,42 +164,57 @@ export default function GetInTouch() {
           className="w-full"
         >
           <form className="space-y-4 w-full" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Enter your name*"
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0B0B6E] text-gray-600"
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Enter your email address*"
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0B0B6E] text-gray-600"
-              required
-            />
-            <input
-              type="tel"
-              name="mobile"
-              value={formData.mobile}
-              onChange={handleChange}
-              placeholder="Enter your mobile*"
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0B0B6E] text-gray-600"
-              required
-            />
-            <textarea
-              name="message"
-              value={formData.message}
-              onChange={handleChange}
-              placeholder="Enter your message*"
-              rows={4}
-              className="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0B0B6E] text-gray-600"
-              required
-            ></textarea>
+            <div className="relative">
+              <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Enter your name*"
+                className="w-full pl-10 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0B0B6E] text-gray-600"
+                required
+              />
+            </div>
+
+            <div className="relative">
+              <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                placeholder="Enter your email address*"
+                className="w-full pl-10 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0B0B6E] text-gray-600"
+                required
+              />
+            </div>
+      <div className="relative">
+              <FaMobileAlt className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              <input
+                type="tel"
+                name="mobile"
+                value={formData.mobile}
+                onChange={handleChange}
+                placeholder="Enter your mobile*"
+                className={`w-full pl-10 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0B0B6E] text-gray-600 ${roboto.className}`}
+                required
+              />
+            </div>
+
+            <div className="relative">
+              <FaRegCommentDots className="absolute left-3 top-3 text-gray-400" />
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleChange}
+                placeholder="Enter your message*"
+                rows={4}
+                className="w-full pl-10 p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0B0B6E] text-gray-600"
+                required
+              ></textarea>
+            </div>
+
             <motion.button
               type="submit"
               className="bg-slate-950 text-white px-6 py-3 rounded-full hover:bg-[#0a0a5a] transition w-full sm:w-auto"
