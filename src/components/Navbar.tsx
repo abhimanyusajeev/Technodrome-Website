@@ -15,11 +15,9 @@ export default function Navbar() {
       const currentScroll = window.scrollY;
 
       if (currentScroll < lastScrollY) {
-        // scrolling UP → show navbar
-        setShowNavbar(true);
+        setShowNavbar(true); // scrolling up → show
       } else {
-        // scrolling DOWN → hide navbar
-        setShowNavbar(false);
+        setShowNavbar(false); // scrolling down → hide
       }
 
       setLastScrollY(currentScroll);
@@ -38,7 +36,7 @@ export default function Navbar() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -80, opacity: 0 }}
           transition={{ duration: 0.35 }}
-          className="fixed top-5 w-full z-50 "
+          className="fixed top-5 w-full z-50"
         >
           <NavContent
             logo="/technodrometxtlogo.png"
@@ -51,7 +49,6 @@ export default function Navbar() {
   );
 }
 
-/** Shared Navbar Layout */
 function NavContent({
   logo,
   isOpen,
@@ -62,8 +59,8 @@ function NavContent({
   setIsOpen: (open: boolean) => void;
 }) {
   return (
-    <div className="container mx-auto flex justify-between items-center px-4">
-      <div className="w-full flex items-center justify-between px-6 py-2 bg-white rounded-full shadow-md">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="flex items-center justify-between bg-white px-4 py-2 rounded-full shadow-md">
         {/* Logo */}
         <Image
           src={logo}
@@ -77,35 +74,33 @@ function NavContent({
         {/* Desktop Menu */}
         <NavLinks className="hidden md:flex items-center space-x-10 text-black" />
 
-        
-     {/* Mobile Hamburger */}
-<button
-  className="md:hidden focus:outline-none text-black" // <-- changed to black so it's visible on white bg
-  onClick={() => setIsOpen(!isOpen)}
->
-  {isOpen ? <X size={28} /> : <Menu size={28} />}
-</button>
+        {/* Mobile Hamburger */}
+        <button
+          className="md:hidden focus:outline-none text-black"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          {isOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </div>
 
-{/* Mobile Drawer */}
-<AnimatePresence>
-  {isOpen && (
-    <motion.div
-      initial={{ y: -200, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      exit={{ y: -200, opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      className="absolute top-20 left-0 w-full p-6 flex flex-col space-y-6 shadow-lg md:hidden bg-slate-950 text-white z-40"
-    >
-      <NavLinks className="flex flex-col space-y-6" />
-    </motion.div>
-  )}
-</AnimatePresence>
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ y: -200, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -200, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="absolute top-20 left-0 w-full p-6 flex flex-col space-y-6 shadow-lg md:hidden bg-slate-950 text-white z-40 rounded-b-2xl"
+          >
+            <NavLinks className="flex flex-col space-y-6 text-center" />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
 
-/** Links Component */
 function NavLinks({ className }: { className?: string }) {
   return (
     <ul className={`${className} font-raleway text-base md:text-md`}>
@@ -119,20 +114,10 @@ function NavLinks({ className }: { className?: string }) {
           What We Do
         </a>
       </li>
-      {/* <li>
-        <a href="#future" className="hover:font-semibold transition-all">
-          Future of Retail
-        </a>
-      </li> */}
-      {/* <li>
-        <a href="#news" className="hover:font-semibold transition-all">
-          News
-        </a>
-      </li> */}
       <li>
         <a
           href="#contact"
-          className="px-6 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 font-raleway font-medium flex items-center gap-2 bg-neutral-800 text-white hover:bg-neutral-900"
+          className="px-6 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 font-raleway font-medium flex items-center justify-center gap-2 bg-neutral-800 text-white hover:bg-neutral-900"
         >
           <span>↗</span> Get in touch
         </a>
