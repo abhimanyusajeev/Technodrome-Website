@@ -30,10 +30,10 @@ const techStack = [
     layer: "Backend",
     images: [
       { src: "/techStack/node.png", name: "Node.js" },
-      { src: "/techStack/dotnet.png", name: ".NET Core" },
+      // { src: "/techStack/dotnet.png", name: ".NET Core" },
       { src: "/techStack/springboot.png", name: "Spring Boot" },
       { src: "/techStack/fastapi.png", name: "FastAPI" },
-      { src: "/techStack/django.png", name: "Django" },
+      // { src: "/techStack/django.png", name: "Django" },
     ],
   },
   {
@@ -41,8 +41,8 @@ const techStack = [
     images: [
       { src: "/techStack/flutter.png", name: "Flutter" },
       { src: "/techStack/reactnative.png", name: "React Native" },
-      { src: "/techStack/kotlin.png", name: "Kotlin" },
-      { src: "/techStack/swift.png", name: "Swift" },
+      // { src: "/techStack/kotlin.png", name: "Kotlin" },
+      // { src: "/techStack/swift.png", name: "Swift" },
     ],
   },
   {
@@ -50,16 +50,16 @@ const techStack = [
     images: [
       { src: "/techStack/rest.png", name: "REST" },
       { src: "/techStack/graphql.png", name: "GraphQL" },
-      { src: "/techStack/websocket.png", name: "WebSockets" },
+      // { src: "/techStack/websocket.png", name: "WebSockets" },
       { src: "/techStack/swagger.png", name: "Swagger" },
-      { src: "/techStack/postman.png", name: "Postman" },
+      // { src: "/techStack/postman.png", name: "Postman" },
     ],
   },
   {
     layer: "Database",
     images: [
-      { src: "/techStack/postgres.png", name: "PostgreSQL" },
-      { src: "/techStack/mongo.png", name: "MongoDB" },
+      // { src: "/techStack/postgres.png", name: "PostgreSQL" },
+      // { src: "/techStack/mongo.png", name: "MongoDB" },
       { src: "/techStack/mysql.png", name: "MySQL" },
       { src: "/techStack/redis.png", name: "Redis" },
       { src: "/techStack/oracle.png", name: "Oracle DB" },
@@ -70,7 +70,7 @@ const techStack = [
     images: [
       { src: "/techStack/docker.png", name: "Docker" },
       { src: "/techStack/kubernetes.png", name: "Kubernetes" },
-      { src: "/techStack/jenkins.png", name: "Jenkins" },
+      // { src: "/techStack/jenkins.png", name: "Jenkins" },
       { src: "/techStack/githubactions.png", name: "GitHub Actions" },
       { src: "/techStack/gitlab.png", name: "GitLab CI" },
     ],
@@ -81,7 +81,7 @@ const techStack = [
       { src: "/techStack/azure.png", name: "Azure" },
       { src: "/techStack/aws.png", name: "AWS" },
       { src: "/techStack/oraclecloud.png", name: "Oracle Cloud" },
-      { src: "/techStack/gcp.png", name: "GCP" },
+      // { src: "/techStack/gcp.png", name: "GCP" },
     ],
   },
   {
@@ -89,19 +89,28 @@ const techStack = [
     images: [
       { src: "/techStack/oauth.png", name: "OAuth2.0" },
       { src: "/techStack/jwt.png", name: "JWT" },
-      { src: "/techStack/saml.png", name: "SAML" },
+      // { src: "/techStack/saml.png", name: "SAML" },
       { src: "/techStack/keycloak.png", name: "Keycloak" },
-      { src: "/techStack/vault.png", name: "Vault" },
+      // { src: "/techStack/vault.png", name: "Vault" },
     ],
   },
   {
     layer: "Monitoring & Logs",
     images: [
       { src: "/techStack/elk.png", name: "ELK Stack" },
-      { src: "/techStack/prometheus.png", name: "Prometheus" },
-      { src: "/techStack/grafana.png", name: "Grafana" },
-      { src: "/techStack/azuremonitor.png", name: "Azure Monitor" },
+      // { src: "/techStack/prometheus.png", name: "Prometheus" },
+      // { src: "/techStack/grafana.png", name: "Grafana" },
+      // { src: "/techStack/azuremonitor.png", name: "Azure Monitor" },
       { src: "/techStack/splunk.png", name: "Splunk" },
+    ],
+  },
+  {
+    layer: "AI & Machine Learning",
+    images: [
+      { src: "/techStack/python.png", name: "Python" },
+      { src: "/techStack/tensorflow.png", name: "TensorFlow" },
+      { src: "/techStack/pytorch.png", name: "PyTorch" },
+      { src: "/techStack/openai.png", name: "OpenAI" },
     ],
   },
 ];
@@ -196,18 +205,20 @@ export default function TechnologyStack() {
                   {layer.images.map((tech, idx) => (
 <div
   key={idx}
-  className="flex flex-col items-center justify-center h-28 sm:h-32 rounded-full bg-white/50 backdrop-blur-md shadow-md px-6 py-3"
+  className="flex flex-col items-center justify-center w-30 sm:w-34 h-18 sm:h-20 rounded-full bg-white/50 backdrop-blur-md shadow-md px-2 py-1"
 >
   <img
     src={tech.src}
     alt={tech.name}
-    className="h-10 sm:h-14 object-contain mb-2"
+    className="h-8 sm:h-10 max-h-full object-contain"
   />
-  <p className="text-xs sm:text-sm font-medium text-gray-700 text-center">
+  <p className="text-[9px] sm:text-[11px] font-medium text-gray-700 text-center mt-1">
     {tech.name}
   </p>
 </div>
-  
+
+
+
                   ))}
                 </div>
               </motion.div>
@@ -224,16 +235,17 @@ export default function TechnologyStack() {
             <Slider {...sliderSettings}>
               {techStack[activeLayer].images.map((tech, idx) => (
                 <div key={idx} className="px-2 sm:px-4">
-                  <div className="flex flex-col items-center justify-center h-32 sm:h-40 rounded-xl bg-white/50 backdrop-blur-md shadow-md p-3 sm:p-4">
-                    <img
-                      src={tech.src}
-                      alt={tech.name}
-                      className="h-12 sm:h-16 object-contain mb-2"
-                    />
-                    <p className="text-xs sm:text-sm font-medium text-gray-700 text-center">
-                      {tech.name}
-                    </p>
-                  </div>
+<div className="flex flex-col items-center justify-center w-38 sm:w-32 h-24 sm:h-28 rounded-xl bg-white/50 backdrop-blur-md shadow-md p-2 sm:p-3">
+  <img
+    src={tech.src}
+    alt={tech.name}
+    className="h-10 sm:h-12 max-h-full object-contain flex-grow"
+  />
+  <p className="text-[10px] sm:text-xs font-medium text-gray-700 text-center mt-1">
+    {tech.name}
+  </p>
+</div>
+
                 </div>
               ))}
             </Slider>

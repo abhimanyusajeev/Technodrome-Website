@@ -1,13 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Raleway,Merriweather  } from "next/font/google";
+import { Raleway, Merriweather } from "next/font/google";
 
-
-// ✅ Load Raleway
+// ✅ Load Fonts
 const raleway = Raleway({
   subsets: ["latin"],
-  weight: ["200", "300", "400", "600", "700", "900"], // include the needed weights
+  weight: ["200", "300", "400", "600", "700", "900"],
 });
 const merriweather = Merriweather({
   subsets: ["latin"],
@@ -32,10 +31,9 @@ export default function WhoWeAreSection() {
           {/* LEFT CONTENT */}
           <div className="w-full md:w-1/2">
             <h2 className="text-3xl sm:text-4xl md:text-5xl leading-snug mb-6">
-<span className="font-merriweather italic font-semi text-[#9fd8f2]">
-  Accelerating
-</span>
-
+              <span className="font-merriweather italic font-semi text-[#9fd8f2]">
+                Accelerating
+              </span>
               <br />
               <span className="font-bold text-gray-900">
                 Enterprise Transformation
@@ -47,8 +45,8 @@ export default function WhoWeAreSection() {
             {/* Bullet points */}
             <div className="w-full mt-8 text-gray-900 text-sm leading-relaxed space-y-3 font-semilight">
               <p>
-                <strong className="font-extrabold">Technodrome Solutions</strong> is Your
-                Digital Transformation Partner with 20+ Years of Trust:
+                <strong className="font-extrabold">Technodrome Solutions</strong>{" "}
+                is Your Digital Transformation Partner with 20+ Years of Trust:
               </p>
               <ul className="list-disc list-inside space-y-2">
                 <li>
@@ -57,27 +55,27 @@ export default function WhoWeAreSection() {
                   Logistics.
                 </li>
                 <li>
-                  <strong className="font-semibold">Digital transformation accelerator</strong> — driving innovation,
-                  precision, and agility for enterprises.
+                  <strong className="font-semibold">Digital transformation accelerator</strong> — driving
+                  innovation, precision, and agility for enterprises.
                 </li>
                 <li>
-                  <strong className="font-semibold">Global presence with local insight</strong> — addressing unique
-                  business challenges while adhering to international standards.
+                  <strong className="font-semibold">Global presence with local insight</strong> — addressing
+                  unique business challenges while adhering to international standards.
                 </li>
                 <li>
-                  <strong className="font-semibold">Trusted legacy of 20+ years</strong> — a consistent partner for
-                  sustainable growth and resilience.
+                  <strong className="font-semibold">Trusted legacy of 20+ years</strong> — a consistent
+                  partner for sustainable growth and resilience.
                 </li>
                 <li>
-                  <strong className="font-semibold">Enduring partnerships</strong> — going beyond technology delivery to
-                  build long-term success for our clients.
+                  <strong className="font-semibold">Enduring partnerships</strong> — going beyond technology
+                  delivery to build long-term success for our clients.
                 </li>
               </ul>
             </div>
           </div>
 
           {/* RIGHT CONTENT (Vision + Mission) */}
-         <div className="w-full md:w-1/2 flex flex-col gap-6 justify-center items-stretch">
+          <div className="w-full md:w-1/2 flex flex-col gap-6 justify-center items-stretch">
             {/* Vision Card */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 30 }}
@@ -100,13 +98,14 @@ export default function WhoWeAreSection() {
               <h3 className="text-3xl font-extrabold text-gray-900 mb-4 tracking-tight">
                 Vision
               </h3>
-<p className="text-sm font-semibold  md:text-base leading-relaxed text-gray-900 tracking-wide font-extralight">
-  The vision statement establishes{" "}
-  <span className="font-extrabold">Technodrome Solutions</span> as an aspirational
-  market leader focused on meaningful transformation and stakeholder value
-  creation...
-</p>
-
+              <ul className="list-disc list-inside text-sm md:text-base leading-relaxed text-gray-900 tracking-wide font-extralight space-y-2">
+                <li>Be a market leader in digital transformation.</li>
+                <li>
+                  Create meaningful change for businesses, employees, and society.
+                </li>
+                <li>Focus on stakeholder value creation and sustainability.</li>
+                <li>Enable innovation through trust and long-term vision.</li>
+              </ul>
 
               <motion.div
                 initial={{ width: 0 }}
@@ -129,15 +128,20 @@ export default function WhoWeAreSection() {
               <h3 className="text-3xl font-extrabold text-gray-900 mb-4 tracking-tight">
                 Mission
               </h3>
-              <p className="text-sm font-semibold  md:text-base leading-relaxed text-gray-900 tracking-wide font-extralight">
-                The mission statement operationalizes this vision by emphasizing the company’s
-                partnership approach and comprehensive capabilities. It connects the three core
-                pillars from the tagline{" "}
-                <span className="font-extrabold">(Innovate. Integrate. Compute.)</span> with concrete
-                business outcomes, highlighting both technical excellence and strategic business
-                understanding—key differentiators for corporate and technical professionals
-                evaluating technology partners.
-              </p>
+              <ul className="list-disc list-inside text-sm md:text-base leading-relaxed text-gray-900 tracking-wide font-extralight space-y-2">
+                <li>
+                  Partner with enterprises to achieve digital transformation success.
+                </li>
+                <li>
+                  Deliver excellence in <strong>Innovation, Integration, and Computing</strong>.
+                </li>
+                <li>
+                  Combine technical expertise with strategic business insight.
+                </li>
+                <li>
+                  Build sustainable, long-term client partnerships for growth.
+                </li>
+              </ul>
               <motion.div
                 initial={{ width: 0 }}
                 animate={{ width: "100%" }}

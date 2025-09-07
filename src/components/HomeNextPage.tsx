@@ -47,34 +47,38 @@ export default function HomeNextPage() {
     >
       <div className="w-full max-w-6xl flex flex-col items-start justify-center space-y-12 sm:space-y-16">
         {/* Headline with per-letter color change */}
-        <h1
-          className={`${raleway.className} tracking-tight leading-snug text-left`}
-        >
-          {headline.map((line, i) => (
-            <div
-              key={i}
-              className="block text-3xl sm:text-4xl md:text-3xl lg:text-3xl xl:text-5xl mt-6"
+<h1
+  className={`${raleway.className} text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl mt-6 flex flex-col leading-snug`}
+>
+  {headline.map((line, i) => (
+    <div key={i} className="flex flex-wrap">
+      {line.split(" ").map((word, wIndex) => (
+        <span key={wIndex} className="mr-3">
+          {word.split("").map((char, cIndex) => (
+            <motion.span
+              key={cIndex}
+              className="inline-block"
+              initial={{ color: "#908E8E" }}
+              animate={{
+                color: scrollDir === "up" ? "#0f172a" : "#908E8E",
+              }}
+              transition={{
+                duration: 0.8,
+                delay: (wIndex * 6 + cIndex) * 0.05,
+              }}
             >
-              {line.split("").map((char, j) => (
-                <motion.span
-                  key={j}
-                  className="inline-block"
-                  initial={{ color: "#908E8E" }} // ✅ default grey
-                  animate={{
-                    color: scrollDir === "up" ? "#0f172a" : "#908E8E", 
-                    // ✅ fade to slate-950 when scrolling up
-                  }}
-                  transition={{
-                    duration: 0.8,
-                    delay: j * 0.05, // stagger per letter
-                  }}
-                >
-                  {char === " " ? "\u00A0" : char}
-                </motion.span>
-              ))}
-            </div>
+              {char}
+            </motion.span>
           ))}
-        </h1>
+        </span>
+      ))}
+    </div>
+  ))}
+</h1>
+
+
+
+
 
         {/* Fixed Animated Icon (only visible in hero) */}
         <motion.a

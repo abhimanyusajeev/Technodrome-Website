@@ -41,7 +41,7 @@ export default function Services() {
         viewport={{ once: true }}
       >
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 text-center md:text-left">
-          Our <span className="text-[#5AD6FF]">Services</span>
+          What <span className="text-[#5AD6FF]">We Do.</span>
         </h2>
 
         <motion.div
