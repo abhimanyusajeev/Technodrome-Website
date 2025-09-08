@@ -6,6 +6,9 @@ import ExpandCircleDownIcon from "@mui/icons-material/ExpandCircleDown";
 import { useRef } from "react";
 import { useInView } from "framer-motion";
 
+// ✅ Import Navbar
+import Navbar from "./Navbar";
+
 // Import Raleway with desired weights
 const raleway = Raleway({
   subsets: ["latin"],
@@ -17,48 +20,53 @@ export default function Home() {
   const isInView = useInView(heroRef, { amount: 0.4 }); // detect when 40% is visible
 
   return (
-    <section
-      ref={heroRef}
-      className={`relative min-h-screen flex flex-col items-center justify-center bg-slate-950 text-white px-4 sm:px-6 lg:px-8 ${raleway.className}`}
-    >
-      <div className="w-full max-w-5xl text-center space-y-6 sm:space-y-10">
-        {/* Heading */}
-        <motion.h1
-          className="text-4xl sm:text-5xl md:text-7xl font-black leading-tight px-2"
-          style={{ fontWeight: 900 }}
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
-        >
-          Innovate. Integrate.{" "}
-          <span className="text-[#5AD6FF]">Compute.</span>
-        </motion.h1>
-      </div>
+    <>
+      {/* 🔥 Navbar always on top */}
+      <Navbar />
 
-      {/* Fixed Animated Icon (only visible in hero) */}
-      <motion.a
-        href="#homenextpage"
-        className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isInView ? 1 : 0 }}
-        transition={{ duration: 0.6, ease: "easeInOut" }}
+      <section
+        ref={heroRef}
+        className={`relative min-h-screen flex flex-col items-center justify-center bg-slate-950 text-white px-4 sm:px-6 lg:px-8 ${raleway.className}`}
       >
-        <motion.div
-          animate={{
-            opacity: [1, 0.4, 1], // blinking
-            y: [0, -8, 0], // bounce
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+        <div className="w-full max-w-5xl text-center space-y-6 sm:space-y-10 pt-28">
+          {/* Heading */}
+          <motion.h1
+            className="text-4xl sm:text-5xl md:text-7xl font-black leading-tight px-2"
+            style={{ fontWeight: 900 }}
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+          >
+            Innovate. Integrate.{" "}
+            <span className="text-[#5AD6FF]">Compute.</span>
+          </motion.h1>
+        </div>
+
+        {/* Fixed Animated Icon (only visible in hero) */}
+        <motion.a
+          href="#homenextpage"
+          className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isInView ? 1 : 0 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
         >
-          <ExpandCircleDownIcon
-            style={{ fontSize: "3.5rem", color: "#5AD6FF" }}
-          />
-        </motion.div>
-      </motion.a>
-    </section>
+          <motion.div
+            animate={{
+              opacity: [1, 0.4, 1], // blinking
+              y: [0, -8, 0], // bounce
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <ExpandCircleDownIcon
+              style={{ fontSize: "3.5rem", color: "#5AD6FF" }}
+            />
+          </motion.div>
+        </motion.a>
+      </section>
+    </>
   );
 }

@@ -17,7 +17,7 @@ import WhoSection from "@/components/Who";
 export default function HomePage() {
   return (
     <main>
-      <Navbar />
+      {/* <Navbar /> */}
 
       {/* Sections with IDs for scrolling */}
       <section id="home">

@@ -203,10 +203,8 @@ export default function TechnologyStack() {
                 </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
                   {layer.images.map((tech, idx) => (
-<div
-  key={idx}
-  className="flex flex-col items-center justify-center w-30 sm:w-34 h-18 sm:h-20 rounded-full bg-white/50 backdrop-blur-md shadow-md px-2 py-1"
->
+<div className="flex flex-col items-center justify-center w-38 sm:w-32 h-24 sm:h-28 rounded-xl bg-transparent shadow-none backdrop-blur-0 p-2 sm:p-3">
+
   <img
     src={tech.src}
     alt={tech.name}
@@ -235,7 +233,7 @@ export default function TechnologyStack() {
             <Slider {...sliderSettings}>
               {techStack[activeLayer].images.map((tech, idx) => (
                 <div key={idx} className="px-2 sm:px-4">
-<div className="flex flex-col items-center justify-center w-38 sm:w-32 h-24 sm:h-28 rounded-xl bg-white/50 backdrop-blur-md shadow-md p-2 sm:p-3">
+<div className="flex flex-col items-center justify-center w-38 sm:w-32 h-24 sm:h-28 p-2 sm:p-3">
   <img
     src={tech.src}
     alt={tech.name}
@@ -245,6 +243,7 @@ export default function TechnologyStack() {
     {tech.name}
   </p>
 </div>
+
 
                 </div>
               ))}
