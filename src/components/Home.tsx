@@ -29,7 +29,6 @@ export default function Home() {
   className={`relative min-h-screen flex flex-col items-center justify-center bg-live-blur text-white px-4 sm:px-6 lg:px-8 ${raleway.className}`}
 >
   <div className="relative z-10 w-full max-w-5xl text-center space-y-6 sm:space-y-10 pt-28">
-    {/* Heading */}
     <motion.h1
       className="text-4xl sm:text-5xl md:text-7xl font-black leading-tight px-2"
       style={{ fontWeight: 900 }}
@@ -42,6 +41,7 @@ export default function Home() {
     </motion.h1>
   </div>
 </section>
+
 
     </>
   );

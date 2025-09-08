@@ -4,6 +4,13 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
+import { Raleway } from "next/font/google";
+
+// ✅ Load Raleway
+const raleway = Raleway({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+});
 
 export default function Navbar() {
   const [showNavbar, setShowNavbar] = useState(true);
@@ -36,7 +43,7 @@ export default function Navbar() {
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -80, opacity: 0 }}
           transition={{ duration: 0.35 }}
-          className="fixed top-5 w-full z-50"
+          className={`fixed top-5 w-full z-50 ${raleway.className}`}
         >
           <NavContent
             logo="/technodrometxtlogo.png"
@@ -59,8 +66,8 @@ function NavContent({
   setIsOpen: (open: boolean) => void;
 }) {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex items-center justify-between bg-white px-4 py-2 rounded-full shadow-md">
+    <div className="max-w-6xl w-full md:w-fit mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="flex items-center justify-between bg-white px-6 py-2 rounded-full shadow-md">
         {/* Logo */}
         <Image
           src={logo}
@@ -72,11 +79,11 @@ function NavContent({
         />
 
         {/* Desktop Menu */}
-        <NavLinks className="hidden md:flex items-center space-x-10 text-black" />
+        <NavLinks className="hidden md:flex items-center space-x-8 text-black text-[15px]" />
 
         {/* Mobile Hamburger */}
         <button
-          className="md:hidden focus:outline-none text-black"
+          className="md:hidden ml-auto focus:outline-none text-black"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -91,7 +98,7 @@ function NavContent({
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -200, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="absolute top-20 left-0 w-full p-6 flex flex-col space-y-6 shadow-lg md:hidden bg-slate-950 text-white z-40 rounded-b-2xl"
+            className="absolute top-20 left-0 w-full p-6 flex flex-col space-y-6 shadow-lg md:hidden bg-white text-black z-40 rounded-b-2xl"
           >
             <NavLinks className="flex flex-col space-y-6 text-center" />
           </motion.div>
@@ -103,8 +110,13 @@ function NavContent({
 
 function NavLinks({ className }: { className?: string }) {
   return (
-    <ul className={`${className} font-raleway text-base md:text-md`}>
-      <li>
+    <ul className={`${className} font-raleway font-medium`}>
+            <li className="ml-6"> {/* Space from logo */}
+        <a href="#who" className="hover:font-semibold transition-all">
+       
+        </a>
+      </li>
+      <li className="ml-6"> {/* Space from logo */}
         <a href="#who" className="hover:font-semibold transition-all">
           Who We Are
         </a>
@@ -115,9 +127,26 @@ function NavLinks({ className }: { className?: string }) {
         </a>
       </li>
       <li>
+        <a href="#technologystack" className="hover:font-semibold transition-all">
+          Tech Stack
+        </a>
+      </li>
+      <li>
+        <a href="#journey" className="hover:font-semibold transition-all">
+          Our Journey
+        </a>
+      </li>
+        <li className="ml-6"> {/* Space from "Our Journey" */}
         <a
           href="#contact"
-          className="px-6 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 font-raleway font-medium flex items-center justify-center gap-2 bg-neutral-800 text-white hover:bg-neutral-900"
+          className=""
+        >        
+        </a>
+      </li>
+      <li className="ml-6"> {/* Space from "Our Journey" */}
+        <a
+          href="#contact"
+          className="px-6 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 font-raleway font-semibold flex items-center justify-center gap-2 bg-neutral-800 text-white hover:bg-neutral-900"
         >
           <span>↗</span> Get in touch
         </a>
@@ -125,3 +154,4 @@ function NavLinks({ className }: { className?: string }) {
     </ul>
   );
 }
+

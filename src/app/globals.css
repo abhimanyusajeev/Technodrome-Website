@@ -35,26 +35,44 @@ body {
   }
 }
 
-.bg-live-blur {
+.bg-live-blur,
+.bg-live-blur-strong {
   position: relative;
   overflow: hidden;
 }
 
-.bg-live-blur::before {
+.bg-live-blur::before,
+.bg-live-blur-strong::before {
   content: "";
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: radial-gradient(circle at 20% 30%, #182A63 0%, #4bb8ff 25%, #91d2f2 50%, #e2e2e2 75%, #fcfcfc 100%);
+  background: radial-gradient(
+    circle at 20% 30%,
+    #182A63 0%,
+    #4bb8ff 25%,
+    #91d2f2 50%,
+    #e2e2e2 75%,
+    #fcfcfc 100%
+  );
   background-size: 200% 200%;
-  animation: gradient-blur 15s ease-in-out infinite;
-  filter: blur(20px);   /* Subtle blur */
+  animation: gradient-blur 20s ease-in-out infinite; /* calm speed */
   opacity: 0.8;
 }
 
-/* ✅ Option for stronger dreamy blur */
+/* ✅ subtle haze */
+.bg-live-blur::before {
+  filter: blur(20px);
+}
+
+/* ✅ dreamy glass clouds */
 .bg-live-blur-strong::before {
   filter: blur(60px);
   opacity: 0.9;
+}
+
+/* Optional: faster techy vibe */
+.bg-live-blur-fast::before {
+  animation-duration: 8s; /* faster cycle */
 }
 
