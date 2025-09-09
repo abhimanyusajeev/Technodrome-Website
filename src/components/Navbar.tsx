@@ -67,7 +67,11 @@ function NavContent({
 }) {
   return (
     <div className="max-w-6xl w-full md:w-fit mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="flex items-center justify-between bg-white px-6 py-2 rounded-full shadow-md">
+<div className="flex items-center justify-between bg-white px-6 py-2 rounded-full shadow-md 
+                max-w-[90%] mx-auto md:max-w-none">
+
+
+
         {/* Logo */}
         <Image
           src={logo}
@@ -93,15 +97,20 @@ function NavContent({
       {/* Mobile Drawer */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div
-            initial={{ y: -200, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -200, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="absolute top-20 left-0 w-full p-6 flex flex-col space-y-6 shadow-lg md:hidden bg-white text-black z-40 rounded-b-2xl"
-          >
-            <NavLinks className="flex flex-col space-y-6 text-center" />
-          </motion.div>
+<motion.div
+  initial={{ y: -200, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  exit={{ y: -200, opacity: 0 }}
+  transition={{ duration: 0.3 }}
+  className="absolute top-20 left-0 right-0 mx-auto w-[90%] p-6 
+             flex flex-col items-center space-y-6 
+             shadow-lg md:hidden bg-white text-black z-40 rounded-b-2xl"
+>
+  <NavLinks className="flex flex-col items-center space-y-6 text-center w-full" />
+</motion.div>
+
+
+
         )}
       </AnimatePresence>
     </div>
