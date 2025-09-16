@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState, useRef } from "react";
 import { Raleway } from "next/font/google";
 import ExpandCircleDownIcon from "@mui/icons-material/ExpandCircleDown";
@@ -18,6 +18,22 @@ export default function HomeNextPage() {
   // ✅ Track hero visibility
   const heroRef = useRef(null);
   const isInView = useInView(heroRef, { amount: 0.4 });
+
+  // ✅ Track scroll progress for zoom + gradient animation
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Zoom effect on scroll
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+
+  // Gradient shift based on scroll
+  const backgroundPosition = useTransform(
+    scrollYProgress,
+    [0, 1],
+    ["0% 0%", "100% 100%"]
+  );
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -41,18 +57,30 @@ export default function HomeNextPage() {
   ];
 
   return (
-    <section
+    <motion.section
       ref={heroRef}
+      style={{ scale }}
       className="
-        h-screen   /* ✅ Force full height always */
-        bg-[#f8f8f8]
+        relative
+        h-screen
         px-6 sm:px-10 lg:px-16
         flex flex-col 
-        justify-between   /* ✅ push content to fill vertically */
+        justify-between
+        overflow-hidden
       "
     >
+      {/* ✅ Scroll-responsive gradient background */}
+      <motion.div
+        className="absolute inset-0 -z-10"
+        style={{
+          background: "linear-gradient(135deg, #f8f8f8, #e6f7ff, #fff7e6)",
+          backgroundSize: "200% 200%",
+          backgroundPosition,
+        }}
+      />
+
       <div className="w-full max-w-6xl flex flex-col justify-center h-full">
-        {/* Headline with per-letter color change */}
+        {/* Headline with only color shift */}
         <h1
           className={`${raleway.className} 
             text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 
@@ -61,7 +89,10 @@ export default function HomeNextPage() {
           `}
         >
           {headline.map((line, i) => (
-            <div key={i} className="flex flex-wrap justify-center lg:justify-start">
+            <div
+              key={i}
+              className="flex flex-wrap justify-center lg:justify-start"
+            >
               {line.split(" ").map((word, wIndex) => (
                 <span key={wIndex} className="mr-3">
                   {word.split("").map((char, cIndex) => (
@@ -87,7 +118,7 @@ export default function HomeNextPage() {
         </h1>
       </div>
 
-      {/* Fixed Animated Icon (only visible in hero) */}
+      {/* Fixed Animated Icon (no looping zoom now) */}
       <motion.a
         href="#who"
         className="mb-10 self-center z-50"
@@ -95,22 +126,10 @@ export default function HomeNextPage() {
         animate={{ opacity: isInView ? 1 : 0 }}
         transition={{ duration: 0.6, ease: "easeInOut" }}
       >
-        <motion.div
-          animate={{
-            opacity: [1, 0.4, 1], // blinking
-            y: [0, -8, 0], // bounce
-          }}
-          transition={{
-            duration: 1.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        >
-          <ExpandCircleDownIcon
-            style={{ fontSize: "3.5rem", color: "#5AD6FF" }}
-          />
-        </motion.div>
+        <ExpandCircleDownIcon
+          style={{ fontSize: "3.5rem", color: "#5AD6FF" }}
+        />
       </motion.a>
-    </section>
+    </motion.section>
   );
 }
