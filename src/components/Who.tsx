@@ -19,7 +19,7 @@ export default function WhoWeAreSection() {
     <section className={`bg-white py-16 sm:py-20 ${raleway.className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 text-center md:text-left">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-950 mb-4 text-center md:text-left">
           Who We <span className="text-[#5AD6FF]">Are.</span>
         </h2>
 
@@ -35,7 +35,7 @@ export default function WhoWeAreSection() {
                 Accelerating
               </span>
               <br />
-              <span className="font-bold text-gray-900">
+              <span className="font-bold text-slate-950">
                 Enterprise Transformation
                 <br />
                 with Expertise and Insight
@@ -43,7 +43,7 @@ export default function WhoWeAreSection() {
             </h2>
 
             {/* Bullet points */}
-            <div className="w-full mt-8 text-gray-900 text-sm leading-relaxed space-y-3 font-semilight">
+            <div className="w-full mt-8 text-slate-950 text-sm leading-relaxed space-y-3 font-semilight">
               <p>
                 <strong className="font-extrabold">Technodrome Solutions</strong>{" "}
                 is Your Digital Transformation Partner with 20+ Years of Trust:
@@ -95,10 +95,10 @@ export default function WhoWeAreSection() {
               className="relative bg-white/80 backdrop-blur-md border border-white/40 rounded-3xl shadow-xl p-8 w-full h-full overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-[#5AD6FF]/15 to-[#9fd8f2]/10 rounded-3xl blur-xl -z-10"></div>
-              <h3 className="text-3xl font-extrabold text-gray-900 mb-4 tracking-tight">
+              <h3 className="text-3xl font-extrabold text-slate-950 mb-4 tracking-tight">
                 Vision
               </h3>
-              <ul className="list-disc list-inside text-sm md:text-base leading-relaxed text-gray-900 tracking-wide font-extralight space-y-2">
+              <ul className="list-disc list-inside text-sm md:text-base leading-relaxed text-slate-950 tracking-wide font-extralight space-y-2">
                 <li>Be a market leader in digital transformation.</li>
                 <li>
                   Create meaningful change for businesses, employees, and society.
@@ -125,10 +125,10 @@ export default function WhoWeAreSection() {
               className="relative bg-white/80 backdrop-blur-md border border-white/40 rounded-3xl shadow-2xl p-8 w-full h-full overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-[#9fd8f2]/20 to-[#5AD6FF]/10 rounded-3xl blur-2xl -z-10"></div>
-              <h3 className="text-3xl font-extrabold text-gray-900 mb-4 tracking-tight">
+              <h3 className="text-3xl font-extrabold text-slate-950 mb-4 tracking-tight">
                 Mission
               </h3>
-              <ul className="list-disc list-inside text-sm md:text-base leading-relaxed text-gray-900 tracking-wide font-extralight space-y-2">
+              <ul className="list-disc list-inside text-sm md:text-base leading-relaxed text-slate-950 tracking-wide font-extralight space-y-2">
                 <li>
                   Partner with enterprises to achieve digital transformation success.
                 </li>

@@ -32,16 +32,17 @@ const steps: Step[] = [
     text: "Our team designs a tailored plan that aligns with your objectives and timelines.",
     icon: <EventNoteIcon fontSize="large" className="text-[#5AD6FF]" />,
   },
+    {
+    title: "Execution",
+    text: "We bring strategies to life with precision and agility. Our team follows industry best practices to deliver secure, scalable, and high-performing solutions.",
+    icon: <RocketLaunchIcon fontSize="large" className="text-[#5AD6FF]" />,
+  },
   {
     title: "Support",
     text: "We ensure seamless operations with comprehensive application management, proactive monitoring, and dedicated support.",
     icon: <SupportAgentIcon fontSize="large" className="text-[#5AD6FF]" />,
   },
-  {
-    title: "Execution",
-    text: "We bring strategies to life with precision and agility. Our team follows industry best practices to deliver secure, scalable, and high-performing solutions.",
-    icon: <RocketLaunchIcon fontSize="large" className="text-[#5AD6FF]" />,
-  },
+
 ];
 
 const Approach: FC = () => {

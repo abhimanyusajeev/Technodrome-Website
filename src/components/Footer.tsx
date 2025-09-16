@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import {
   FaPhoneAlt,
   FaEnvelope,
@@ -21,6 +21,8 @@ const roboto = Roboto({
 });
 
 const Footer: React.FC = () => {
+  const [showMap, setShowMap] = useState(false);
+
   return (
     <footer
       className={`bg-slate-950 text-white py-12 px-6 ${raleway.className}`}
@@ -116,22 +118,28 @@ const Footer: React.FC = () => {
             </div>
           </div>
 
-          {/* Map Card */}
+          {/* Map Toggle */}
           <div className="mt-8">
-            <h4 className="text-lg font-semibold text-[#5AD6FF] mb-3 flex items-center gap-2">
-              <FaMapMarkerAlt /> Locate Us
-            </h4>
-            <div className="rounded-xl overflow-hidden shadow-lg border border-gray-700">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.9234643015027!2d72.93054841539264!3d19.1520733550581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b8731c8a3f23%3A0x123456789abcdef!2sEastern%20Business%20District%2C%20Bhandup%20West!5e0!3m2!1sen!2sin!4v1695555555555!5m2!1sen!2sin"
-                width="100%"
-                height="250"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
+            <button
+              onClick={() => setShowMap(!showMap)}
+              className="text-lg font-semibold text-[#5AD6FF] mb-3 flex items-center gap-2 hover:underline"
+            >
+              <FaMapMarkerAlt /> {showMap ? "Hide Map" : "Locate Us"}
+            </button>
+
+            {showMap && (
+              <div className="rounded-xl overflow-hidden shadow-lg border border-gray-700">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.9234643015027!2d72.93054841539264!3d19.1520733550581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b8731c8a3f23%3A0x123456789abcdef!2sEastern%20Business%20District%2C%20Bhandup%20West!5e0!3m2!1sen!2sin!4v1695555555555!5m2!1sen!2sin"
+                  width="100%"
+                  height="250"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            )}
           </div>
         </div>
       </div>

@@ -41,7 +41,30 @@ export default function Home() {
     </motion.h1>
   </div>
 </section>
-
+        {/* Fixed Animated Icon (only visible in hero) */}
+        <motion.a
+          href="#who"
+          className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isInView ? 1 : 0 }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
+        >
+          <motion.div
+            animate={{
+              opacity: [1, 0.4, 1], // blinking
+              y: [0, -8, 0], // bounce
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            <ExpandCircleDownIcon
+              style={{ fontSize: "3.5rem", color: "#5AD6FF" }}
+            />
+          </motion.div>
+        </motion.a>
 
     </>
   );
