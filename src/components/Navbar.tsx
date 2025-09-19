@@ -120,12 +120,14 @@ function NavContent({
 function NavLinks({ className }: { className?: string }) {
   return (
     <ul className={`${className} font-raleway font-medium`}>
-            <li className="ml-6"> {/* Space from logo */}
-        <a href="#who" className="hover:font-semibold transition-all">
-       
+           <li>
+        
+        <a href="#space" className="hover:font-semibold transition-all">
+          
         </a>
       </li>
-      <li className="ml-6"> {/* Space from logo */}
+      <li>
+
         <a href="#who" className="hover:font-semibold transition-all">
           Who We Are
         </a>
@@ -145,17 +147,12 @@ function NavLinks({ className }: { className?: string }) {
           Our Journey
         </a>
       </li>
-        <li className="ml-6"> {/* Space from "Our Journey" */}
+      <li>
         <a
           href="#contact"
-          className=""
-        >        
-        </a>
-      </li>
-      <li className="ml-6"> {/* Space from "Our Journey" */}
-        <a
-          href="#contact"
-          className="px-6 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300 font-raleway font-semibold flex items-center justify-center gap-2 bg-neutral-800 text-white hover:bg-neutral-900"
+          className="px-6 py-2 rounded-full shadow-md hover:shadow-lg transition-all 
+                     duration-300 font-raleway font-semibold flex items-center 
+                     justify-center gap-2 bg-neutral-800 text-white hover:bg-neutral-900"
         >
           <span>↗</span> Get in touch
         </a>
@@ -163,4 +160,5 @@ function NavLinks({ className }: { className?: string }) {
     </ul>
   );
 }
+
 

@@ -129,6 +129,31 @@ export default function Services() {
               </AnimatePresence>
             </div>
           </div>
+          {/* Right: image (smaller on desktop but responsive) */}
+{/* <div className="relative w-full flex justify-center">
+  <div className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-md aspect-[4/3] md:aspect-[1/1] lg:aspect-[16/12]">
+    <AnimatePresence initial={false} mode="wait">
+      <motion.div
+        key={`img-${activeIndex}`}
+        className="absolute inset-0 flex items-center justify-center"
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.98 }}
+        transition={{ duration: 0.45 }}
+      >
+        <Image
+          src={services[activeIndex].image}
+          alt={services[activeIndex].boldTitle}
+          fill
+          sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 400px"
+          className="object-contain drop-shadow-lg"
+          priority
+        />
+      </motion.div>
+    </AnimatePresence>
+  </div>
+</div> */}
+
         </div>
       </div>
     </section>
