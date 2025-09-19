@@ -11,9 +11,9 @@ const raleway = Raleway({
 });
 
 const partners = [
-  { name: "Federal Bank", logo: "/federal.png" },
-  { name: "South Indian Bank", logo: "/southindian.png" },
-  { name: "ESAFF Bank", logo: "/esaf.png" },
+  { name: "Nishkaiv Solutions", logo: "/partners/nishkaivtxt.png" },
+  { name: "SP Ninovation", logo: "/partners/spinovation.jpeg" },
+  // { name: "ESAFF Bank", logo: "/esaf.png" },
   // Add more logos here
 ];
 
@@ -36,7 +36,7 @@ export default function Partners() {
           <span className="text-[#5AD6FF]">Clients & Partners</span>
         </h2>
 
-        {/* Divider with animation */}
+        {/* Divider */}
         <motion.div
           initial={{ width: 0 }}
           whileInView={{ width: "100px" }}
@@ -51,39 +51,23 @@ export default function Partners() {
         </p>
       </motion.div>
 
-      {/* Partner Logos */}
-      <motion.div
-        className="flex justify-center items-center gap-10 flex-wrap max-w-6xl mx-auto"
-        initial="hidden"
-        whileInView="visible"
-        variants={{
-          hidden: {},
-          visible: {
-            transition: { staggerChildren: 0.2 },
-          },
-        }}
-        viewport={{ once: true }}
-      >
-        {partners.map((partner, index) => (
-          <motion.div
+      {/* Partner Logos (static, no hover effects) */}
+      <div className="flex justify-center items-center gap-10 flex-wrap max-w-6xl mx-auto">
+        {partners.map((partner) => (
+          <div
             key={partner.name}
-            className="flex items-center justify-center bg-white rounded-2xl shadow-lg hover:shadow-xl p-6 w-[160px] h-[110px] transition"
-            variants={{
-              hidden: { opacity: 0, scale: 0.9 },
-              visible: { opacity: 1, scale: 1 },
-            }}
-            whileHover={{ scale: 1.08, rotate: 1 }}
+            className="flex items-center justify-center bg-white rounded-2xl shadow-lg p-6 w-[160px] h-[110px]"
           >
             <Image
               src={partner.logo}
               alt={partner.name}
               width={130}
               height={70}
-              className="object-contain grayscale hover:grayscale-0 transition duration-300"
+              className="object-contain"
             />
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 }
