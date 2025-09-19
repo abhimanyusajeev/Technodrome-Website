@@ -5,10 +5,10 @@ import {
   FaEnvelope,
   FaLinkedin,
   FaInstagram,
-  FaTwitter,
   FaMapMarkerAlt,
 } from "react-icons/fa";
 import { Raleway, Roboto } from "next/font/google";
+import { FaXTwitter } from "react-icons/fa6";
 
 const raleway = Raleway({
   subsets: ["latin"],
@@ -29,20 +29,25 @@ const Footer: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-12 md:items-start">
         {/* LEFT SECTION */}
-        <div className="flex flex-row items-start justify-start gap-6">
+        <div className="flex flex-row items-start justify-start gap-6  ">
           {/* Logo */}
           <img
             src="/technodromeTlogo.png"
             alt="Technodrome Solutions Logo"
-            className="w-16 h-16 object-contain"
+            className="w-16 h-16 mb-72 object-contain"
           />
 
           {/* Text Content */}
           <div className="text-left">
-            <h1 className="text-2xl sm:text-3xl font-bold mb-3">
+            {/* <h1 className="text-2xl sm:text-3xl font-bold mb-3">
               Technodrome Solutions
-            </h1>
-            <h2 className="text-lg sm:text-xl font-semibold text-[#5AD6FF] mb-4">
+            </h1> */}
+              <img
+            src="/technodromelogo.png"
+            alt="Technodrome Solutions Logo"
+            className="w-60 h-14 object-contain mb-7"
+          />
+            <h2 className="text-lg sm:text-xl font-semibold text-[#5AD6FF] ">
               Innovate. Integrate. Compute.
             </h2>
             <p className="text-gray-300 leading-relaxed max-w-md mb-6 text-base sm:text-lg">
@@ -58,7 +63,7 @@ const Footer: React.FC = () => {
                 className="text-white hover:text-[#5AD6FF] transition"
                 aria-label="Twitter"
               >
-                <FaTwitter size={20} />
+                <FaXTwitter size={20} />
               </a>
               <a
                 href="#"

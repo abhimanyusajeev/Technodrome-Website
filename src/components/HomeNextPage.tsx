@@ -19,21 +19,21 @@ export default function HomeNextPage() {
   const heroRef = useRef(null);
   const isInView = useInView(heroRef, { amount: 0.4 });
 
-  // ✅ Track scroll progress for zoom + gradient animation
+  // ✅ Track scroll progress
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
   });
 
-  // Zoom effect on scroll
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
-
-  // Gradient shift based on scroll
+  // Hero background movement
   const backgroundPosition = useTransform(
     scrollYProgress,
     [0, 1],
     ["0% 0%", "100% 100%"]
   );
+
+  // Headline zoom effect
+  const headlineScale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
 
   useEffect(() => {
     let lastScrollY = window.scrollY;
@@ -57,9 +57,8 @@ export default function HomeNextPage() {
   ];
 
   return (
-    <motion.section
+    <section
       ref={heroRef}
-      style={{ scale }}
       className="
         relative
         h-screen
@@ -80,8 +79,9 @@ export default function HomeNextPage() {
       />
 
       <div className="w-full max-w-6xl flex flex-col justify-center h-full">
-        {/* Headline with only color shift */}
-        <h1
+        {/* Headline with scroll-based zoom */}
+        <motion.h1
+          style={{ scale: headlineScale }}
           className={`${raleway.className} 
             text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 
             flex flex-col leading-snug 
@@ -115,10 +115,10 @@ export default function HomeNextPage() {
               ))}
             </div>
           ))}
-        </h1>
+        </motion.h1>
       </div>
 
-      {/* Fixed Animated Icon (no looping zoom now) */}
+      {/* Fixed Scroll-down Icon (fade only) */}
       <motion.a
         href="#who"
         className="mb-10 self-center z-50"
@@ -130,6 +130,6 @@ export default function HomeNextPage() {
           style={{ fontSize: "3.5rem", color: "#5AD6FF" }}
         />
       </motion.a>
-    </motion.section>
+    </section>
   );
 }

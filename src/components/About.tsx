@@ -64,9 +64,8 @@ export default function About() {
           className="flex justify-center md:justify-end"
         >
           <motion.div
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-            className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg rounded-2xl shadow-lg border border-gray-200 overflow-hidden"
+  
+            className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg overflow-hidden"
           >
             <Image
               src="/aboutus.png"

@@ -47,9 +47,11 @@ const steps: Step[] = [
 
 const Approach: FC = () => {
   return (
-    <section
-      className={`min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 py-16 sm:py-20 px-4 sm:px-6 ${raleway.className}`}
-    >
+<section
+  className={`bg-gradient-to-br from-slate-50 via-white to-slate-100 
+  py-12 sm:py-16 px-4 sm:px-6 ${raleway.className}`}
+>
+
       <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
         {/* Title */}
         <motion.div
@@ -72,7 +74,7 @@ const Approach: FC = () => {
         </motion.div>
 
         {/* Description */}
-        <motion.p
+        {/* <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.5 }}
@@ -85,7 +87,7 @@ const Approach: FC = () => {
           , we take a customer-centric approach to providing IT services. We
           work closely with our clients to understand their needs and tailor our
           services to meet their specific requirements.
-        </motion.p>
+        </motion.p> */}
 
         {/* Steps in Single Row */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 sm:gap-8 mt-6 w-full">
@@ -96,7 +98,9 @@ const Approach: FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="bg-white rounded-2xl shadow-lg p-6 sm:p-8 hover:shadow-xl transition-shadow border border-gray-100 flex flex-col items-center text-center"
+              className="bg-white rounded-2xl p-6 sm:p-8 flex flex-col items-center text-center"
+
+
             >
               {/* Icon with hover animation */}
               <motion.div

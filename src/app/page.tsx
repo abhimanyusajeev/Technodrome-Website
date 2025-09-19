@@ -9,6 +9,7 @@ import Home from "@/components/Home";
 import HomeNextPage from "@/components/HomeNextPage";
 import IndustriesWeServe from "@/components/IndustriesWeServe";
 import Navbar from "@/components/Navbar";
+import Partners from "@/components/Partners";
 // import Partners from "@/components/Partners";
 import Portfolio from "@/components/Portfolio";
 import Services from "@/components/Services";
@@ -20,6 +21,10 @@ export default function HomePage() {
       <Navbar />
 
       {/* Sections with IDs for scrolling */}
+
+        <section id="navbar">
+        <Navbar />
+      </section>
       <section id="home">
         <Home />
       </section>
@@ -55,6 +60,10 @@ export default function HomePage() {
 
       <section id="about">
         <About />
+      </section>
+
+        <section id="partners">
+        <Partners />
       </section>
 
       <section id="contact">

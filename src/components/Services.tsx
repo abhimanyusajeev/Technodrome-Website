@@ -25,6 +25,12 @@ export default function Services() {
     { boldTitle: "Event", italicTitle: "Streaming", description: "We specialize in event streaming technologies like Apache Kafka, Oracle Streaming...", image: "/stream1.png" },
     { boldTitle: "Cache", italicTitle: "Databases", description: "We implement cache databases like Redis to enhance application performance...", image: "/database.png" },
     { boldTitle: "Observability", italicTitle: "and Analytics", description: "Our observability and analytics solutions, based on the Oracle analytics...", image: "/observability.png" },
+       { 
+      boldTitle: "Collections", 
+      italicTitle: "and Management", 
+      description: "We provide efficient collections and management solutions to streamline financial operations and ensure seamless tracking of payments.", 
+      image: "/Services/Collections.png" 
+    },
   ];
 
   const next = () => setActiveIndex((p) => (p + 1) % services.length);

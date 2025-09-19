@@ -59,7 +59,7 @@ export default function IndustriesWeServe() {
       {/* Wrapper with top dashed line */}
       <div className="relative w-full max-w-7xl">
         {/* Top dashed line */}
-        <div className="absolute top-0 left-0 w-full border-t-2 border-dashed border-gray-300"></div>
+        {/* <div className="absolute top-0 left-0 w-full border-t-2 border-dashed border-gray-300"></div> */}
 
         {/* Grid with vertical dashed lines */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 relative pt-8">
@@ -77,10 +77,10 @@ export default function IndustriesWeServe() {
           ))}
 
           {/* Vertical dashed connectors */}
-          <div className="absolute top-0 left-1/5 h-8 border-l-2 border-dashed border-gray-300 hidden lg:block"></div>
+          {/* <div className="absolute top-0 left-1/5 h-8 border-l-2 border-dashed border-gray-300 hidden lg:block"></div>
           <div className="absolute top-0 left-2/5 h-8 border-l-2 border-dashed border-gray-300 hidden lg:block"></div>
           <div className="absolute top-0 left-3/5 h-8 border-l-2 border-dashed border-gray-300 hidden lg:block"></div>
-          <div className="absolute top-0 left-4/5 h-8 border-l-2 border-dashed border-gray-300 hidden lg:block"></div>
+          <div className="absolute top-0 left-4/5 h-8 border-l-2 border-dashed border-gray-300 hidden lg:block"></div> */}
         </div>
       </div>
 
