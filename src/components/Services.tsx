@@ -22,7 +22,7 @@ export default function Services() {
     { boldTitle: "Infrastructure", italicTitle: "as a Service (IaaS)", description: "Our team has immense experience in setting up and maintenance of Cloud Infrastructure for Banks and Financial Institutions...", image: "/iaas2.png" },
     { boldTitle: "Lightweight", italicTitle: "Business Application", description: "At Technodrome Solutions Pvt. Ltd., with our Oracle certified team, we can harness the power of Oracle APEX...", image: "/business.png" },
     { boldTitle: "PaaS and SaaS", italicTitle: " Integration", description: "Our comprehensive experience in setting up and maintenance of Cloud Infrastructure...", image: "/saas2.png" },
-    { boldTitle: "Event", italicTitle: "Streaming", description: "We specialize in event streaming technologies like Apache Kafka, Oracle Streaming...", image: "/stream1.png" },
+    { boldTitle: "Event", italicTitle: "Streaming", description: "We specialize in event streaming technologies like Apache Kafka, Oracle Streaming...", image: "/Services/event.png" },
     { boldTitle: "Cache", italicTitle: "Databases", description: "We implement cache databases like Redis to enhance application performance...", image: "/database.png" },
     { boldTitle: "Observability", italicTitle: "and Analytics", description: "Our observability and analytics solutions, based on the Oracle analytics...", image: "/observability.png" },
        { 

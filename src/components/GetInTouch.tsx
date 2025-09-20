@@ -1,14 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  FaPhoneAlt,
-  FaEnvelope,
-  FaUser,
-  FaMobileAlt,
-  FaRegCommentDots,
-  FaMapMarkerAlt,
-} from "react-icons/fa";
+import { FaPhoneAlt, FaEnvelope, FaUser, FaMobileAlt, FaRegCommentDots } from "react-icons/fa";
 import { useState } from "react";
 import { Raleway, Roboto } from "next/font/google";
 
@@ -19,7 +12,7 @@ const raleway = Raleway({
 
 const roboto = Roboto({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "500", "700"], // you can adjust weights
 });
 
 export default function GetInTouch() {
@@ -32,8 +25,8 @@ export default function GetInTouch() {
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState<string | null>(null);
-  const [showMap, setShowMap] = useState(false); // ✅ For map toggle
 
+  // Replace with your Google Apps Script Web App URL
   const SCRIPT_URL: string =
     "https://script.google.com/macros/s/AKfycbyWkLxUxX65cqh79_nSbV0By_COfPEZ7xX-SeenpXhdrP4xPYe02_uQ00AhL_9zvm82Cg/exec";
 
@@ -47,35 +40,37 @@ export default function GetInTouch() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setLoading(true);
 
-    try {
-      const response = await fetch(SCRIPT_URL, {
-        redirect: "follow",
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: {
-          "Content-Type": "text/plain;charset=utf-8",
-        },
-      });
+  try {
+    const response = await fetch(SCRIPT_URL, {
+      redirect: "follow",
+      method: "POST",
+      body: JSON.stringify(formData),
+      headers: {
+        "Content-Type": "text/plain;charset=utf-8",
+      },
+    });
 
-      const resultText = await response.text();
-      const result = JSON.parse(resultText);
+    const resultText = await response.text();
+    const result = JSON.parse(resultText);
 
-      if (response.ok && result.status === "success") {
-        setSuccess("Message sent successfully ✅");
-      } else {
-        console.error("Error submitting form:", result.message || response.statusText);
-      }
-    } catch (error) {
-      console.error("Error submitting form:", error);
-    } finally {
-      setFormData({ name: "", email: "", mobile: "", message: "" });
-      setLoading(false);
+    if (response.ok && result.status === "success") {
+      setSuccess("Message sent successfully ✅");
+    } else {
+      console.error("Error submitting form:", result.message || response.statusText);
     }
-  };
+  } catch (error) {
+    console.error("Error submitting form:", error);
+  } finally {
+    // ✅ Always clear form after submission
+    setFormData({ name: "", email: "", mobile: "", message: "" });
+    setLoading(false);
+  }
+};
+
 
   return (
     <section
@@ -119,7 +114,7 @@ export default function GetInTouch() {
           <div className="grid sm:grid-cols-2 gap-6">
             {/* Card 1 */}
             <motion.div
-              className="bg-white shadow-md rounded-xl p-6 border hover:shadow-lg transition transform hover:-translate-y-2"
+              className="bg-white shadow-md rounded-xl p-6  "
               whileHover={{ scale: 1.03 }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -139,7 +134,7 @@ export default function GetInTouch() {
 
             {/* Card 2 */}
             <motion.div
-              className="bg-white shadow-md rounded-xl p-6 border hover:shadow-lg transition transform hover:-translate-y-2"
+              className="bg-white shadow-md rounded-xl p-6 "
               whileHover={{ scale: 1.03 }}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -156,39 +151,6 @@ export default function GetInTouch() {
                 We are always delighted to receive your inquiries and engage in
                 discussions.
               </p>
-            </motion.div>
-
-            {/* ✅ Card 3 - Locate Us */}
-            <motion.div
-              onClick={() => setShowMap(!showMap)}
-              className="bg-white shadow-md rounded-xl p-6 border hover:shadow-lg transition transform hover:-translate-y-2 cursor-pointer col-span-2"
-              whileHover={{ scale: 1.03 }}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 1 }}
-              viewport={{ once: true }}
-            >
-              <div className="flex items-center mb-4">
-                <div className="bg-slate-950 p-3 rounded-full">
-                  <FaMapMarkerAlt className="text-white text-xl" />
-                </div>
-              </div>
-              <h3 className="font-bold text-lg mb-2">
-                {showMap ? "Hide Map" : "Locate Us"}
-              </h3>
-              {showMap && (
-                <div className="mt-4 rounded-xl overflow-hidden shadow-lg border border-gray-300">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.9234643015027!2d72.93054841539264!3d19.1520733550581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b8731c8a3f23%3A0x123456789abcdef!2sEastern%20Business%20District%2C%20Bhandup%20West!5e0!3m2!1sen!2sin!4v1695555555555!5m2!1sen!2sin"
-                    width="100%"
-                    height="250"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  ></iframe>
-                </div>
-              )}
             </motion.div>
           </div>
         </motion.div>
@@ -227,8 +189,7 @@ export default function GetInTouch() {
                 required
               />
             </div>
-
-            <div className="relative">
+      <div className="relative">
               <FaMobileAlt className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
               <input
                 type="tel"
