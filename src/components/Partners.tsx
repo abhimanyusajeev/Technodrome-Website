@@ -65,6 +65,8 @@ export default function Partners() {
               height={70}
               className="object-contain"
             />
+
+            
           </div>
         ))}
       </div>

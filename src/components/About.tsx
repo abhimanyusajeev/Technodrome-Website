@@ -13,7 +13,7 @@ const raleway = Raleway({
 export default function About() {
   return (
     <section
-      className={`min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 ${raleway.className}`}
+      className={`bg-gradient-to-br from-slate-50 via-white to-slate-100 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 ${raleway.className}`}
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
         {/* LEFT - Text Content */}
@@ -49,10 +49,7 @@ export default function About() {
           </p>
 
           <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-            We have expertise in Oracle APEX, Oracle Cloud Infrastructure (OCI),
-            IaaS, PaaS, SaaS, Microservices, Kubernetes, ESB, Amazon AWS, Event
-            streaming, Databases, DevOps, observability and analytics. We
-            empower organizations to thrive in today's digital landscape.
+            We have expertise in Oracle APEX, Oracle Cloud Infrastructure (OCI), IaaS, PaaS, SaaS, Microservices, Kubernetes, ESB, Amazon AWS, Event Streaming, Databases, DevOps, Observability and Analytics, as well as Payments and Collections, Global Remittance, UPI Integration, and Loan Management Systems (LMS). We empower organizations to thrive in today’s digital landscape.
           </p>
         </motion.div>
 
@@ -77,6 +74,7 @@ export default function About() {
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 500px"
             />
           </motion.div>
+          
         </motion.div>
       </div>
     </section>

@@ -57,14 +57,15 @@ export default function Loader({ loading }: { loading: boolean }) {
                 ease: "easeOut",
               }}
             >
-              <Image
-                src="/technodromeTlogo.png"
-                alt="Technodrome Logo Loader"
-                width={140}
-                height={140}
-                className="object-contain"
-                priority
-              />
+<Image
+  src="/technodromeTlogo.png"
+  alt="Technodrome Logo Loader"
+  width={200}  // Increased width
+  height={200}  // Increased height
+  className="object-contain"
+  priority
+/>
+
             </motion.div>
           </div>
         </motion.div>

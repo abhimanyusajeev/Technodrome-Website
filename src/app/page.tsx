@@ -17,6 +17,7 @@ import Portfolio from "@/components/Portfolio";
 import Services from "@/components/Services";
 import TechnologyStack from "@/components/TechnologyStack";
 import WhoSection from "@/components/Who";
+// import ScrollStack from "./ScrollStack";
 
 export default function HomePage() {
   const [loading, setLoading] = useState(true);
@@ -75,13 +76,14 @@ export default function HomePage() {
           <About />
         </section>
 
-        <section id="partners">
+        {/* <section id="partners">
           <Partners />
-        </section>
+        </section> */}
 
         <section id="contact">
           <GetInTouch />
         </section>
+
 
         <Footer />
       </main>

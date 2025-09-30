@@ -16,7 +16,7 @@ const merriweather = Merriweather({
 
 export default function WhoWeAreSection() {
   return (
-    <section className={`bg-white py-16 sm:py-20 ${raleway.className}`}>
+    <section className={` bg-white py-16 sm:py-20 ${raleway.className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Heading */}
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-950 mb-4 text-center md:text-left">

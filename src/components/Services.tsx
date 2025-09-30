@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Raleway } from "next/font/google";
 
 const raleway = Raleway({ subsets: ["latin"], weight: ["400", "600", "700"] });
@@ -16,144 +15,211 @@ type Service = {
 };
 
 export default function Services() {
-  const [activeIndex, setActiveIndex] = useState(0);
-
   const services: Service[] = [
-    { boldTitle: "Infrastructure", italicTitle: "as a Service (IaaS)", description: "Our team has immense experience in setting up and maintenance of Cloud Infrastructure for Banks and Financial Institutions...", image: "/iaas2.png" },
-    { boldTitle: "Lightweight", italicTitle: "Business Application", description: "At Technodrome Solutions Pvt. Ltd., with our Oracle certified team, we can harness the power of Oracle APEX...", image: "/business.png" },
-    { boldTitle: "PaaS and SaaS", italicTitle: " Integration", description: "Our comprehensive experience in setting up and maintenance of Cloud Infrastructure...", image: "/saas2.png" },
-    { boldTitle: "Event", italicTitle: "Streaming", description: "We specialize in event streaming technologies like Apache Kafka, Oracle Streaming...", image: "/Services/event.png" },
-    { boldTitle: "Cache", italicTitle: "Databases", description: "We implement cache databases like Redis to enhance application performance...", image: "/database.png" },
-    { boldTitle: "Observability", italicTitle: "and Analytics", description: "Our observability and analytics solutions, based on the Oracle analytics...", image: "/observability.png" },
-       { 
-      boldTitle: "Collections", 
-      italicTitle: "and Management", 
-      description: "We provide efficient collections and management solutions to streamline financial operations and ensure seamless tracking of payments.", 
-      image: "/Services/Collections.png" 
+    {
+      boldTitle: "Infrastructure",
+      italicTitle: "as a Service (IaaS)",
+      description:
+        "Our team has immense experience in setting up and maintenance of Cloud Infrastructure for Banks and Financial Institutions...",
+      image: "/iaas2.png",
+    },
+    {
+      boldTitle: "Lightweight",
+      italicTitle: "Business Application",
+      description:
+        "At Technodrome Solutions Pvt. Ltd., with our Oracle certified team, we can harness the power of Oracle APEX...",
+      image: "/business.png",
+    },
+    {
+      boldTitle: "PaaS and SaaS",
+      italicTitle: " Integration",
+      description:
+        "Our comprehensive experience in setting up and maintenance of Cloud Infrastructure...",
+      image: "/saas2.png",
+    },
+    {
+      boldTitle: "Event",
+      italicTitle: "Streaming",
+      description:
+        "We specialize in event streaming technologies like Apache Kafka, Oracle Streaming...",
+      image: "/Services/event.png",
+    },
+    {
+      boldTitle: "Cache",
+      italicTitle: "Databases",
+      description:
+        "We implement cache databases like Redis to enhance application performance...",
+      image: "/database.png",
+    },
+    {
+      boldTitle: "Observability",
+      italicTitle: "and Analytics",
+      description:
+        "Our observability and analytics solutions, based on the Oracle analytics...",
+      image: "/observability.png",
+    },
+    {
+      boldTitle: "Collections",
+      italicTitle: "and Management",
+      description:
+        "We provide efficient collections and management solutions to streamline financial operations and ensure seamless tracking of payments.",
+      image: "/Services/Collections.png",
+    },
+        {
+      boldTitle: "UPI",
+      italicTitle: "Integrations",
+      description:
+        "We provide seamless UPI integration solutions that connect acquirers and issuers to enable secure, real-time transactions, streamline digital payments, and enhance efficiency for businesses and customers alike.",
+      image: "/Services/UPI.png",
     },
   ];
 
-  const next = () => setActiveIndex((p) => (p + 1) % services.length);
-  const prev = () => setActiveIndex((p) => (p === 0 ? services.length - 1 : p - 1));
+  const [current, setCurrent] = useState(0);
+  const length = services.length;
+
+  // Drag state
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [currentTranslate, setCurrentTranslate] = useState(0);
+  const [prevTranslate, setPrevTranslate] = useState(0);
+
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const clampIndex = (index: number) => {
+    if (index < 0) return length - 1;
+    if (index >= length) return 0;
+    return index;
+  };
+
+  // Mouse / Touch Handlers
+  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+    setIsDragging(true);
+    if ("touches" in e) {
+      setStartX(e.touches[0].clientX);
+    } else {
+      setStartX(e.clientX);
+    }
+  };
+
+  const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!isDragging) return;
+    let currentX;
+    if ("touches" in e) {
+      currentX = e.touches[0].clientX;
+    } else {
+      currentX = e.clientX;
+    }
+    const deltaX = currentX - startX;
+    setCurrentTranslate(prevTranslate + deltaX);
+  };
+
+  const handleDragEnd = () => {
+    setIsDragging(false);
+    const movedBy = currentTranslate - prevTranslate;
+
+    if (movedBy < -50) {
+      setCurrent(clampIndex(current + 1));
+    } else if (movedBy > 50) {
+      setCurrent(clampIndex(current - 1));
+    }
+    setCurrentTranslate(0);
+    setPrevTranslate(0);
+  };
+
+  useEffect(() => {
+    setCurrentTranslate(0);
+    setPrevTranslate(0);
+  }, [current]);
+
+  const nextSlide = () => setCurrent(clampIndex(current + 1));
+  const prevSlide = () => setCurrent(clampIndex(current - 1));
 
   return (
-    <section className={`${raleway.className} relative min-h-screen flex flex-col justify-center bg-white`}>
+    <section
+      className={`${raleway.className} relative min-h-screen flex flex-col justify-center bg-white`}
+    >
       <div className="max-w-7xl mx-auto px-6 w-full">
-        {/* ✅ Fixed heading — isolated and sticky to avoid any movement */}
-      <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 text-center md:text-left">
+        {/* Heading */}
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-950 mb-6 text-center md:text-left">
           What <span className="text-[#5AD6FF]">We Do.</span>
         </h2>
+        <div className="h-1 bg-[#5AD6FF] rounded-full mb-10 sm:mb-12 w-[120px] mx-auto md:mx-0"></div>
 
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: "120px" }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="h-1 bg-[#5AD6FF] rounded-full mb-10 sm:mb-12 mx-auto md:mx-0"
-        ></motion.div>
-      </motion.div>
+        {/* Carousel */}
+        <div className="relative w-full max-w-6xl mx-auto overflow-hidden pb-8">
 
-        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-          {/* Left: title + description + arrows */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left">
-            {/* Fixed-height text stage to prevent layout jump */}
-            <div className="relative w-full min-h-[180px] sm:min-h-[200px]">
-              <AnimatePresence initial={false} mode="wait">
-                <motion.div
-                  key={`text-${activeIndex}`}
-                  className="absolute inset-0"
-                  initial={{ opacity: 0, x: -24 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: 24 }}
-                  transition={{ duration: 0.45 }}
-                >
-                  <h3 className="text-2xl md:text-4xl font-bold text-gray-800 leading-tight">
-                    {services[activeIndex].boldTitle}{" "}
-                    <span className="italic text-[#5AD6FF]">
-                      {services[activeIndex].italicTitle}
-                    </span>
-                  </h3>
-                  <p className="mt-6 text-gray-600 text-base md:text-lg leading-relaxed max-w-md mx-auto md:mx-0">
-                    {services[activeIndex].description}
-                  </p>
-                </motion.div>
-              </AnimatePresence>
-            </div>
+          <div
+            ref={containerRef}
+            className="relative flex justify-center items-center w-full h-[500px] cursor-grab select-none"
+            onMouseDown={handleDragStart}
+            onMouseMove={handleDragMove}
+            onMouseUp={handleDragEnd}
+            onMouseLeave={() => isDragging && handleDragEnd()}
+            onTouchStart={handleDragStart}
+            onTouchMove={handleDragMove}
+            onTouchEnd={handleDragEnd}
+            onTouchCancel={() => isDragging && handleDragEnd()}
+            style={{
+              cursor: isDragging ? "grabbing" : "grab",
+              transform: `translateX(${currentTranslate}px)`,
+              transition: isDragging ? "none" : "transform 0.3s ease-out",
+            }}
+          >
+            {services.map((service, index) => {
+              const isActive = index === current;
+              const isLeft = index === (current - 1 + length) % length;
+              const isRight = index === (current + 1) % length;
 
-            {/* Arrows under left content */}
-            <div className="flex gap-4 mt-8 justify-center md:justify-start">
-              <button
-                onClick={prev}
-                aria-label="Previous service"
-                className="p-3 rounded-full bg-gray-900/80 hover:bg-gray-900 text-white shadow-lg transition"
-              >
-                <ArrowLeft size={22} />
-              </button>
-              <button
-                onClick={next}
-                aria-label="Next service"
-                className="p-3 rounded-full bg-gray-900/80 hover:bg-gray-900 text-white shadow-lg transition"
-              >
-                <ArrowRight size={22} />
-              </button>
-            </div>
-          </div>
-
-          {/* Right: image (fuller, responsive). Stage with fixed aspect to avoid reflow */}
-          <div className="relative w-full">
-            <div className="relative w-full aspect-[4/3] md:aspect-[1/1] lg:aspect-[16/12]">
-              <AnimatePresence initial={false} mode="wait">
-                <motion.div
-                  key={`img-${activeIndex}`}
-                  className="absolute inset-0 flex items-center justify-center"
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.45 }}
+              return (
+                <div
+                  key={index}
+                  className={`absolute transition-all duration-700 ease-in-out rounded-2xl shadow-lg overflow-hidden
+                  w-full max-w-lg h-full bg-white
+                  ${
+                    isActive
+                      ? "z-30 opacity-100 scale-100 translate-x-0"
+                      : isLeft
+                      ? "z-20 opacity-50 scale-90 -translate-x-full"
+                      : isRight
+                      ? "z-20 opacity-50 scale-90 translate-x-full"
+                      : "z-10 opacity-0 scale-90 translate-x-[200%]"
+                  }`}
                 >
                   <Image
-                    src={services[activeIndex].image}
-                    alt={services[activeIndex].boldTitle}
-                    fill
-                    sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 600px"
-                    className="object-contain drop-shadow-lg"
-                    priority
+                    src={service.image}
+                    alt={service.boldTitle}
+                    width={200}
+                    height={200}
+                   className="object-contain w-[70%] h-[70%] mx-auto"
+                    draggable={false}
                   />
-                </motion.div>
-              </AnimatePresence>
-            </div>
+                  <div className="absolute inset-0 bg-gradient-to-t mask-linear-from-slate-50 via-slate-50/5 to-transparent text-slate-950 p-6 flex flex-col justify-end">
+                    <h3 className="text-2xl font-bold mb-4">
+                      {service.boldTitle}{" "}
+                      <span className=" text-[#5AD6FF]">
+                        {service.italicTitle}
+                      </span>
+                    </h3>
+                    <p className="text-sm">{service.description}</p>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-          {/* Right: image (smaller on desktop but responsive) */}
-{/* <div className="relative w-full flex justify-center">
-  <div className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-md aspect-[4/3] md:aspect-[1/1] lg:aspect-[16/12]">
-    <AnimatePresence initial={false} mode="wait">
-      <motion.div
-        key={`img-${activeIndex}`}
-        className="absolute inset-0 flex items-center justify-center"
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.98 }}
-        transition={{ duration: 0.45 }}
-      >
-        <Image
-          src={services[activeIndex].image}
-          alt={services[activeIndex].boldTitle}
-          fill
-          sizes="(max-width: 768px) 90vw, (max-width: 1200px) 50vw, 400px"
-          className="object-contain drop-shadow-lg"
-          priority
-        />
-      </motion.div>
-    </AnimatePresence>
-  </div>
-</div> */}
 
+          {/* Arrows */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-4 bottom-4 z-40 bg-gray-900/80 hover:bg-gray-900 text-white rounded-full shadow p-2"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute right-4 bottom-4 z-40 bg-gray-900/80 hover:bg-gray-900 text-white rounded-full shadow p-2"
+          >
+            <ChevronRight size={24} />
+          </button>
         </div>
       </div>
     </section>

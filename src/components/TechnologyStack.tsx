@@ -49,7 +49,7 @@ const techStack = [
     layer: "APIs & Integration",
     images: [
       { src: "/techStack/rest.png", name: "REST" },
-      { src: "/techStack/graphql.png", name: "GraphQL" },
+      // { src: "/techStack/graphql.png", name: "GraphQL" },
       // { src: "/techStack/websocket.png", name: "WebSockets" },
       { src: "/techStack/swagger.png", name: "Swagger" },
       // { src: "/techStack/postman.png", name: "Postman" },
@@ -71,7 +71,7 @@ const techStack = [
       { src: "/techStack/docker.png", name: "Docker" },
       { src: "/techStack/kubernetes.png", name: "Kubernetes" },
       // { src: "/techStack/jenkins.png", name: "Jenkins" },
-      { src: "/techStack/githubactions.png", name: "GitHub Actions" },
+      // { src: "/techStack/githubactions.png", name: "GitHub Actions" },
       { src: "/techStack/gitlab.png", name: "GitLab CI" },
     ],
   },
@@ -111,6 +111,7 @@ const techStack = [
       { src: "/techStack/tensorflow.png", name: "TensorFlow" },
       { src: "/techStack/pytorch.png", name: "PyTorch" },
       { src: "/techStack/openai.png", name: "OpenAI" },
+      { src: "/techStack/ibmwatson.png", name: "IBM Watson" },
     ],
   },
 ];

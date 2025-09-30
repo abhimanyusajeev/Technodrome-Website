@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
           <div className="flex flex-row items-start justify-start gap-3">
             {/* Logo */}
             <img
-              src="/technodromeTlogo.png"
+              src="/Logo/BlueTlogo.png"
               alt="Technodrome Solutions Logo"
               className="w-16 h-16 mb-72 object-contain"
             />
