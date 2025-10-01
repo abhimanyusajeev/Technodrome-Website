@@ -84,7 +84,6 @@ export default function WhoWeAreSection() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               whileHover={{
                 scale: 1.05,
-                rotate: "-1.5deg",
                 boxShadow: "0 20px 40px rgba(90, 214, 255, 0.25)",
               }}
               whileTap={{ scale: 0.98 }}
@@ -121,7 +120,8 @@ export default function WhoWeAreSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-              whileHover={{ scale: 1.03, rotate: "1deg" }}
+               whileHover={{ scale: 1.03, boxShadow: "0 20px 40px rgba(90, 214, 255, 0.25)" }}
+               
               className="relative bg-white/80 backdrop-blur-md border border-white/40 rounded-3xl shadow-2xl p-8 w-full h-full overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-[#9fd8f2]/20 to-[#5AD6FF]/10 rounded-3xl blur-2xl -z-10"></div>
