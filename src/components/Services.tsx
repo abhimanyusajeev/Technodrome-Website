@@ -45,11 +45,18 @@ export default function Services() {
       image: "/Services/event.png",
     },
     {
-      boldTitle: "Cache",
-      italicTitle: "Databases",
+      boldTitle: "Global",
+      italicTitle: "Remittances",
       description:
-        "We implement cache databases like Redis to enhance application performance...",
-      image: "/database.png",
+        "A secure, fast, and easy-to-use platform for sending and receiving money globally—trusted by individuals and businesses for seamless cross-border transfers.",
+      image: "/Services/globalremittance.png",
+    },
+        {
+      boldTitle: "LOS",
+      italicTitle: "& LMS Integration: ",
+      description:
+        "A unified LOS and LMS platform that automates the entire loan process—from origination to repayment—improving efficiency, compliance, and customer experience.",
+      image: "/Services/lms&los.png",
     },
     {
       boldTitle: "Observability",

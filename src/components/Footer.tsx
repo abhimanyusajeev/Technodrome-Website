@@ -56,21 +56,21 @@ const Footer: React.FC = () => {
               {/* Social Icons */}
               <div className="flex justify-start space-x-4 mt-4">
                 <a
-                  href="#"
+                  href="https://x.com/Technodrome2706?t=Ic7yBJx4oq-Q6ZCvfxTxuQ&s=09"
                   className="text-white-700 hover:text-[#5AD6FF] transition"
                   aria-label="Twitter"
                 >
                   <FaXTwitter size={20} />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.instagram.com/technodrome_solutions_pvt_ltd?igsh=MWM3ZHRzYXg0bzVmMw== "
                   className="text-white-700 hover:text-[#5AD6FF] transition"
                   aria-label="Instagram"
                 >
                   <FaInstagram size={20} />
                 </a>
                 <a
-                  href="#"
+                  href="https://in.linkedin.com/in/technodrome-solutions-private-ltd-0a58aa384"
                   className="text-white-700 hover:text-[#5AD6FF] transition"
                   aria-label="LinkedIn"
                 >

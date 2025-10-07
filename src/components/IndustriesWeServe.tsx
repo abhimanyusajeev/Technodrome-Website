@@ -70,7 +70,7 @@ export default function IndustriesWeServe() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 text-center flex flex-col items-center justify-center"
+              className="bg-white p-6 text-center flex flex-col items-center justify-center"
             >
               <div className="mb-3">{industry.icon}</div>
               <h3 className="text-lg font-semibold text-gray-900">{industry.name}</h3>
@@ -94,7 +94,7 @@ export default function IndustriesWeServe() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white rounded-2xl shadow-sm border border-gray-200 p-6 text-center flex flex-col items-center justify-center"
+              className="bg-white p-6 text-center flex flex-col items-center justify-center"
             >
               <div className="mb-3">{industry.icon}</div>
               <h3 className="text-lg font-semibold text-gray-900">{industry.name}</h3>
