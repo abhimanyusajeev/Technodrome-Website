@@ -16,13 +16,13 @@ type Service = {
 
 export default function Services() {
   const services: Service[] = [
-    {
-      boldTitle: "Infrastructure",
-      italicTitle: "as a Service (IaaS)",
-      description:
-        "Our team has immense experience in setting up and maintenance of Cloud Infrastructure for Banks and Financial Institutions...",
-      image: "/iaas2.png",
-    },
+    // {
+    //   boldTitle: "Infrastructure",
+    //   italicTitle: "as a Service (IaaS)",
+    //   description:
+    //     "Our team has immense experience in setting up and maintenance of Cloud Infrastructure for Banks and Financial Institutions...",
+    //   image: "/iaas2.png",
+    // },
     {
       boldTitle: "Lightweight",
       italicTitle: "Business Application",
@@ -31,17 +31,17 @@ export default function Services() {
       image: "/business.png",
     },
     {
-      boldTitle: "PaaS and SaaS",
+      boldTitle: "Iaas, PaaS and SaaS",
       italicTitle: " Integration",
       description:
-        "Our comprehensive experience in setting up and maintenance of Cloud Infrastructure...",
-      image: "/saas2.png",
+        "Our team has extensive experience in Cloud Infrastructure setup and maintenance for Banks and Financial Institutions, covering IaaS, PaaS, and SaaS environments.",
+      image: "/Services/ips.png",
     },
     {
       boldTitle: "Event",
       italicTitle: "Streaming",
       description:
-        "We specialize in event streaming technologies like Apache Kafka, Oracle Streaming...",
+        "We specialize in event streaming technologies such as Apache Kafka, Oracle Streaming, and RabbitMQ, empowering businesses to build scalable, event-driven systems with reliable message delivery and real-time analytics.",
       image: "/Services/event.png",
     },
     {
@@ -52,8 +52,8 @@ export default function Services() {
       image: "/Services/globalremittance.png",
     },
         {
-      boldTitle: "LOS",
-      italicTitle: "& LMS Integration: ",
+      boldTitle: "LOS & LMS",
+      italicTitle: " Integration: ",
       description:
         "A unified LOS and LMS platform that automates the entire loan process—from origination to repayment—improving efficiency, compliance, and customer experience.",
       image: "/Services/lms&los.png",
@@ -62,7 +62,7 @@ export default function Services() {
       boldTitle: "Observability",
       italicTitle: "and Analytics",
       description:
-        "Our observability and analytics solutions, based on the Oracle analytics...",
+        "Our observability and analytics solutions, powered by Oracle Analytics and the ELK Stack, enable real-time monitoring, log analysis, and actionable insights.",
       image: "/observability.png",
     },
     {
