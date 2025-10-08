@@ -75,81 +75,73 @@ export default function WhoWeAreSection() {
           </div>
 
           {/* RIGHT CONTENT (Vision + Mission) */}
-          <div className="w-full md:w-1/2 flex flex-col gap-6 justify-center items-stretch">
-            {/* Vision Card */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 30 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              whileHover={{
-                scale: 1.05,
-                boxShadow: "0 20px 40px rgba(90, 214, 255, 0.25)",
-              }}
-              whileTap={{ scale: 0.98 }}
-              animate={{
-                y: [0, -4, 0],
-                transition: { duration: 6, repeat: Infinity, ease: "easeInOut" },
-              }}
-              className="relative bg-white/80 backdrop-blur-md border border-white/40 rounded-3xl shadow-xl p-8 w-full h-full overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-[#5AD6FF]/15 to-[#9fd8f2]/10 rounded-3xl blur-xl -z-10"></div>
-              <h3 className="text-3xl font-extrabold text-slate-950 mb-4 tracking-tight">
-                Vision
-              </h3>
-              <ul className="list-disc list-inside text-sm md:text-base leading-relaxed text-slate-950 tracking-wide font-extralight space-y-2">
-                <li>Be a market leader in digital transformation.</li>
-                <li>
-                  Create meaningful change for businesses, employees, and society.
-                </li>
-                <li>Focus on stakeholder value creation and sustainability.</li>
-                <li>Enable innovation through trust and long-term vision.</li>
-              </ul>
+<div className="w-full md:w-1/2 flex flex-col gap-6 justify-center items-stretch">
+  {/* Vision Card */}
+  <motion.div
+    initial={{ opacity: 0, scale: 0.9, y: 30 }}
+    whileInView={{ opacity: 1, scale: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.3 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    whileHover={{
+      scale: 1.05,
+      boxShadow: "0 20px 40px rgba(90, 214, 255, 0.25)",
+    }}
+    whileTap={{ scale: 0.98 }}
+    animate={{
+      y: [0, -4, 0],
+      transition: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+    }}
+    className="relative bg-white/80 backdrop-blur-md border border-white/40 rounded-3xl shadow-xl p-8 w-full h-full overflow-hidden"
+  >
+    <div className="absolute inset-0 bg-gradient-to-br from-[#5AD6FF]/15 to-[#9fd8f2]/10 rounded-3xl blur-xl -z-10"></div>
+    <h3 className="text-3xl font-extrabold text-slate-950 mb-4 tracking-tight">
+      Vision
+    </h3>
+    <p className="text-sm md:text-base leading-relaxed text-slate-950 tracking-wide font-extralight">
+      To be the global catalyst for digital transformation, shaping the next
+      generation of business by delivering world-changing, intelligent
+      technology experiences.
+    </p>
 
-              <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: "100%" }}
-                transition={{ duration: 1, ease: "easeInOut", delay: 0.4 }}
-                className="h-1 mt-6 bg-gradient-to-r from-[#5AD6FF] to-[#9fd8f2] rounded-full"
-              />
-            </motion.div>
+    <motion.div
+      initial={{ width: 0 }}
+      animate={{ width: "100%" }}
+      transition={{ duration: 1, ease: "easeInOut", delay: 0.4 }}
+      className="h-1 mt-6 bg-gradient-to-r from-[#5AD6FF] to-[#9fd8f2] rounded-full"
+    />
+  </motion.div>
 
-            {/* Mission Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-               whileHover={{ scale: 1.03, boxShadow: "0 20px 40px rgba(90, 214, 255, 0.25)" }}
-               
-              className="relative bg-white/80 backdrop-blur-md border border-white/40 rounded-3xl shadow-2xl p-8 w-full h-full overflow-hidden"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-[#9fd8f2]/20 to-[#5AD6FF]/10 rounded-3xl blur-2xl -z-10"></div>
-              <h3 className="text-3xl font-extrabold text-slate-950 mb-4 tracking-tight">
-                Mission
-              </h3>
-              <ul className="list-disc list-inside text-sm md:text-base leading-relaxed text-slate-950 tracking-wide font-extralight space-y-2">
-                <li>
-                  Partner with enterprises to achieve digital transformation success.
-                </li>
-                <li>
-                  Deliver excellence in <strong>Innovation, Integration, and Computing</strong>.
-                </li>
-                <li>
-                  Combine technical expertise with strategic business insight.
-                </li>
-                <li>
-                  Build sustainable, long-term client partnerships for growth.
-                </li>
-              </ul>
-              <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: "100%" }}
-                transition={{ duration: 1.2, ease: "easeInOut", delay: 0.5 }}
-                className="h-1 mt-6 bg-gradient-to-r from-[#9fd8f2] to-[#5AD6FF] rounded-full"
-              />
-            </motion.div>
-          </div>
+  {/* Mission Card */}
+  <motion.div
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true }}
+    transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+    whileHover={{
+      scale: 1.03,
+      boxShadow: "0 20px 40px rgba(90, 214, 255, 0.25)",
+    }}
+    className="relative bg-white/80 backdrop-blur-md border border-white/40 rounded-3xl shadow-2xl p-8 w-full h-full overflow-hidden"
+  >
+    <div className="absolute inset-0 bg-gradient-to-br from-[#9fd8f2]/20 to-[#5AD6FF]/10 rounded-3xl blur-2xl -z-10"></div>
+    <h3 className="text-3xl font-extrabold text-slate-950 mb-4 tracking-tight">
+      Mission
+    </h3>
+    <p className="text-sm md:text-base leading-relaxed text-slate-950 tracking-wide font-extralight">
+      To partner with forward-thinking organizations, applying cutting-edge
+      digital and cloud technologies to transform their processes, enhance
+      productivity, and secure their digital future.
+    </p>
+
+    <motion.div
+      initial={{ width: 0 }}
+      animate={{ width: "100%" }}
+      transition={{ duration: 1.2, ease: "easeInOut", delay: 0.5 }}
+      className="h-1 mt-6 bg-gradient-to-r from-[#9fd8f2] to-[#5AD6FF] rounded-full"
+    />
+  </motion.div>
+</div>
+
         </div>
       </div>
     </section>

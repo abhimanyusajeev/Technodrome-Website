@@ -23,6 +23,20 @@ export default function Services() {
     //     "Our team has immense experience in setting up and maintenance of Cloud Infrastructure for Banks and Financial Institutions...",
     //   image: "/iaas2.png",
     // },
+       {
+      boldTitle: "Collections",
+      italicTitle: "and Management",
+      description:
+        "We provide efficient collections and management solutions to streamline financial operations and ensure seamless tracking of payments.",
+      image: "/Services/Collections.png",
+    },
+            {
+      boldTitle: "UPI",
+      italicTitle: "Integrations",
+      description:
+        "We provide seamless UPI integration solutions that connect acquirers and issuers to enable secure, real-time transactions, streamline digital payments, and enhance efficiency for businesses and customers alike.",
+      image: "/Services/UPI.png",
+    },
     {
       boldTitle: "Lightweight",
       italicTitle: "Business Application",
@@ -65,20 +79,7 @@ export default function Services() {
         "Our observability and analytics solutions, powered by Oracle Analytics and the ELK Stack, enable real-time monitoring, log analysis, and actionable insights.",
       image: "/observability.png",
     },
-    {
-      boldTitle: "Collections",
-      italicTitle: "and Management",
-      description:
-        "We provide efficient collections and management solutions to streamline financial operations and ensure seamless tracking of payments.",
-      image: "/Services/Collections.png",
-    },
-        {
-      boldTitle: "UPI",
-      italicTitle: "Integrations",
-      description:
-        "We provide seamless UPI integration solutions that connect acquirers and issuers to enable secure, real-time transactions, streamline digital payments, and enhance efficiency for businesses and customers alike.",
-      image: "/Services/UPI.png",
-    },
+
   ];
 
   const [current, setCurrent] = useState(0);
