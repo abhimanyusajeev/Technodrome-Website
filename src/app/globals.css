@@ -77,3 +77,6 @@ body {
   animation-duration: 8s; /* faster cycle */
 }
 
+.font-roboto-numbers {
+  font-family: 'Roboto', sans-serif !important;
+}

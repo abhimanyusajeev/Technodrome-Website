@@ -30,7 +30,7 @@ const Footer: React.FC = () => {
       
       {/* LEFT SECTION */}
       <div className="flex flex-row items-start justify-start gap-3">
-        <img src="/Logo/BlueTlogo.png" alt="Logo" className="w-16 h-16 mb-72 object-contain" />
+        <img src="/Logo/whiteTlogobgchange.png" alt="Logo" className="w-16 h-24 mb-72 object-contain" />
 
         <div className="text-left py-5.5">
           <img src="/technodromelogo.png" alt="Technodrome Logo" className="w-60 h-14 object-contain mb-7" />
@@ -62,17 +62,17 @@ const Footer: React.FC = () => {
         <div className="space-y-6 text-base sm:text-lg">
           <div>
             <p className="font-bold text-white">Corporate Office:</p>
-            <p>C112, 1st Floor, Eastern Business District, LBS Marg, Bhandup West, Mumbai, Maharashtra 400078</p>
+            <p className="font-roboto-numbers">C112, 1st Floor, Eastern Business District, LBS Marg, Bhandup West, Mumbai, Maharashtra 400078</p>
           </div>
 
           <div>
             <p className="font-bold text-white">Registered Office:</p>
-            <p>3D, 1401, Dreams, LBS Marg, Bhandup West, Mumbai, Maharashtra 400078, India</p>
+            <p className="font-roboto-numbers">3D, 1401, Dreams, LBS Marg, Bhandup West, Mumbai, Maharashtra 400078, India</p>
           </div>
 
           <div className="flex justify-center md:justify-start items-center gap-2">
             <FaPhoneAlt className="text-[#5AD6FF]" />
-            <p>+91 9895527234</p>
+            <p className="font-roboto-numbers">+91 9895527234</p>
           </div>
 
           <div className="flex justify-center md:justify-start items-center gap-2">
@@ -83,7 +83,7 @@ const Footer: React.FC = () => {
       </div>
     </div>
 
-    <div className="mt-10 border-t border-white/40 pt-6 text-center text-white/60 text-sm">
+    <div className="mmt-10 border-t border-white/40 pt-6 text-center text-white/60 text-sm font-roboto-numbers">
       © {new Date().getFullYear()} Technodromesolutions. All rights reserved.
     </div>
   </div>
