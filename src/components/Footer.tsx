@@ -64,6 +64,27 @@ const Footer: React.FC = () => {
     >
       <FaLinkedin size={20} />
     </a>
+      {/* Map Icon */}
+  <button
+    onClick={() => setShowMap(!showMap)}
+    className="hover:text-[#5AD6FF] transition flex items-center"
+  >
+    <FaMapMarkerAlt size={20} />
+  </button>
+{/* Map Display */}
+{showMap && (
+  <div className="mt-4 rounded-xl overflow-hidden shadow-lg border border-white/30 w-full">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.9234643015027!2d72.93054841539264!3d19.1520733550581!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b8731c8a3f23%3A0x123456789abcdef!2sEastern%20Business%20District%2C%20Bhandup%20West!5e0!3m2!1sen!2sin!4v1695555555555!5m2!1sen!2sin"
+      width="100%"
+      height="250"
+      style={{ border: 0 }}
+      allowFullScreen
+      loading="lazy"
+      referrerPolicy="no-referrer-when-downgrade"
+    ></iframe>
+  </div>
+)}
   </div>
 </div>
 
@@ -89,12 +110,12 @@ const Footer: React.FC = () => {
           </div>
 
           <div className="flex justify-center md:justify-start items-center gap-2">
-            <FaPhoneAlt className="text-[#5AD6FF]" />
+            <FaPhoneAlt className="text-[#5AD6FF] text-sm" />
             <p className="font-roboto-numbers text-sm">+91 9895527234</p>
           </div>
 
           <div className="flex justify-center md:justify-start items-center gap-2 text-sm mb-3.5">
-            <FaEnvelope className="text-[#5AD6FF]" />
+            <FaEnvelope className="text-[#5AD6FF] text-sm" />
             <p>info@technodromesolutions.com</p>
           </div>
         </div>

@@ -67,10 +67,10 @@ export default function CompanyJourney() {
     >
       {/* Heading with animation */}
       <motion.div
-        initial={{ opacity: 0, x: -50 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
+        // initial={{ opacity: 0, x: -50 }}
+        // whileInView={{ opacity: 1, x: 0 }}
+        // transition={{ duration: 0.8 }}
+        // viewport={{ once: true }}
       >
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 text-center md:text-left">
           Company <span className="text-[#5AD6FF]">Journey</span>
