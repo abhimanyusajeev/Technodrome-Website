@@ -9,6 +9,7 @@ const raleway = Raleway({
   subsets: ["latin"],
   weight: ["200", "300", "400", "600", "700", "900"],
 });
+
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400"], // normal weight (you can add more if needed)
@@ -59,7 +60,6 @@ const journey = [
   },
 ];
 
-
 export default function CompanyJourney() {
   return (
     <section
@@ -82,7 +82,7 @@ export default function CompanyJourney() {
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
           className="h-1 bg-[#5AD6FF] rounded-full mb-10 sm:mb-12 mx-auto md:mx-0"
-        ></motion.div>
+        />
       </motion.div>
 
       <div className="max-w-7xl mx-auto">
@@ -145,9 +145,7 @@ export default function CompanyJourney() {
           viewport={{ once: true }}
           variants={{
             hidden: {},
-            visible: {
-              transition: { staggerChildren: 0.2 },
-            },
+            visible: { transition: { staggerChildren: 0.2 } },
           }}
           className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
         >
@@ -161,10 +159,9 @@ export default function CompanyJourney() {
               transition={{ duration: 0.7, ease: "easeOut" }}
               className="bg-white rounded-xl shadow-md p-4 border border-gray-100 hover:shadow-lg transition"
             >
-<h3 className="text-sm sm:text-base font-bold text-gray-900 mb-2">
-  <span className={roboto.className}>{milestone.year}</span> – {milestone.phase}
-</h3>
-
+              <h3 className="text-sm sm:text-base font-bold text-gray-900 mb-2">
+                <span className={roboto.className}>{milestone.year}</span> – {milestone.phase}
+              </h3>
 
               <ul className="text-gray-700 text-xs sm:text-sm space-y-1 list-disc list-inside">
                 {milestone.points.map((point, idx) => (

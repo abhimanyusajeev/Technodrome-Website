@@ -62,7 +62,7 @@ export default function HomeNextPage() {
       className="
         relative
         h-screen
-        px-6 sm:px-10 lg:px-16
+        px-16 sm:px-6 md:px-10 lg:px-16 xl:px-24
         flex flex-col 
         justify-between
         overflow-hidden
@@ -78,14 +78,15 @@ export default function HomeNextPage() {
         }}
       />
 
-      <div className="w-full max-w-6xl flex flex-col justify-center h-full">
+      <div className="w-full max-w-6xl flex flex-col justify-center h-full mx-auto">
         {/* Headline with scroll-based zoom */}
         <motion.h1
           style={{ scale: headlineScale }}
           className={`${raleway.className} 
-            text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl 
+            text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl
             flex flex-col leading-snug 
             text-center lg:text-left
+            px-2 sm:px-0
           `}
         >
           {headline.map((line, i) => (
@@ -94,7 +95,7 @@ export default function HomeNextPage() {
               className="flex flex-wrap justify-center lg:justify-start"
             >
               {line.split(" ").map((word, wIndex) => (
-                <span key={wIndex} className="mr-3">
+                <span key={wIndex} className="mr-2 sm:mr-3">
                   {word.split("").map((char, cIndex) => (
                     <motion.span
                       key={cIndex}
