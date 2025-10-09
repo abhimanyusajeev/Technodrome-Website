@@ -62,7 +62,7 @@ export default function HomeNextPage() {
       className="
         relative
         h-screen
-        px-16 sm:px-6 md:px-10 lg:px-16 xl:px-24
+        px-6 sm:px-8 md:px-10 lg:px-16 xl:px-24
         flex flex-col 
         justify-between
         overflow-hidden
