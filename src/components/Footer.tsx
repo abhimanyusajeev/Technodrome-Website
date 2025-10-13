@@ -62,20 +62,27 @@ const Footer: React.FC = () => {
 
             {/* Social Icons */}
             <div className="flex justify-start space-x-4 mt-8 text-white/70 mx-auto">
-              <a
-                href="https://x.com/Technodrome2706?t=Ic7yBJx4oq-Q6ZCvfxTxuQ&s=09"
-                className="hover:text-[#5AD6FF] transition"
-              >
-                <FaXTwitter size={20} />
-              </a>
+<a
+  href="https://x.com/Technodrome2706?t=Ic7yBJx4oq-Q6ZCvfxTxuQ&s=09"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="hover:text-[#5AD6FF] transition"
+>
+  <FaXTwitter size={20} />
+</a>
+
               <a
                 href="https://www.instagram.com/technodrome_solutions_pvt_ltd?igsh=MWM3ZHRzYXg0bzVmMw=="
+                  target="_blank"
+  rel="noopener noreferrer"
                 className="hover:text-[#5AD6FF] transition"
               >
                 <FaInstagram size={20} />
               </a>
               <a
                 href="https://www.linkedin.com/company/technodrome-solutions-private-limited/"
+                  target="_blank"
+  rel="noopener noreferrer"
                 className="hover:text-[#5AD6FF] transition"
               >
                 <FaLinkedin size={20} />
@@ -141,13 +148,21 @@ const Footer: React.FC = () => {
 
               <div className="flex justify-center md:justify-start items-center gap-2">
                 <FaPhoneAlt className="text-[#5AD6FF] text-sm" />
-                <p className="font-roboto-numbers text-sm">+91 9895527234</p>
+                <a href="tel:+919895527234" className="font-roboto-numbers text-sm text-white-600 hover:underline">
+  +91 9895527234
+</a>
               </div>
 
-              <div className="flex justify-center md:justify-start items-center gap-2 text-sm mb-3.5">
-                <FaEnvelope className="text-[#5AD6FF] text-sm" />
-                <p>info@technodromesolutions.com</p>
-              </div>
+<div className="flex justify-center md:justify-start items-center gap-2 text-sm mb-3.5">
+  <FaEnvelope className="text-[#5AD6FF] text-sm" />
+  <a
+    href="mailto:info@technodromesolutions.com"
+    className="text-sm text-white-600 hover:underline"
+  >
+    info@technodromesolutions.com
+  </a>
+</div>
+
             </div>
           </div>
         </div>
