@@ -27,15 +27,22 @@ export default function Services() {
       boldTitle: "Collections",
       italicTitle: "and Management",
       description:
-        "We provide efficient collections and management solutions to streamline financial operations and ensure seamless tracking of payments.",
+        "Delivering efficient collections and management solutions to streamline financial operations and ensure seamless tracking of payments.",
       image: "/Services/Collections.png",
     },
             {
       boldTitle: "UPI",
       italicTitle: "Integrations",
       description:
-        "We provide seamless UPI integration solutions that connect acquirers and issuers to enable secure, real-time transactions, streamline digital payments, and enhance efficiency for businesses and customers alike.",
+        "Specializing in seamless UPI integration solutions that connect acquirers and issuers to enable secure, real-time transactions, streamline digital payments, and enhance efficiency for businesses and customers alike.",
       image: "/Services/UPI.png",
+    },
+        {
+      boldTitle: "Full-Stack Web ",
+      italicTitle: "& Mobile Development",
+      description:
+        "we provide end-to-end web and mobile development, from static websites and full-stack applications to iOS and Android apps, delivering seamless, high-performance digital experiences that drive engagement and growth.",
+      image: "/Services/fullstack.png",
     },
     {
       boldTitle: "Lightweight",
