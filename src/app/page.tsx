@@ -76,9 +76,9 @@ export default function HomePage() {
           <About />
         </section>
 
-        {/* <section id="partners">
+        <section id="partners">
           <Partners />
-        </section> */}
+        </section>
 
         <section id="contact">
           <GetInTouch />
