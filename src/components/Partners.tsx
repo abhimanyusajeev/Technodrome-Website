@@ -12,7 +12,7 @@ const raleway = Raleway({
 
 const partners = [
   { name: "Nishkaiv Solutions", logo: "/partners/nishkaivtxt.png" },
-  { name: "SP Ninovation", logo: "/partners/spinovation.jpeg" },
+  { name: "IBM", logo: "/partners/IBM.png" },
   // { name: "ESAFF Bank", logo: "/esaf.png" },
   // Add more logos here
 ];
@@ -21,7 +21,7 @@ export default function Partners() {
   return (
     <section
       id="partners"
-      className={`py-20 bg-gradient-to-br from-slate-50 via-white to-slate-100 ${raleway.className}`}
+      className={`bg-gradient-to-br from-white via-slate-80 to-slate-50  px-4 sm:px-6 lg:px-8 py-8 ${raleway.className}`}
     >
       {/* Header */}
       <motion.div
@@ -45,10 +45,10 @@ export default function Partners() {
           className="h-1 bg-[#5AD6FF] mx-auto rounded-full mb-6"
         ></motion.div>
 
-        <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+        {/* <p className="text-gray-600 text-lg max-w-2xl mx-auto">
           Trusted by leading banks and financial institutions who rely on us
           for innovation, reliability, and technology excellence.
-        </p>
+        </p> */}
       </motion.div>
 
       {/* Partner Logos (static, no hover effects) */}

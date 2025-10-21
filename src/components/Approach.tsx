@@ -48,8 +48,8 @@ const steps: Step[] = [
 const Approach: FC = () => {
   return (
 <section
-  className={`bg-gradient-to-br from-slate-50 via-white to-slate-100 
-  py-12 sm:py-16 px-4 sm:px-6 ${raleway.className}`}
+  className={`bg-gradient-to-br from-white via-slate-85 to-slate-20 px-4 sm:px-6 lg:px-8 py-8
+ ${raleway.className}`}
 >
 
       <div className="max-w-6xl mx-auto flex flex-col items-center text-center">

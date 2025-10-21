@@ -46,6 +46,7 @@ const journey = [
     points: [
       "Introduced Global Remittance Platform for seamless cross-border payments.",
       "Deployed UPI Switch on AWS for scalable transactions.",
+      "Proud IBM Partner - Delivering trusted IBM technologies tailored to your business needs.",
     ],
   },
   {
@@ -63,7 +64,7 @@ const journey = [
 export default function CompanyJourney() {
   return (
     <section
-      className={`relative min-h-[60vh] bg-white py-16 px-4 sm:px-8 lg:px-20 overflow-x-auto ${raleway.className}`}
+      className={`relative min-h-[60vh] bg-gradient-to-br from-white via-slate-80 to-slate-20 px-4 sm:px-6 lg:px-8 py-8 ${raleway.className}`}
     >
       {/* Heading with animation */}
         <motion.div
@@ -151,7 +152,7 @@ export default function CompanyJourney() {
   }}
   className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
 > */}
-<div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+<div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"  >
   {journey.map((milestone, i) => (
     // <motion.div
     //   key={i}
@@ -170,11 +171,14 @@ export default function CompanyJourney() {
         <span className={roboto.className}>{milestone.year}</span> – {milestone.phase}
       </h3>
 
-      <ul className="text-gray-700 text-xs sm:text-sm space-y-1 list-disc list-inside">
-        {milestone.points.map((point, idx) => (
-          <li key={idx}>{point}</li>
-        ))}
-      </ul>
+<ul className="text-gray-700 text-xs sm:text-sm space-y-2 list-disc list-inside">
+  {milestone.points.map((point, idx) => (
+    <li key={idx} className="break-words">
+      {point}
+    </li>
+  ))}
+</ul>
+
     </div>
     // </motion.div>
   ))}

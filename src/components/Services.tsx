@@ -188,7 +188,7 @@ export default function Services() {
 
           <div
             ref={containerRef}
-            className="relative flex justify-center items-center w-full h-[500px] cursor-grab select-none"
+            className="relative flex justify-center items-center w-full h-[500px] cursor-grab select-none text-justify"
             onMouseDown={handleDragStart}
             onMouseMove={handleDragMove}
             onMouseUp={handleDragEnd}

@@ -34,7 +34,7 @@ const industries = [
 export default function IndustriesWeServe() {
   return (
     <section
-      className={`bg-white px-4 sm:px-6 lg:px-8 py-8 flex flex-col items-center ${raleway.className}`}
+      className={`bg-gradient-to-br from-white via-slate-80 to-slate-50 px-4 sm:px-6 lg:px-8 py-8 flex flex-col items-center ${raleway.className}`}
     >
       {/* Heading */}
       <motion.div

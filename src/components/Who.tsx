@@ -22,7 +22,7 @@ const ralewayItalic = Raleway({
 
 export default function WhoWeAreSection() {
   return (
-    <section className={`bg-white py-12 sm:py-16  ${raleway.className}`}>
+    <section className={`bg-white px-4 sm:px-6 lg:px-8 py-8  ${raleway.className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* ✅ Animated Heading (same style as “Our Approach”) */}

@@ -13,7 +13,7 @@ const raleway = Raleway({
 export default function About() {
   return (
     <section
-      className={`bg-gradient-to-br from-slate-50 via-white to-slate-100 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 ${raleway.className}`}
+      className={` bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 ${raleway.className}`}
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
         {/* LEFT - Text Content */}
@@ -36,21 +36,22 @@ export default function About() {
             className="h-1 bg-[#5AD6FF] rounded-full mb-6 sm:mb-8"
           ></motion.div>
 
-          <p className="text-base sm:text-lg text-gray-800 leading-relaxed mb-4 sm:mb-6">
-            Technodrome Solutions Pvt. Ltd. is a cutting-edge, new age
-            technology solutions company that specialises in delivering robust
-            and scalable solutions to meet the evolving needs of businesses.
-          </p>
+<p className="text-base sm:text-lg text-gray-800 leading-relaxed mb-4 sm:mb-6 text-justify">
+  Technodrome Solutions Pvt. Ltd. is a cutting-edge, new age technology solutions company that specialises in delivering robust and scalable solutions to meet the evolving needs of businesses.
+</p>
 
-          <p className="text-base sm:text-lg text-gray-800 leading-relaxed mb-4 sm:mb-6">
-            Our team has over 20 years of experience in banking, insurance,
-            logistics and health with a strong focus on Banking and Finance
-            Technology.
-          </p>
+<p className="text-base sm:text-lg text-gray-800 leading-relaxed mb-4 sm:mb-6 text-justify">
+  Our team has over 20 years of experience in banking, insurance, logistics and health with a strong focus on Banking and Finance Technology.
+</p>
 
-          <p className="text-base sm:text-lg text-gray-800 leading-relaxed">
-            We have expertise in Oracle APEX, Oracle Cloud Infrastructure (OCI), IaaS, PaaS, SaaS, Microservices, Kubernetes, ESB, Amazon AWS, Event Streaming, Databases, DevOps, Observability and Analytics, as well as Payments and Collections, Global Remittance, UPI Integration, and Loan Management Systems (LMS). We empower organizations to thrive in today’s digital landscape.
-          </p>
+<p className="text-base sm:text-lg text-gray-800 leading-relaxed text-justify">
+  We have expertise in Oracle APEX, Oracle Cloud Infrastructure (OCI), IaaS, PaaS, SaaS, Microservices, Kubernetes, ESB, Amazon AWS, Event Streaming, Databases, DevOps, Observability and Analytics, as well as Payments and Collections, Global Remittance, UPI Integration, and Loan Management Systems (LMS). We empower organizations to thrive in today’s digital landscape.
+</p>
+
+<p className="text-base sm:text-lg text-gray-800 leading-relaxed mt-7 text-justify">
+  In addition, Technodrome has established a strategic partnership with IBM and possesses deep expertise in IBM Watsonx, leveraging advanced AI-driven solutions to empower organizations to innovate, automate, and thrive in today’s digital landscape.
+</p>
+
         </motion.div>
 
         {/* RIGHT - Image with Animation */}
@@ -60,20 +61,21 @@ export default function About() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="flex justify-center md:justify-end"
         >
-          <motion.div
-  
-            className="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg overflow-hidden"
-          >
-            <Image
-              src="/aboutus.png"
-              alt="Team of Technodrome Solutions working on digital innovation"
-              width={500}
-              height={500}
-              priority // ✅ ensures loads immediately
-              className="object-cover w-full h-auto"
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 500px"
-            />
-          </motion.div>
+<motion.div
+  className="w-full max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-3xl overflow-hidden mr-15"
+>
+  <Image
+    src="/aboutus.png"
+    alt="Team of Technodrome Solutions working on digital innovation"
+    width={800}       // increased width
+    height={800}      // increased height
+    priority          // ✅ ensures loads immediately
+    className="object-cover w-full h-auto"
+    sizes="(max-width: 900px) 100vw, (max-width: 1024px) 50vw, 800px"
+  />
+</motion.div>
+
+
           
         </motion.div>
       </div>

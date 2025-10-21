@@ -74,7 +74,8 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
   return (
     <section
-      className={`py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 bg-white overflow-hidden ${raleway.className}`}
+      className={`bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8
+ ${raleway.className}`}
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-start">
         {/* LEFT SIDE */}
