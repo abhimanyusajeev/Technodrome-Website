@@ -1,8 +1,16 @@
+/* --- Tailwind Imports --- */
 @import "tailwindcss";
+/* @import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
+@import "tailwindcss/theme"; */
+
+/* --- Third-party plugin --- */
 @import "tw-animate-css";
-/* ---break---  */
+
+/* --- Custom Variants --- */
 @custom-variant dark (&:is(.dark *));
 
+/* --- Theme Variables (inline) --- */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -42,9 +50,8 @@
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 }
-/* * {
-  outline: 1px solid red;
-}  */
+
+/* --- Gradient Blur Animation --- */
 @keyframes gradient-blur {
   0%, 100% {
     background-position: 0% 50%;
@@ -75,32 +82,32 @@
     #fcfcfc 100%
   );
   background-size: 200% 200%;
-  animation: gradient-blur 20s ease-in-out infinite; /* calm speed */
+  animation: gradient-blur 20s ease-in-out infinite;
   opacity: 0.8;
 }
 
-/* ✅ subtle haze */
+/* ✅ Subtle haze effect */
 .bg-live-blur::before {
   filter: blur(20px);
 }
 
-/* ✅ dreamy glass clouds */
+/* ✅ Dreamy glass cloud effect */
 .bg-live-blur-strong::before {
   filter: blur(60px);
   opacity: 0.9;
 }
 
-/* Optional: faster techy vibe */
+/* Optional: faster animation cycle */
 .bg-live-blur-fast::before {
-  animation-duration: 8s; /* faster cycle */
+  animation-duration: 8s;
 }
 
+/* --- Font Fix for Roboto Numbers --- */
 .font-roboto-numbers {
   font-family: 'Roboto', sans-serif !important;
 }
 
-/* ---break---  */
-
+/* --- Light Theme Variables --- */
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -136,8 +143,7 @@
   --sidebar-ring: oklch(0.704 0.04 256.788);
 }
 
-/* ---break---  */
-
+/* --- Dark Theme Variables --- */
 .dark {
   --background: oklch(0.129 0.042 264.695);
   --foreground: oklch(0.984 0.003 247.858);
@@ -172,8 +178,7 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
-/* ---break---  */
-
+/* --- Base Layer --- */
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -183,11 +188,13 @@
   }
 }
 
+/* Debugging aid */
+/* * {
+  outline: 1px solid red;
+} */
+
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* * {
-  outline: 1px solid red;
-}  */

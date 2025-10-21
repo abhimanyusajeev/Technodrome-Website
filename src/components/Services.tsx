@@ -32,6 +32,14 @@ export default function Services() {
       image: "/Services/Collections.png",
     },
             {
+      boldTitle: "AI-Driven Solutions",
+      italicTitle: "Powered by IBM watsonx",
+      description:
+              "AI-driven solutions powered by IBM Watson that enable businesses to harness data intelligently, automate processes, and deliver personalized experiences, enhancing operational efficiency and driving innovation across industries.",
+
+      image: "/Services/Ibm-watsonxx.png",
+    },
+                {
       boldTitle: "UPI",
       italicTitle: "Integrations",
       description:

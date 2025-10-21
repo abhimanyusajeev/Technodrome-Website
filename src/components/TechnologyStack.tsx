@@ -109,9 +109,8 @@ const techStack = [
     images: [
       { src: "/techStack/python.png", name: "Python" },
       { src: "/techStack/tensorflow.png", name: "TensorFlow" },
-      { src: "/techStack/pytorch.png", name: "PyTorch" },
       { src: "/techStack/openai.png", name: "OpenAI" },
-      { src: "/techStack/ibmwatson.png", name: "IBM Watson" },
+      { src: "/Services/Ibm-watsonxx.png", name: "IBM Watsonx" },
     ],
   },
 ];

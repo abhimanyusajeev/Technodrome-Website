@@ -140,38 +140,47 @@ export default function CompanyJourney() {
         </motion.div>
 
         {/* Cards with staggered fade-up + rotation */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={{
-            hidden: {},
-            visible: { transition: { staggerChildren: 0.2 } },
-          }}
-          className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
-        >
-          {journey.map((milestone, i) => (
-            <motion.div
-              key={i}
-              variants={{
-                hidden: { opacity: 0, y: 40, rotate: 3 },
-                visible: { opacity: 1, y: 0, rotate: 0 },
-              }}
-              transition={{ duration: 0.7, ease: "easeOut" }}
-              className="bg-white rounded-xl shadow-md p-4 border border-gray-100 hover:shadow-lg transition"
-            >
-              <h3 className="text-sm sm:text-base font-bold text-gray-900 mb-2">
-                <span className={roboto.className}>{milestone.year}</span> – {milestone.phase}
-              </h3>
+{/* Cards grid */}
+{/* <motion.div
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+  variants={{
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.2 } },
+  }}
+  className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"
+> */}
+<div className="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+  {journey.map((milestone, i) => (
+    // <motion.div
+    //   key={i}
+    //   variants={{
+    //     hidden: { opacity: 0, y: 40, rotate: 3 },
+    //     visible: { opacity: 1, y: 0, rotate: 0 },
+    //   }}
+    //   transition={{ duration: 0.7, ease: "easeOut" }}
+    //   className="bg-white rounded-xl shadow-md p-4 border border-gray-100 hover:shadow-lg transition"
+    // >
+    <div
+      key={i}
+      className="bg-white rounded-xl shadow-md p-4 border border-gray-100 hover:shadow-lg transition"
+    >
+      <h3 className="text-sm sm:text-base font-bold text-gray-900 mb-2">
+        <span className={roboto.className}>{milestone.year}</span> – {milestone.phase}
+      </h3>
 
-              <ul className="text-gray-700 text-xs sm:text-sm space-y-1 list-disc list-inside">
-                {milestone.points.map((point, idx) => (
-                  <li key={idx}>{point}</li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </motion.div>
+      <ul className="text-gray-700 text-xs sm:text-sm space-y-1 list-disc list-inside">
+        {milestone.points.map((point, idx) => (
+          <li key={idx}>{point}</li>
+        ))}
+      </ul>
+    </div>
+    // </motion.div>
+  ))}
+</div>
+{/* </motion.div> */}
+
       </div>
     </section>
   );
