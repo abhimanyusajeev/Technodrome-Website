@@ -22,15 +22,29 @@ const ralewayItalic = Raleway({
 
 export default function WhoWeAreSection() {
   return (
-    <section className={`bg-white py-12 sm:py-16 ${raleway.className}`}>
+    <section className={`bg-white py-12 sm:py-16  ${raleway.className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Heading */}
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-950 mb-3 text-center md:text-left">
-          Who We <span className="text-[#5AD6FF]">Are.</span>
-        </h2>
 
-        {/* Divider */}
-        <div className="h-1 bg-[#5AD6FF] rounded-full mb-8 sm:mb-10 mx-auto md:mx-0 w-[100px]" />
+        {/* ✅ Animated Heading (same style as “Our Approach”) */}
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-950 mb-4 text-center md:text-left ">
+            Who We <span className="text-[#5AD6FF]">Are</span>
+          </h2>
+
+          {/* Underline animation */}
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: "100px" }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="h-1 bg-[#5AD6FF] rounded-full mb-8 sm:mb-10 mx-auto md:mx-0"
+          />
+        </motion.div>
 
         {/* Two-column container */}
         <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start md:items-stretch">

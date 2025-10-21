@@ -66,24 +66,25 @@ export default function CompanyJourney() {
       className={`relative min-h-[60vh] bg-white py-16 px-4 sm:px-8 lg:px-20 overflow-x-auto ${raleway.className}`}
     >
       {/* Heading with animation */}
-      <motion.div
-        // initial={{ opacity: 0, x: -50 }}
-        // whileInView={{ opacity: 1, x: 0 }}
-        // transition={{ duration: 0.8 }}
-        // viewport={{ once: true }}
-      >
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 text-center md:text-left">
-          Company <span className="text-[#5AD6FF]">Journey</span>
-        </h2>
-
         <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: "120px" }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="h-1 bg-[#5AD6FF] rounded-full mb-10 sm:mb-12 mx-auto md:mx-0"
-        />
-      </motion.div>
+        >
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-950 mb-4 text-center md:text-left">
+          Company<span className="text-[#5AD6FF]"> Journey</span>
+          </h2>
+
+          {/* Underline animation */}
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: "100px" }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true }}
+            className="h-1 bg-[#5AD6FF] rounded-full mb-8 sm:mb-10 mx-auto md:mx-0"
+          />
+        </motion.div>
 
       <div className="max-w-7xl mx-auto">
         {/* Icons row with scale-in animation */}

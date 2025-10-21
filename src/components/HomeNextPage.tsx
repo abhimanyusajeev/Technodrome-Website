@@ -1,136 +1,147 @@
+// NOTE: For Next.js projects, uncomment and adjust the font import below
+// and ensure 'use client' remains at the top.
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useEffect, useState, useRef } from "react";
+import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
+import { useRef } from "react";
 import { Raleway } from "next/font/google";
-import ExpandCircleDownIcon from "@mui/icons-material/ExpandCircleDown";
-import { useInView } from "framer-motion";
 
-// ✅ Load Raleway SemiBold 600
+// --- START: Raleway Font Mockup for Sandbox Environment ---
+// In a Next.js project, this would be:
+// import { Raleway } from "next/font/google";
+// const raleway = Raleway({ subsets: ["latin"], weight: "600" });
 const raleway = Raleway({
   subsets: ["latin"],
   weight: "600",
 });
+// --- END: Raleway Font Mockup ---
 
-export default function HomeNextPage() {
-  const [scrollDir, setScrollDir] = useState<"up" | "down">("down");
+// Define the content
+const stickyHeadlineParts = [
+  "Empowering enterprises with future-ready innovation,",
+  "seamless integration, and intelligent computing solutions—delivering reliable technology",
+  "expertise that drives business performance and creates measurable impact for end-users.",
+];
 
-  // ✅ Track hero visibility
-  const heroRef = useRef(null);
-  const isInView = useInView(heroRef, { amount: 0.4 });
+// Define color constants for clarity
+const BASE_COLOR = "#817c7cff"; // Deselected/faded color (Gray)
+const ACTIVE_COLOR = "#000000ff"; // Highlighted color (White)
 
-  // ✅ Track scroll progress
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
+/**
+ * Helper function to calculate the scroll range for a given word
+ * The output range is normalized from 0 to 1.
+ * @param wordIndex The index of the current word.
+ * @param totalWords The total count of words in the headline.
+ */
+// FIX: Added explicit number types to resolve TypeScript error TS(7006)
+const getWordColorProgress = (wordIndex: number, totalWords: number) => {
+  // Use slightly larger segments for smoother transition across all words
+  const segmentSize = 1 / totalWords;
+  const start = wordIndex * segmentSize;
+  const end = (wordIndex + 1) * segmentSize;
+  const padding = 0.005; // Small padding for smooth transition gap
+  return [start + padding, end - padding];
+};
 
-  // Hero background movement
-  const backgroundPosition = useTransform(
+/**
+ * Component to handle the color animation for a single word.
+ */
+function AnimatedWord({
+  word,
+  wIndex,
+  totalWords,
+  scrollYProgress,
+}: {
+  word: string;
+  wIndex: number;
+  totalWords: number;
+  scrollYProgress: MotionValue<number>;
+}) {
+  const [startProgress, endProgress] = getWordColorProgress(wIndex, totalWords);
+
+  // Use useTransform to map scroll progress to a color value
+  const color = useTransform(
     scrollYProgress,
-    [0, 1],
-    ["0% 0%", "100% 100%"]
+    [startProgress, endProgress],
+    [BASE_COLOR, ACTIVE_COLOR]
   );
 
-  // Headline zoom effect
-  const headlineScale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
+  return (
+    // Use inline-block for proper word wrapping
+    <span className="inline-block mr-2 md:mr-3 my-1">
+      <motion.span style={{ color }}>
+        {word}
+        {/* Add back the space after the word, but not at the end of the last word */}
+        {wIndex < totalWords - 1 ? " " : ""}
+      </motion.span>
+    </span>
+  );
+}
 
-  useEffect(() => {
-    let lastScrollY = window.scrollY;
-    const updateScrollDir = () => {
-      const scrollY = window.scrollY;
-      if (scrollY > lastScrollY) {
-        setScrollDir("down");
-      } else if (scrollY < lastScrollY) {
-        setScrollDir("up");
-      }
-      lastScrollY = scrollY > 0 ? scrollY : 0;
-    };
-    window.addEventListener("scroll", updateScrollDir);
-    return () => window.removeEventListener("scroll", updateScrollDir);
-  }, []);
+/**
+ * Main Sticky Scroll Section component.
+ */
+export default function App() {
+  const containerRef = useRef(null);
 
-  const headline = [
-    "Empowering enterprises with future-ready innovation",
-    "seamless integration, and intelligent computing solutions—delivering reliable technology",
-    "expertise that drives business performance and creates measurable impact for end-users.",
-  ];
+  // 1. Setup Scroll Tracking
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    // Tracks scroll from the moment the container enters the viewport until it leaves
+    offset: ["start end", "end start"],
+  });
+
+  // Flatten the headline into an array of words
+  const words = stickyHeadlineParts.flatMap((part) => part.split(" ").filter(w => w.length > 0));
+  const totalWords = words.length;
 
   return (
-    <section
-      ref={heroRef}
-      className="
-        relative
-        h-screen
-        px-6 sm:px-8 md:px-10 lg:px-16 xl:px-24
-        flex flex-col 
-        justify-between
-        overflow-hidden
-      "
-    >
-      {/* ✅ Scroll-responsive gradient background */}
-      <motion.div
-        className="absolute inset-0 -z-10"
-        style={{
-          background: "linear-gradient(135deg, #f8f8f8, #e6f7ff, #fff7e6)",
-          backgroundSize: "200% 200%",
-          backgroundPosition,
-        }}
-      />
-
-      <div className="w-full max-w-6xl flex flex-col justify-center h-full mx-auto">
-        {/* Headline with scroll-based zoom */}
-        <motion.h1
-          style={{ scale: headlineScale }}
-          className={`${raleway.className} 
-            text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl
-            flex flex-col leading-snug 
-            text-center lg:text-left
-            px-2 sm:px-0
-          `}
-        >
-          {headline.map((line, i) => (
-            <div
-              key={i}
-              className="flex flex-wrap justify-center lg:justify-start"
-            >
-              {line.split(" ").map((word, wIndex) => (
-                <span key={wIndex} className="mr-2 sm:mr-3">
-                  {word.split("").map((char, cIndex) => (
-                    <motion.span
-                      key={cIndex}
-                      className="inline-block"
-                      initial={{ color: "#908E8E" }}
-                      animate={{
-                        color: scrollDir === "up" ? "#0f172a" : "#908E8E",
-                      }}
-                      transition={{
-                        duration: 0.8,
-                        delay: (wIndex * 6 + cIndex) * 0.05,
-                      }}
-                    >
-                      {char}
-                    </motion.span>
-                  ))}
-                </span>
-              ))}
-            </div>
-          ))}
-        </motion.h1>
+    // Removed min-h-screen as the spacers are gone.
+    <section className={`bg-linear-gradient(135deg, #f8f8f8, #e6f7ff, #fff7e6)`}>
+      <div
+        ref={containerRef}
+        // h-[300vh] increases the scroll duration for a smoother, slower effect
+        className="
+          relative
+          w-full
+          h-[200vh] 
+          px-4 md:px-8 lg:px-16
+        "
+      >
+        {/* Sticky Container - The content stays centered in the viewport */}
+        <div className="sticky top-0 h-screen flex items-center justify-center">
+          <h2
+            className={`
+              ${raleway.className} /* Applied Raleway font class */
+              text-center
+              max-w-4xl 
+              font-extrabold
+              leading-normal 
+              text-black
+              
+              /* RESPONSIVENESS FIX */
+              text-xl         
+              sm:text-3xl     
+              md:text-4xl     
+              lg:text-5xl     
+              
+              transition-colors duration-200
+            `}
+          >
+            {words.map((word, wIndex) => (
+              <AnimatedWord
+                key={wIndex}
+                word={word}
+                wIndex={wIndex}
+                totalWords={totalWords}
+                scrollYProgress={scrollYProgress}
+              />
+            ))}
+          </h2>
+        </div>
       </div>
 
-      {/* Fixed Scroll-down Icon (fade only) */}
-      <motion.a
-        href="#who"
-        className="mb-10 self-center z-50"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: isInView ? 1 : 0 }}
-        transition={{ duration: 0.6, ease: "easeInOut" }}
-      >
-        <ExpandCircleDownIcon
-          style={{ fontSize: "3.5rem", color: "#5AD6FF" }}
-        />
-      </motion.a>
+      
     </section>
   );
 }

@@ -35,7 +35,6 @@ export default function IndustriesWeServe() {
   return (
     <section
       className={`bg-white px-4 sm:px-6 lg:px-8 py-8 flex flex-col items-center ${raleway.className}`}
-
     >
       {/* Heading */}
       <motion.div
@@ -57,14 +56,11 @@ export default function IndustriesWeServe() {
         ></motion.div>
       </motion.div>
 
-      {/* Wrapper with top dashed line */}
+      {/* Wrapper */}
       <div className="relative w-full max-w-7xl">
-        {/* Top dashed line */}
-        {/* <div className="absolute top-0 left-0 w-full border-t-2 border-dashed border-gray-300"></div> */}
-
-        {/* Grid with vertical dashed lines */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 relative pt-8">
-          {industries.slice(0, 5).map((industry, i) => (
+        {/* First Row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative pt-8">
+          {industries.slice(0, 4).map((industry, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
@@ -76,19 +72,13 @@ export default function IndustriesWeServe() {
               <h3 className="text-lg font-semibold text-gray-900">{industry.name}</h3>
             </motion.div>
           ))}
-
-          {/* Vertical dashed connectors */}
-          {/* <div className="absolute top-0 left-1/5 h-8 border-l-2 border-dashed border-gray-300 hidden lg:block"></div>
-          <div className="absolute top-0 left-2/5 h-8 border-l-2 border-dashed border-gray-300 hidden lg:block"></div>
-          <div className="absolute top-0 left-3/5 h-8 border-l-2 border-dashed border-gray-300 hidden lg:block"></div>
-          <div className="absolute top-0 left-4/5 h-8 border-l-2 border-dashed border-gray-300 hidden lg:block"></div> */}
         </div>
       </div>
 
-      {/* Second row (next 5 industries) */}
+      {/* Second Row */}
       <div className="mt-16 w-full max-w-7xl">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 relative">
-          {industries.slice(5).map((industry, i) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+          {industries.slice(4).map((industry, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}

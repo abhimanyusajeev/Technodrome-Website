@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Raleway } from "next/font/google";
+import { motion } from "framer-motion";
 
 const raleway = Raleway({ subsets: ["latin"], weight: ["400", "600", "700"] });
 
@@ -74,7 +75,7 @@ export default function Services() {
     },
         {
       boldTitle: "LOS & LMS",
-      italicTitle: " Integration: ",
+      italicTitle: " Integration ",
       description:
         "A unified LOS and LMS platform that automates the entire loan process—from origination to repayment—improving efficiency, compliance, and customer experience.",
       image: "/Services/lms&los.png",
@@ -155,10 +156,24 @@ export default function Services() {
     >
       <div className="max-w-7xl mx-auto px-6 w-full">
         {/* Heading */}
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-950 mb-6 text-center md:text-left">
-          What <span className="text-[#5AD6FF]">We Do.</span>
+      <motion.div
+        initial={{ opacity: 0, x: -50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+      >
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 text-center md:text-left">
+          What <span className="text-[#5AD6FF]">We Do</span>
         </h2>
-        <div className="h-1 bg-[#5AD6FF] rounded-full mb-10 sm:mb-12 w-[120px] mx-auto md:mx-0"></div>
+
+        <motion.div
+          initial={{ width: 0 }}
+          whileInView={{ width: "120px" }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          viewport={{ once: true }}
+          className="h-1 bg-[#5AD6FF] rounded-full mb-10 sm:mb-12 mx-auto md:mx-0"
+        ></motion.div>
+      </motion.div>
 
         {/* Carousel */}
         <div className="relative w-full max-w-6xl mx-auto overflow-hidden pb-8">
