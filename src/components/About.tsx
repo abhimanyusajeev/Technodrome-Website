@@ -13,7 +13,7 @@ const raleway = Raleway({
 export default function About() {
   return (
     <section
-      className={` bg-white py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 ${raleway.className}`}
+      className={` bg-gradient-to-br from-white via-slate-50 to-slate-80 px-4 sm:px-6 lg:px-8 py-8 ${raleway.className}`}
     >
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
         {/* LEFT - Text Content */}
@@ -23,7 +23,7 @@ export default function About() {
           transition={{ duration: 0.8 }}
           className="max-w-xl mx-auto md:mx-0"
         >
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4 sm:mb-6">
+          <h2 className="text-4xl font-bold mb-4">
             About <span className="text-[#5AD6FF]">Us</span>
           </h2>
 

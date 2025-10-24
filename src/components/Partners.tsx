@@ -21,7 +21,7 @@ export default function Partners() {
   return (
     <section
       id="partners"
-      className={`bg-gradient-to-br from-white via-slate-80 to-slate-50  px-4 sm:px-6 lg:px-8 py-8 ${raleway.className}`}
+      className={`bg-white  px-4 sm:px-6 lg:px-8 py-8 ${raleway.className}`}
     >
       {/* Header */}
       <motion.div
@@ -31,7 +31,7 @@ export default function Partners() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">
+        <h2 className="text-4xl font-bold mb-4">
           Our Trusted{" "}
           <span className="text-[#5AD6FF]">Clients & Partners</span>
         </h2>

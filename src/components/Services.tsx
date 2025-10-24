@@ -47,8 +47,8 @@ export default function Services() {
       image: "/Services/UPI.png",
     },
         {
-      boldTitle: "Full-Stack Web ",
-      italicTitle: "& Mobile Development",
+      boldTitle: "Full-Stack",
+      italicTitle: " Web & Mobile Development",
       description:
         "we provide end-to-end web and mobile development, from static websites and full-stack applications to iOS and Android apps, delivering seamless, high-performance digital experiences that drive engagement and growth.",
       image: "/Services/fullstack.png",
@@ -58,7 +58,7 @@ export default function Services() {
       italicTitle: "Business Application",
       description:
         "At Technodrome Solutions Pvt. Ltd., with our Oracle certified team, we can harness the power of Oracle APEX...",
-      image: "/business.png",
+      image: "/Services/business.png",
     },
     {
       boldTitle: "Iaas, PaaS and SaaS",
@@ -93,7 +93,7 @@ export default function Services() {
       italicTitle: "and Analytics",
       description:
         "Our observability and analytics solutions, powered by Oracle Analytics and the ELK Stack, enable real-time monitoring, log analysis, and actionable insights.",
-      image: "/observability.png",
+      image: "/Services/observability.png",
     },
 
   ];
@@ -159,9 +159,10 @@ export default function Services() {
   const prevSlide = () => setCurrent(clampIndex(current - 1));
 
   return (
-    <section
-      className={`${raleway.className} relative min-h-screen flex flex-col justify-center bg-white`}
-    >
+<section
+  className={`${raleway.className} !font-[Raleway] relative min-h-screen flex flex-col justify-center bg-gradient-to-br from-white via-slate-50 to-slate-80`}
+>
+
       <div className="max-w-7xl mx-auto px-6 w-full">
         {/* Heading */}
       <motion.div
@@ -170,7 +171,7 @@ export default function Services() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 text-center md:text-left">
+        <h2 className="text-4xl font-bold text-gray-900 mb-4 text-center md:text-left">
           What <span className="text-[#5AD6FF]">We Do</span>
         </h2>
 
@@ -179,7 +180,7 @@ export default function Services() {
           whileInView={{ width: "120px" }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
-          className="h-1 bg-[#5AD6FF] rounded-full mb-10 sm:mb-12 mx-auto md:mx-0"
+          className="h-1 bg-[#5AD6FF] rounded-full mb-8 sm:mb-6 mx-auto md:mx-0"
         ></motion.div>
       </motion.div>
 

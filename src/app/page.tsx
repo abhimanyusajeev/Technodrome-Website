@@ -7,7 +7,7 @@ import About from "@/components/About";
 import Approach from "@/components/Approach";
 import CompanyJourney from "@/components/companyJourney";
 import Footer from "@/components/Footer";
-import GetInTouch from "@/components/GetInTouch";
+import GetInTouch from "@/components/Get-in-touch";
 import Home from "@/components/Home";
 import HomeNextPage from "@/components/HomeNextPage";
 import IndustriesWeServe from "@/components/IndustriesWeServe";
@@ -48,15 +48,15 @@ export default function HomePage() {
           <HomeNextPage />
         </section>
 
-        <section id="who">
+        <section id="Who-we-are">
           <WhoSection />
         </section>
 
-        <section id="journey">
+        <section id="Our-journey">
           <CompanyJourney />
         </section>
 
-        <section id="services">
+        <section id="What-we-do">
           <Services />
         </section>
 
@@ -64,7 +64,7 @@ export default function HomePage() {
           <Approach />
         </section>
 
-        <section id="technologystack">
+        <section id="Technology-stack">
           <TechnologyStack />
         </section>
 
@@ -80,7 +80,7 @@ export default function HomePage() {
           <Partners />
         </section>
 
-        <section id="contact">
+        <section id="Get-in-touch">
           <GetInTouch />
         </section>
 

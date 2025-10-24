@@ -128,28 +128,28 @@ function NavLinks({ className }: { className?: string }) {
       </li>
       <li>
 
-        <a href="#who" className="hover:font-semibold transition-all">
+        <a href="#Who-we-are" className="hover:font-semibold transition-all">
           Who We Are
         </a>
       </li>
       <li>
-        <a href="#services" className="hover:font-semibold transition-all">
+        <a href="#What-we-do" className="hover:font-semibold transition-all">
           What We Do
         </a>
       </li>
       <li>
-        <a href="#technologystack" className="hover:font-semibold transition-all">
+        <a href="#Technology-stack" className="hover:font-semibold transition-all">
           Tech Stack
         </a>
       </li>
       <li>
-        <a href="#journey" className="hover:font-semibold transition-all">
+        <a href="#Our-journey" className="hover:font-semibold transition-all">
           Our Journey
         </a>
       </li>
       <li>
         <a
-          href="#contact"
+          href="#Get-in-touch"
           className="px-6 py-2 rounded-full shadow-md hover:shadow-lg transition-all 
                      duration-300 font-raleway font-semibold flex items-center 
                      justify-center gap-2 bg-neutral-800 text-white hover:bg-neutral-900"

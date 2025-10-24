@@ -7,14 +7,12 @@ import {
   FaBriefcase,
   FaHospital,
   FaShieldAlt,
-  FaIndustry,
   FaShoppingCart,
   FaShip,
   FaPlane,
   FaBolt,
 } from "react-icons/fa";
 
-// ✅ Import Google Font
 const raleway = Raleway({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -34,7 +32,7 @@ const industries = [
 export default function IndustriesWeServe() {
   return (
     <section
-      className={`bg-gradient-to-br from-white via-slate-80 to-slate-50 px-4 sm:px-6 lg:px-8 py-8 flex flex-col items-center ${raleway.className}`}
+      className={`bg-white px-4 sm:px-6 lg:px-8 py-8 flex flex-col items-center ${raleway.className}`}
     >
       {/* Heading */}
       <motion.div
@@ -43,7 +41,7 @@ export default function IndustriesWeServe() {
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 text-center md:text-left">
+        <h2 className="text-4xl font-bold mb-4 text-gray-900 text-center md:text-left">
           Industries <span className="text-[#5AD6FF]">we serve</span>
         </h2>
 
@@ -52,39 +50,37 @@ export default function IndustriesWeServe() {
           whileInView={{ width: "120px" }}
           transition={{ duration: 0.6, delay: 0.3 }}
           viewport={{ once: true }}
-          className="h-1 bg-[#5AD6FF] rounded-full mb-10 sm:mb-12 mx-auto md:mx-0"
+          className="h-1 bg-[#5AD6FF] rounded-full mb-2 sm:mb-1 mx-auto md:mx-0"
         ></motion.div>
       </motion.div>
 
-      {/* Wrapper */}
-      <div className="relative w-full max-w-7xl">
+      {/* ✅ Gradient Wrapper for both rows */}
+      <div className="bg-gradient-to-br from-white via-slate-100 to-slate-80 rounded-3xl p-8 mt-8 w-full max-w-7xl">
         {/* First Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative pt-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
           {industries.slice(0, 4).map((industry, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white p-6 text-center flex flex-col items-center justify-center"
+              className="bg-transparent p-6 text-center flex flex-col items-center justify-center"
             >
               <div className="mb-3">{industry.icon}</div>
               <h3 className="text-lg font-semibold text-gray-900">{industry.name}</h3>
             </motion.div>
           ))}
         </div>
-      </div>
 
-      {/* Second Row */}
-      <div className="mt-16 w-full max-w-7xl">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+        {/* Second Row */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-10 relative">
           {industries.slice(4).map((industry, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white p-6 text-center flex flex-col items-center justify-center"
+              className="bg-transparent p-6 text-center flex flex-col items-center justify-center"
             >
               <div className="mb-3">{industry.icon}</div>
               <h3 className="text-lg font-semibold text-gray-900">{industry.name}</h3>

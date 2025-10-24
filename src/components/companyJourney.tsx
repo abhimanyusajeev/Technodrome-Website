@@ -64,17 +64,18 @@ const journey = [
 export default function CompanyJourney() {
   return (
     <section
-      className={`relative min-h-[60vh] bg-gradient-to-br from-white via-slate-80 to-slate-20 px-4 sm:px-6 lg:px-8 py-8 ${raleway.className}`}
+      className={`relative min-h-[60vh] bg-gradient-to-br from-white via-slate-80 to-slate-20 px-4 sm:px-6 lg:px-8 py-8   ${raleway.className}`}
     >
       {/* Heading with animation */}
+      <div className="max-w-7xl mx-auto px-6 w-full">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-950 mb-4 text-center md:text-left">
-          Company<span className="text-[#5AD6FF]"> Journey</span>
+          <h2 className="text-4xl font-bold text-slate-950 mb-4 text-center md:text-left">
+          Our<span className="text-[#5AD6FF]"> Journey</span>
           </h2>
 
           {/* Underline animation */}
@@ -171,7 +172,7 @@ export default function CompanyJourney() {
         <span className={roboto.className}>{milestone.year}</span> – {milestone.phase}
       </h3>
 
-<ul className="text-gray-700 text-xs sm:text-sm space-y-2 list-disc list-inside">
+<ul className="text-gray-700 text-xs sm:text-sm space-y-2 list-disc list-inside mt-5">
   {milestone.points.map((point, idx) => (
     <li key={idx} className="break-words">
       {point}
@@ -186,6 +187,7 @@ export default function CompanyJourney() {
 {/* </motion.div> */}
 
       </div>
+</div>
     </section>
   );
 }

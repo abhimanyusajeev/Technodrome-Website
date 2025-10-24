@@ -48,7 +48,7 @@ const steps: Step[] = [
 const Approach: FC = () => {
   return (
 <section
-  className={`bg-gradient-to-br from-white via-slate-85 to-slate-20 px-4 sm:px-6 lg:px-8 py-8
+  className={`bg-white px-4 sm:px-6 lg:px-8 py-8
  ${raleway.className}`}
 >
 
@@ -60,7 +60,7 @@ const Approach: FC = () => {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
             Our <span className="text-[#5AD6FF]">Approach</span>
           </h2>
 
@@ -69,7 +69,7 @@ const Approach: FC = () => {
             whileInView={{ width: "120px" }}
             transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="h-1 bg-[#5AD6FF] rounded-full mb-10 sm:mb-12 mx-auto"
+            className="h-1 bg-[#5AD6FF] rounded-full mb-4 sm:mb-2 mx-auto"
           ></motion.div>
         </motion.div>
 
