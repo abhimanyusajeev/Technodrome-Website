@@ -54,7 +54,7 @@ export default function GetInTouch() {
     const { name, value } = e.target;
 
     if (name === "name") {
-      if (!validateName(value)) return; // restrict invalid chars or >20 chars
+      if (!validateName(value)) return;
       setNameError(value.length > 50 ? "Max 50 characters allowed" : "");
     }
 
@@ -107,7 +107,10 @@ export default function GetInTouch() {
       if (response.ok && result.status === "success") {
         setSuccess("Message sent successfully ✅");
       } else {
-        console.error("Error submitting form:", result.message || response.statusText);
+        console.error(
+          "Error submitting form:",
+          result.message || response.statusText
+        );
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -118,33 +121,32 @@ export default function GetInTouch() {
   };
 
   return (
- <section
-  className={`${raleway.className} !font-[Raleway] relative  bg-gradient-to-br from-white via-slate-50 to-slate-80 py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8`}
->
-
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-16 items-start">
+    <section
+      className={`${raleway.className} !font-[Raleway] bg-gradient-to-br from-white via-slate-50 to-slate-80 px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20`}
+    >
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
         {/* LEFT SIDE */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
+          className="max-w-xl mx-auto md:mx-0"
         >
-          <motion.h2 className="text-4xl font-bold mb-4">
+          <h2 className="text-4xl font-bold mb-4">
             Get In <span className="text-[#5AD6FF]">Touch</span>
-          </motion.h2>
+          </h2>
 
           <motion.div
             initial={{ width: 0 }}
-            whileInView={{ width: "100px" }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="h-1 bg-[#5AD6FF] rounded-full mb-8 sm:mb-12"
+            whileInView={{ width: "80px" }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            viewport={{ once: true, amount: 0.2 }}
+            className="h-1 bg-[#5AD6FF] rounded-full mb-6 sm:mb-8"
           ></motion.div>
 
-          <p className="text-gray-600 text-lg mb-8">
+          <p className="text-base sm:text-lg text-gray-800 leading-relaxed mb-8 text-justify">
             Get in touch with us today and discover how we can help your business
-            grow and succeed. We can&apos;t wait to hear from you!
+            grow and succeed. We can’t wait to hear from you!
           </p>
 
           <div className="grid sm:grid-cols-2 gap-6">
@@ -178,15 +180,11 @@ export default function GetInTouch() {
         {/* RIGHT SIDE (Form) */}
         <motion.div
           initial={{ opacity: 0, x: 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="w-full"
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className={`w-full max-w-xl mx-auto md:mx-0 ${roboto.className} !font-[Roboto]`}
         >
-<form
-  className={`space-y-4 w-full ${roboto.className} !font-[Roboto]`}
-  onSubmit={handleSubmit}
->
+          <form className="space-y-4" onSubmit={handleSubmit}>
             {/* Name */}
             <div className="relative">
               <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
@@ -197,7 +195,9 @@ export default function GetInTouch() {
                 onChange={handleChange}
                 placeholder="Enter your name*"
                 className={`w-full pl-10 p-3 border rounded-lg focus:outline-none focus:ring-2 ${
-                  nameError ? "border-red-500 focus:ring-red-500" : "focus:ring-[#0B0B6E]"
+                  nameError
+                    ? "border-red-500 focus:ring-red-500"
+                    : "focus:ring-[#0B0B6E]"
                 } text-gray-600`}
                 required
               />
@@ -216,7 +216,9 @@ export default function GetInTouch() {
                 onChange={handleChange}
                 placeholder="Enter your email address*"
                 className={`w-full pl-10 p-3 border rounded-lg focus:outline-none focus:ring-2 ${
-                  emailError ? "border-red-500 focus:ring-red-500" : "focus:ring-[#0B0B6E]"
+                  emailError
+                    ? "border-red-500 focus:ring-red-500"
+                    : "focus:ring-[#0B0B6E]"
                 } text-gray-600`}
                 required
               />
@@ -238,7 +240,9 @@ export default function GetInTouch() {
                 international
                 countryCallingCodeEditable={false}
                 className={`w-full pl-14 p-3 border rounded-lg focus:outline-none focus:ring-2 ${
-                  mobileError ? "border-red-500 focus:ring-red-500" : "focus:ring-[#0B0B6E]"
+                  mobileError
+                    ? "border-red-500 focus:ring-red-500"
+                    : "focus:ring-[#0B0B6E]"
                 } text-gray-600`}
               />
               {mobileError && (
@@ -256,7 +260,9 @@ export default function GetInTouch() {
                 placeholder="Enter your message*"
                 rows={4}
                 className={`w-full pl-10 p-3 border rounded-lg focus:outline-none focus:ring-2 ${
-                  messageError ? "border-red-500 focus:ring-red-500" : "focus:ring-[#0B0B6E]"
+                  messageError
+                    ? "border-red-500 focus:ring-red-500"
+                    : "focus:ring-[#0B0B6E]"
                 } text-gray-600`}
                 required
               ></textarea>

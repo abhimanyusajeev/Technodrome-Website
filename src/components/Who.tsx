@@ -1,105 +1,105 @@
-  "use client";
+"use client";
 
-  import { motion, useScroll, useTransform } from "framer-motion";
-  import { useRef, useState, useEffect } from "react";
-  import Image from "next/image";
-  import { ChevronLeft, ChevronRight } from "lucide-react";
-  import { Raleway } from "next/font/google";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Raleway } from "next/font/google";
 
-  const raleway = Raleway({
-    subsets: ["latin"],
-    weight: ["200", "300", "400", "600", "700", "900"],
+const raleway = Raleway({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "600", "700", "900"],
+});
+
+const cultureCards = [
+  {
+    title: "Deep domain expertiseibility",
+    desc: "Delivering proven solutions across Banking & Finance, Insurance, Healthcare, and Logistics.",
+    gradient: "bg-gradient-to-br from-slate-950 via-[#0B1A2A] to-[#021018]",
+    accent: "#5AD6FF",
+    image: "/Who/DDE.png",
+  },
+  {
+    title: "Digital transformation accelerator",
+    desc: "Driving innovation, precision, and agility for enterprises.",
+    gradient: "bg-gradient-to-br from-[#0B1A2A] via-[#021018] to-[#5AD6FF]",
+    accent: "#5AD6FF",
+    image: "/Who/DTA.png",
+  },
+  {
+    title: "Global presence with local insight",
+    desc: "Addressing unique business challenges while adhering to international standards.",
+    gradient: "bg-gradient-to-br from-[#021018] via-[#0B1A2A] to-slate-950",
+    accent: "#5AD6FF",
+    image: "/Who/GPL2.png",
+  },
+  {
+    title: "Enduring partnerships",
+    desc: "Building long-term success for our clients beyond just technology delivery.",
+    gradient: "bg-gradient-to-br from-[#0B1A2A] via-slate-950 to-[#5AD6FF]",
+    accent: "#5AD6FF",
+    image: "/Who/EP1.jpg",
+  },
+];
+
+export default function WhoWeAreSection() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
   });
 
-  const cultureCards = [
-    {
-      title: "Deep domain expertiseibility",
-      desc: "Delivering proven solutions across Banking & Finance, Insurance, Healthcare, and Logistics.",
-      gradient: "bg-gradient-to-br from-slate-950 via-[#0B1A2A] to-[#021018]",
-      accent: "#5AD6FF",
-      image: "/Who/DDE.png",
-    },
-    {
-      title: "Digital transformation accelerator",
-      desc: "Driving innovation, precision, and agility for enterprises.",
-      gradient: "bg-gradient-to-br from-[#0B1A2A] via-[#021018] to-[#5AD6FF]",
-      accent: "#5AD6FF",
-      image: "/Who/DTA.png",
-    },
-    {
-      title: "Global presence with local insight",
-      desc: "Addressing unique business challenges while adhering to international standards.",
-      gradient: "bg-gradient-to-br from-[#021018] via-[#0B1A2A] to-slate-950",
-      accent: "#5AD6FF",
-      image: "/Who/GPL2.png",
-    },
-    {
-      title: "Enduring partnerships",
-      desc: "Building long-term success for our clients beyond just technology delivery.",
-      gradient: "bg-gradient-to-br from-[#0B1A2A] via-slate-950 to-[#5AD6FF]",
-      accent: "#5AD6FF",
-      image: "/Who/EP1.jpg",
-    },
-  ];
+  // 🟦 For mobile carousel
+  const [current, setCurrent] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [translateX, setTranslateX] = useState(0);
+  const [prevTranslate, setPrevTranslate] = useState(0);
 
-  export default function WhoWeAreSection() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
-      target: containerRef,
-      offset: ["start start", "end end"],
-    });
+  const length = cultureCards.length;
 
-    // 🟦 For mobile carousel
-    const [current, setCurrent] = useState(0);
-    const [isDragging, setIsDragging] = useState(false);
-    const [startX, setStartX] = useState(0);
-    const [translateX, setTranslateX] = useState(0);
-    const [prevTranslate, setPrevTranslate] = useState(0);
+  const clampIndex = (i: number) => {
+    if (i < 0) return length - 1;
+    if (i >= length) return 0;
+    return i;
+  };
 
-    const length = cultureCards.length;
+  const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
+    setIsDragging(true);
+    if ("touches" in e) setStartX(e.touches[0].clientX);
+    else setStartX(e.clientX);
+  };
 
-    const clampIndex = (i: number) => {
-      if (i < 0) return length - 1;
-      if (i >= length) return 0;
-      return i;
-    };
+  const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!isDragging) return;
+    let currentX = "touches" in e ? e.touches[0].clientX : e.clientX;
+    const deltaX = currentX - startX;
+    setTranslateX(prevTranslate + deltaX);
+  };
 
-    // 🖐️ Drag handling
-    const handleDragStart = (e: React.MouseEvent | React.TouchEvent) => {
-      setIsDragging(true);
-      if ("touches" in e) setStartX(e.touches[0].clientX);
-      else setStartX(e.clientX);
-    };
+  const handleDragEnd = () => {
+    setIsDragging(false);
+    const movedBy = translateX - prevTranslate;
+    if (movedBy < -50) setCurrent(clampIndex(current + 1));
+    if (movedBy > 50) setCurrent(clampIndex(current - 1));
+    setTranslateX(0);
+    setPrevTranslate(0);
+  };
 
-    const handleDragMove = (e: React.MouseEvent | React.TouchEvent) => {
-      if (!isDragging) return;
-      let currentX = "touches" in e ? e.touches[0].clientX : e.clientX;
-      const deltaX = currentX - startX;
-      setTranslateX(prevTranslate + deltaX);
-    };
+  useEffect(() => {
+    setTranslateX(0);
+    setPrevTranslate(0);
+  }, [current]);
 
-    const handleDragEnd = () => {
-      setIsDragging(false);
-      const movedBy = translateX - prevTranslate;
-      if (movedBy < -50) setCurrent(clampIndex(current + 1));
-      if (movedBy > 50) setCurrent(clampIndex(current - 1));
-      setTranslateX(0);
-      setPrevTranslate(0);
-    };
+  const nextSlide = () => setCurrent(clampIndex(current + 1));
+  const prevSlide = () => setCurrent(clampIndex(current - 1));
 
-    useEffect(() => {
-      setTranslateX(0);
-      setPrevTranslate(0);
-    }, [current]);
+  const sectionHeight = cultureCards.length * 100;
 
-    const nextSlide = () => setCurrent(clampIndex(current + 1));
-    const prevSlide = () => setCurrent(clampIndex(current - 1));
-
-    const sectionHeight = cultureCards.length * 100;
-
-    return (
+  return (
+    <>
       <section
-        className={`relative bg-gradient-to-br from-white via-slate-50 to-slate-80 px-4 sm:px-6 lg:px-8 py-8 ${raleway.className}`}
+        className={`who-we-are relative bg-gradient-to-br from-white via-slate-50 to-slate-80 px-4 sm:px-6 lg:px-8 py-8 ${raleway.className}`}
         style={{ height: `${sectionHeight}vh` }}
       >
         <div
@@ -107,7 +107,7 @@
           className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full relative flex flex-col md:flex-row gap-10"
         >
           {/* LEFT COLUMN */}
-          <div className="w-full md:w-1/2 flex flex-col gap-6 sticky top-24 self-start">
+          <div className="w-full md:w-1/2 flex flex-col gap-6 md:sticky md:top-24 self-start">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -222,85 +222,87 @@
           </div>
 
           {/* RIGHT COLUMN (Desktop Only) */}
-{/* RIGHT COLUMN (Desktop Only) */}
-<div className="w-full md:w-1/2 relative hidden md:block">
-  <div className="sticky top-24 h-[80vh] flex justify-center items-start">
-    <div className="relative w-full md:w-[90%] h-full">
+          <div className="w-full md:w-1/2 relative hidden md:block">
+            <div className="md:sticky md:top-24 h-[80vh] flex justify-center items-start">
+              <div className="relative w-full md:w-[90%] h-full">
+                <motion.div
+                  className="absolute inset-0 flex justify-center items-center text-center px-6"
+                  style={{
+                    opacity: useTransform(scrollYProgress, [0, 0.05, 0.1], [1, 0.5, 0]),
+                  }}
+                >
+                  <h3
+                    className={`text-3xl md:text-4xl font-black italic leading-relaxed ${raleway.className}`}
+                  >
+                    <span className="text-[#5AD6FF]">Technodrome Solutions</span>{" "}
+                    <span className="text-slate-950">
+                      is Your Digital Transformation Partner with{" "}
+                      <span className="text-[#5AD6FF]">20+ Years of Trust</span>
+                    </span>
+                  </h3>
+                </motion.div>
 
-      {/* 🆕 Heading shown before scroll */}
-{/* 🆕 Heading shown before scroll */}
-<motion.div
-  className="absolute inset-0 flex justify-center items-center text-center px-6"
-  style={{
-    opacity: useTransform(scrollYProgress, [0, 0.05, 0.1], [1, 0.5, 0]),
-  }}
->
-  <h3
-    className={`text-3xl md:text-4xl font-black italic leading-relaxed ${raleway.className}`}
-  >
-    <span className="text-[#5AD6FF]">
-      Technodrome Solutions
-    </span>{" "}
-    <span className="text-slate-950">
-      is Your Digital Transformation Partner with{" "}
-      <span className="text-[#5AD6FF]">20+ Years of Trust</span>
-    </span>
-  </h3>
-</motion.div>
+                {cultureCards.map((card, idx) => {
+                  const total = cultureCards.length;
+                  const start = idx / total;
+                  const end = (idx + 1) / total;
 
+                  const y = useTransform(
+                    scrollYProgress,
+                    [start, start + 0.1, end - 0.1, end],
+                    ["50vh", "10vh", "10vh", "-50vh"]
+                  );
+                  const opacity = useTransform(
+                    scrollYProgress,
+                    [start, start + 0.1, end - 0.1, end],
+                    [0, 1, 1, 0]
+                  );
 
-      {cultureCards.map((card, idx) => {
-        const total = cultureCards.length;
-        const start = idx / total;
-        const end = (idx + 1) / total;
+                  return (
+                    <motion.div
+                      key={idx}
+                      className={`absolute left-0 right-0 rounded-[1.5rem] p-6 origin-top shadow-2xl overflow-hidden ${card.gradient} mx-auto w-[80%] min-h-[480px]`}
+                      style={{
+                        y,
+                        opacity,
+                        zIndex: total - idx,
+                      }}
+                    >
+                      <div className="mb-6 relative w-full flex justify-center">
+                        <div className="w-full h-full bg-slate-900/40 rounded-xl border border-[#5AD6FF]/30 flex justify-center items-center overflow-hidden">
+                          <img
+                            src={card.image}
+                            alt={card.title}
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                      </div>
 
-        const y = useTransform(
-          scrollYProgress,
-          [start, start + 0.1, end - 0.1, end],
-          ["50vh", "10vh", "10vh", "-50vh"]
-        );
-        const opacity = useTransform(
-          scrollYProgress,
-          [start, start + 0.1, end - 0.1, end],
-          [0, 1, 1, 0]
-        );
-
-        return (
-          <motion.div
-            key={idx}
-            className={`absolute left-0 right-0 rounded-[1.5rem] p-6 origin-top shadow-2xl overflow-hidden ${card.gradient} mx-auto w-[80%] min-h-[480px]`}
-            style={{
-              y,
-              opacity,
-              zIndex: total - idx,
-            }}
-          >
-            <div className="mb-6 relative w-full flex justify-center">
-              <div className="w-full h-full bg-slate-900/40 rounded-xl border border-[#5AD6FF]/30 flex justify-center items-center overflow-hidden">
-                <img
-                  src={card.image}
-                  alt={card.title}
-                  className="w-full h-full object-contain"
-                />
+                      <div className="relative z-10 text-center md:text-left flex flex-col items-center md:items-start">
+                        <h3 className="text-[#5AD6FF] font-semibold text-2xl mb-2 md:mb-3">
+                          {card.title}
+                        </h3>
+                        <p className="text-gray-200 text-base leading-relaxed max-w-[90%] md:max-w-[80%]">
+                          {card.desc}
+                        </p>
+                      </div>
+                    </motion.div>
+                  );
+                })}
               </div>
             </div>
-
-            <div className="relative z-10 text-center md:text-left flex flex-col items-center md:items-start">
-              <h3 className="text-[#5AD6FF] font-semibold text-2xl mb-2 md:mb-3">
-                {card.title}
-              </h3>
-              <p className="text-gray-200 text-base leading-relaxed max-w-[90%] md:max-w-[80%]">
-                {card.desc}
-              </p>
-            </div>
-          </motion.div>
-        );
-      })}
-    </div>
-  </div>
-</div>
-
+          </div>
         </div>
       </section>
-    );
-  }
+
+      {/* ✅ Responsive fix: mobile auto height */}
+      <style jsx>{`
+        @media (max-width: 767px) {
+          section.who-we-are {
+            height: auto !important;
+          }
+        }
+      `}</style>
+    </>
+  );
+}
