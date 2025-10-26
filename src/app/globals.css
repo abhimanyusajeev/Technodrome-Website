@@ -190,9 +190,9 @@
 
 /* Debugging aid */ 
 
-* {
+/* * {
   outline: 1px solid red;
-}
+} */
 
 
 @tailwind base;
