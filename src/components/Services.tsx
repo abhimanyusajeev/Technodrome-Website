@@ -160,7 +160,7 @@ export default function Services() {
 
   return (
 <section
-  className={`${raleway.className} !font-[Raleway] relative min-h-screen flex flex-col justify-center bg-gradient-to-br from-white via-slate-50 to-slate-80`}
+  className={`${raleway.className} !font-[Raleway] relative px-4 sm:px-6 lg:px-8 py-8 flex flex-col justify-center bg-gradient-to-br from-white via-slate-50 to-slate-80`}
 >
 
       <div className="max-w-7xl mx-auto px-6 w-full">
@@ -233,12 +233,10 @@ export default function Services() {
                     draggable={false}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t mask-linear-from-slate-50 via-slate-50/5 to-transparent text-slate-950 p-6 flex flex-col justify-end">
-                    <h3 className="text-2xl font-bold mb-4">
-                      {service.boldTitle}{" "}
-                      <span className=" text-[#5AD6FF]">
-                        {service.italicTitle}
-                      </span>
-                    </h3>
+<h3 className="text-xl sm:text-2xl mb-4 text-center sm:text-left break-words">
+  <span className="font-bold">{service.boldTitle}&nbsp;</span>
+  <span className="font-semibold text-[#5AD6FF]">{service.italicTitle}</span>
+</h3>
                     <p className="text-sm">{service.description}</p>
                   </div>
                 </div>

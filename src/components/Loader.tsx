@@ -9,15 +9,20 @@ export default function Loader({ loading }: { loading: boolean }) {
       {loading && (
         <motion.div
           key="loader"
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-white"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-white min-h-screen"
+          style={{
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100dvh", // ✅ mobile viewport fix
+          }}
           initial={{ opacity: 1 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
         >
           {/* Loader Inner */}
-          <div className="relative h-[250px] aspect-square flex items-center justify-center">
-            
+          <div className="relative flex items-center justify-center w-[250px] h-[250px] sm:w-[250px] sm:h-[250px] md:w-[300px] md:h-[300px]">
             {/* Ripple Circles */}
             {[...Array(5)].map((_, i) => (
               <motion.div
@@ -41,31 +46,32 @@ export default function Loader({ loading }: { loading: boolean }) {
                   duration: 2,
                   repeat: Infinity,
                   ease: "easeInOut",
-                  delay: 0,
                 }}
               />
             ))}
 
-            {/* Logo - fades in once, stays visible */}
+            {/* Logo - perfectly centered */}
             <motion.div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120px] h-[120px] flex items-center justify-center z-[999]"
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center z-[999]"
+              style={{ transformOrigin: "center center" }} // ✅ Fixes “sliding from right” issue
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{
                 duration: 1.2,
-                delay: 0.2, // ⏳ wait for ripples first
+                delay: 0.2,
                 ease: "easeOut",
               }}
             >
-<Image
-  src="/technodromeTlogo.png"
-  alt="Technodrome Logo Loader"
-  width={200}  // Increased width
-  height={200}  // Increased height
-  className="object-contain"
-  priority
-/>
-
+              <div className="w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] md:w-[140px] md:h-[140px]">
+                <Image
+                  src="/technodromeTlogo.png"
+                  alt="Technodrome Logo Loader"
+                  width={200}
+                  height={200}
+                  className="object-contain w-full h-full"
+                  priority
+                />
+              </div>
             </motion.div>
           </div>
         </motion.div>
